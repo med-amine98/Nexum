@@ -1,0 +1,889 @@
+/* ============================================
+   App.css - Nexum Aurora Next v4.0
+   Variables gérées par : src/styles/aurora-next.css
+   ============================================ */
+
+/* ── Toutes les variables CSS sont définies dans aurora-next.css ──
+   Importé via index.css → @import './styles/aurora-next.css'
+   ============================================ */
+
+/* Variables supprimées — définies dans aurora-next.css
+   :root { ... } redondant retiré pour cohérence globale */
+
+[data-theme='light'] {
+  --primary-dark: #4F46E5;
+  --primary-darker: #3730A3;
+  --primary-light: #818CF8;
+  --primary-lighter: #A5B4FC;
+  --primary-soft: rgba(99, 102, 241, 0.12);
+  --primary-glow: rgba(99, 102, 241, 0.35);
+  
+  /* === COULEURS SECONDAIRES - Cyber Teal === */
+  --secondary: #14B8A6;
+  --secondary-dark: #0D9488;
+  --secondary-light: #5EEAD4;
+  --secondary-soft: rgba(20, 184, 166, 0.12);
+  
+  /* === COULEURS TERTIAIRES - Sunset Coral === */
+  --tertiary: #F43F5E;
+  --tertiary-dark: #E11D48;
+  --tertiary-light: #FB7185;
+  --tertiary-soft: rgba(244, 63, 94, 0.12);
+  
+  /* === COULEURS D'ACCENT - Electric Violet === */
+  --accent: #8B5CF6;
+  --accent-dark: #7C3AED;
+  --accent-light: #A78BFA;
+  --accent-soft: rgba(139, 92, 246, 0.12);
+  
+  /* === COULEURS D'ÉTAT - Naturelles === */
+  --success: #10B981;
+  --success-dark: #059669;
+  --success-light: #34D399;
+  --success-soft: rgba(16, 185, 129, 0.12);
+  
+  --warning: #F59E0B;
+  --warning-dark: #D97706;
+  --warning-light: #FBBF24;
+  --warning-soft: rgba(245, 158, 11, 0.12);
+  
+  --error: #EF4444;
+  --error-dark: #DC2626;
+  --error-light: #F87171;
+  --error-soft: rgba(239, 68, 68, 0.12);
+  
+  --info: #3B82F6;
+  --info-dark: #2563EB;
+  --info-light: #60A5FA;
+  --info-soft: rgba(59, 130, 246, 0.12);
+  
+  /* === FONDS - Deep Space === */
+  --bg-deep: #030014;
+  --bg-primary: #0A0A1A;
+  --bg-secondary: #111128;
+  --bg-tertiary: #1A1A3E;
+  --bg-sidebar: #050514;
+  --bg-glass: rgba(10, 10, 26, 0.95);
+  --bg-glass-light: rgba(10, 10, 26, 0.8);
+  --bg-overlay: rgba(0, 0, 0, 0.7);
+  
+  /* === TEXTES - Stellar Clarity === */
+  --text-primary: #FFFFFF;
+  --text-secondary: #E2E8F0;
+  --text-tertiary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-disabled: #64748B;
+  
+  /* === BORDURES - Quantum === */
+  --border: rgba(255, 255, 255, 0.06);
+  --border-light: rgba(255, 255, 255, 0.03);
+  --border-medium: rgba(255, 255, 255, 0.1);
+  --border-heavy: rgba(255, 255, 255, 0.14);
+  
+  /* === GRADIENTS PREMIUM - Aurora Collection === */
+  --gradient-primary: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #14B8A6 100%);
+  --gradient-primary-hover: linear-gradient(135deg, #818CF8 0%, #A78BFA 50%, #5EEAD4 100%);
+  --gradient-secondary: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);
+  --gradient-tertiary: linear-gradient(135deg, #F43F5E 0%, #E11D48 100%);
+  --gradient-accent: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+  --gradient-success: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  --gradient-warning: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  --gradient-error: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(10, 10, 26, 0.95), rgba(10, 10, 26, 0.85));
+  --gradient-hero: linear-gradient(135deg, #6366F1 0%, #8B5CF6 40%, #14B8A6 70%, #F43F5E 100%);
+  --gradient-mesh: radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                   radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                   radial-gradient(circle at 50% 50%, rgba(20, 184, 166, 0.05) 0%, transparent 70%);
+  --gradient-border: linear-gradient(135deg, var(--primary), var(--secondary), var(--tertiary));
+  
+  /* === OMBRES - Quantum Glow === */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 12px 36px rgba(0, 0, 0, 0.55);
+  --shadow-2xl: 0 24px 48px rgba(0, 0, 0, 0.6);
+  --shadow-3xl: 0 32px 64px rgba(0, 0, 0, 0.65);
+  --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.5);
+  --shadow-glow-strong: 0 0 35px rgba(99, 102, 241, 0.7);
+  --shadow-glow-secondary: 0 0 25px rgba(20, 184, 166, 0.4);
+  --shadow-primary: 0 4px 15px rgba(99, 102, 241, 0.4);
+  --shadow-secondary: 0 4px 15px rgba(20, 184, 166, 0.4);
+  --shadow-accent: 0 4px 15px rgba(139, 92, 246, 0.4);
+  --shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+  
+  /* === BORDURES ARRONDIES === */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 28px;
+  --radius-4xl: 36px;
+  --radius-full: 9999px;
+  
+  /* === TRANSITIONS === */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-smooth: 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  /* === BLUR === */
+  --blur-sm: blur(4px);
+  --blur-md: blur(10px);
+  --blur-lg: blur(20px);
+  --blur-xl: blur(28px);
+  --blur-2xl: blur(48px);
+  
+  /* === Z-INDEX === */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+  
+  /* === LAYOUT === */
+  --header-height: 72px;
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 80px;
+  --content-max-width: 1440px;
+}
+
+/* ============================================
+   3. RESET & BASE (hérite d'aurora-next.css)
+   ============================================ */
+  color-scheme {
+  
+  /* === FONDS === */
+  --bg-deep: #F0F4F8;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FAFC;
+  --bg-tertiary: #E2E8F0;
+  --bg-sidebar: #FFFFFF;
+  --bg-glass: rgba(255, 255, 255, 0.95);
+  --bg-glass-light: rgba(255, 255, 255, 0.85);
+  --bg-overlay: rgba(0, 0, 0, 0.3);
+  
+  /* === TEXTES === */
+  --text-primary: #0F172A;
+  --text-secondary: #1E293B;
+  --text-tertiary: #334155;
+  --text-muted: #64748B;
+  --text-disabled: #94A3B8;
+  
+  /* === BORDURES === */
+  --border: rgba(0, 0, 0, 0.06);
+  --border-light: rgba(0, 0, 0, 0.03);
+  --border-medium: rgba(0, 0, 0, 0.1);
+  --border-heavy: rgba(0, 0, 0, 0.14);
+  
+  /* === OMBRES === */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 12px 36px rgba(0, 0, 0, 0.12);
+  --shadow-2xl: 0 24px 48px rgba(0, 0, 0, 0.15);
+  --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.2);
+  --shadow-primary: 0 4px 15px rgba(99, 102, 241, 0.25);
+  
+  /* === GRADIENTS === */
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  --gradient-mesh: radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.03) 0%, transparent 50%),
+                   radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+}
+
+/* ============================================
+   3. RESET & BASE
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg-deep);
+  background-image: var(--gradient-mesh);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+  font-size: 14px;
+  font-weight: 400;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 50% 50%, rgba(99, 102, 241, 0.02) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+a:hover {
+  color: var(--primary-light);
+}
+
+/* ============================================
+   4. TYPOGRAPHIE AVANCÉE
+   ============================================ */
+
+.text-gradient-primary {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientShift 3s ease infinite;
+}
+
+.text-gradient-hero {
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientShift 5s ease infinite;
+  background-size: 200% auto;
+}
+
+.text-gradient-secondary {
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-accent {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-primary { color: var(--primary); }
+.text-primary-light { color: var(--primary-light); }
+.text-secondary { color: var(--secondary); }
+.text-tertiary { color: var(--tertiary); }
+.text-accent { color: var(--accent); }
+.text-success { color: var(--success); }
+.text-warning { color: var(--warning); }
+.text-error { color: var(--error); }
+.text-info { color: var(--info); }
+.text-muted { color: var(--text-muted); }
+
+/* ============================================
+   5. SCROLLBAR PREMIUM
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  transition: var(--transition-base);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gradient-primary-hover);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--bg-primary);
+}
+
+/* ============================================
+   6. SIDEBAR - Design Aurora Premium
+   ============================================ */
+
+.ant-layout-sider {
+  background: var(--bg-sidebar) !important;
+  border-right: 1px solid var(--border);
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  backdrop-filter: var(--blur-sm);
+}
+
+.sidebar-logo {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  background: linear-gradient(135deg, var(--bg-sidebar) 0%, var(--bg-primary) 100%);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-logo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--primary-soft), transparent);
+  transition: left 0.6s ease;
+}
+
+.sidebar-logo:hover::before {
+  left: 100%;
+}
+
+.sidebar-logo span {
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -1px;
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.ant-menu {
+  background: transparent !important;
+  border-right: none !important;
+  padding: 12px 0;
+}
+
+.ant-menu-item {
+  margin: 6px 12px !important;
+  border-radius: var(--radius-lg) !important;
+  transition: all var(--transition-spring) !important;
+  color: var(--text-tertiary) !important;
+  height: 44px !important;
+  line-height: 44px !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.ant-menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: var(--transition-base);
+  z-index: -1;
+  border-radius: var(--radius-lg);
+}
+
+.ant-menu-item:hover {
+  background: var(--primary-soft) !important;
+  color: var(--primary) !important;
+  transform: translateX(4px) scale(1.02);
+}
+
+.ant-menu-item:hover::before {
+  opacity: 0.1;
+}
+
+.ant-menu-item-selected {
+  background: var(--primary-soft) !important;
+  color: var(--primary) !important;
+  font-weight: 600;
+  box-shadow: var(--shadow-primary);
+}
+
+.ant-menu-item-selected::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 50%;
+  background: var(--gradient-primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  box-shadow: var(--shadow-glow);
+}
+
+.ant-menu-item-selected .anticon {
+  color: var(--primary) !important;
+  filter: drop-shadow(0 0 5px var(--primary));
+}
+
+.ant-menu-item .anticon {
+  font-size: 20px !important;
+  transition: var(--transition-spring);
+}
+
+.ant-menu-item:hover .anticon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.ant-menu-item-group-title {
+  padding: 16px 16px 8px 24px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+  opacity: 0.8;
+}
+
+/* ============================================
+   7. TOPBAR - Glassmorphism Avancé
+   ============================================ */
+
+.topbar {
+  background: var(--bg-glass) !important;
+  backdrop-filter: var(--blur-md);
+  padding: 0 28px !important;
+  height: var(--header-height) !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-base);
+}
+
+.menu-toggle {
+  background: transparent !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  color: var(--text-tertiary) !important;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-spring);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-toggle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: var(--primary-soft);
+  transition: width 0.5s, height 0.5s;
+  transform: translate(-50%, -50%);
+}
+
+.menu-toggle:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.menu-toggle:hover {
+  border-color: var(--primary) !important;
+  transform: scale(1.05) rotate(90deg);
+  color: var(--primary) !important;
+  box-shadow: var(--shadow-primary);
+}
+
+.search-wrapper {
+  width: 400px;
+  transition: var(--transition-base);
+}
+
+.search-wrapper .ant-input-affix-wrapper {
+  background: var(--bg-glass-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 8px 18px;
+  transition: var(--transition-base);
+}
+
+.search-wrapper .ant-input-affix-wrapper:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-primary);
+  transform: scale(1.02);
+}
+
+.search-wrapper .ant-input-affix-wrapper:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-soft);
+  transform: scale(1.02);
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 20px 8px 12px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  background: var(--bg-glass-light);
+  border: 1px solid var(--border);
+  transition: var(--transition-spring);
+  backdrop-filter: var(--blur-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.user-profile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--primary-soft), transparent);
+  transition: left 0.5s;
+}
+
+.user-profile:hover::before {
+  left: 100%;
+}
+
+.user-profile:hover {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+
+.user-avatar {
+  border: 2px solid var(--primary);
+  box-shadow: var(--shadow-glow);
+  transition: var(--transition-spring);
+}
+
+.user-profile:hover .user-avatar {
+  transform: scale(1.1);
+  border-color: var(--secondary);
+  box-shadow: var(--shadow-glow-secondary);
+}
+
+/* ============================================
+   8. ANIMATIONS AVANCÉES
+   ============================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 5px var(--primary); }
+  50% { box-shadow: 0 0 20px var(--primary), 0 0 30px var(--secondary); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-fadeIn { animation: fadeIn 0.5s var(--transition-base); }
+.animate-fadeInUp { animation: fadeInUp 0.6s var(--transition-smooth); }
+.animate-fadeInDown { animation: fadeInDown 0.6s var(--transition-smooth); }
+.animate-fadeInLeft { animation: fadeInLeft 0.5s var(--transition-base); }
+.animate-fadeInRight { animation: fadeInRight 0.5s var(--transition-base); }
+.animate-scaleIn { animation: scaleIn 0.4s var(--transition-bounce); }
+.animate-scaleUp { animation: scaleUp 0.3s var(--transition-bounce); }
+.animate-slideIn { animation: slideIn 0.5s var(--transition-smooth); }
+.animate-slideInRight { animation: slideInRight 0.5s var(--transition-smooth); }
+.animate-pulse { animation: pulse 2s infinite; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-glow { animation: glowPulse 2s ease-in-out infinite; }
+.animate-spin-slow { animation: spinSlow 10s linear infinite; }
+
+.shimmer {
+  background: linear-gradient(90deg, var(--bg-primary) 25%, var(--bg-tertiary) 50%, var(--bg-primary) 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ============================================
+   9. CARDS - Premium Design
+   ============================================ */
+
+.ant-card {
+  background: var(--bg-glass) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-2xl) !important;
+  transition: var(--transition-spring);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  backdrop-filter: var(--blur-sm);
+  position: relative;
+}
+
+.ant-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: transform 0.5s;
+}
+
+.ant-card:hover::before {
+  transform: scaleX(1);
+}
+
+.ant-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-2xl);
+  border-color: var(--primary-soft) !important;
+}
+
+/* ============================================
+   10. BUTTONS - Premium
+   ============================================ */
+
+.ant-btn {
+  border-radius: var(--radius-lg) !important;
+  font-weight: 600 !important;
+  transition: var(--transition-spring);
+  height: 42px;
+  padding: 0 24px;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ant-btn-primary {
+  background: var(--gradient-primary) !important;
+  border: none !important;
+  box-shadow: var(--shadow-md);
+  color: white !important;
+  background-size: 200% auto !important;
+}
+
+.ant-btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.ant-btn-primary:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.ant-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-primary);
+  background: var(--gradient-primary-hover) !important;
+  animation: gradientShift 0.5s ease;
+}
+
+/* ============================================
+   11. MODAL - Premium
+   ============================================ */
+
+.ant-modal-content {
+  border-radius: var(--radius-3xl) !important;
+  overflow: hidden;
+  background: var(--bg-glass) !important;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-3xl);
+  backdrop-filter: var(--blur-xl);
+}
+
+/* ============================================
+   12. ÉLÉMENTS INTERACTIFS
+   ============================================ */
+
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-input-password {
+  background: var(--bg-glass-light) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  color: var(--text-primary) !important;
+  transition: var(--transition-spring);
+  padding: 10px 16px;
+}
+
+.ant-input:focus,
+.ant-input-affix-wrapper:focus,
+.ant-input-password:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 4px var(--primary-soft) !important;
+  transform: scale(1.01);
+}
+
+/* ============================================
+   13. NOTIFICATIONS PREMIUM
+   ============================================ */
+
+.ant-notification {
+  background: var(--bg-glass) !important;
+  border-radius: var(--radius-xl) !important;
+  border: 1px solid var(--border);
+  backdrop-filter: var(--blur-lg);
+  animation: slideInRight 0.4s var(--transition-bounce);
+}
+
+/* ============================================
+   14. UTILITAIRES AVANCÉS
+   ============================================ */
+
+.gradient-border {
+  position: relative;
+  border: double 2px transparent;
+  border-radius: var(--radius-2xl);
+  background-image: var(--gradient-primary);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.glass-effect {
+  background: var(--bg-glass);
+  backdrop-filter: var(--blur-md);
+  border: 1px solid var(--border);
+}
+
+.hover-lift {
+  transition: var(--transition-spring);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Responsive Design amélioré */
+@media (max-width: 768px) {
+  .search-wrapper { display: none; }
+  .ant-card { border-radius: var(--radius-xl) !important; }
+}
+
+@media (max-width: 640px) {
+  .topbar { padding: 0 16px !important; }
+  .menu-toggle { width: 36px; height: 36px; }
+}

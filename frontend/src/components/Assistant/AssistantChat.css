@@ -1,0 +1,148 @@
+/* AssistantChat.css */
+
+.assistant-chat-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.assistant-chat-card .ant-card-body {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.message {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  max-width: 85%;
+}
+
+.message.user {
+  margin-left: auto;
+  flex-direction: row-reverse;
+}
+
+.message-bubble {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #f0f0f0;
+  position: relative;
+  word-break: break-word;
+}
+
+.message.user .message-bubble {
+  border-radius: 12px 12px 4px 12px;
+}
+
+.message.bot .message-bubble {
+  border-radius: 12px 12px 12px 4px;
+}
+
+.message-time {
+  font-size: 10px;
+  margin-top: 4px;
+  opacity: 0.6;
+  text-align: right;
+}
+
+.typing {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.typing-dots {
+  background: #f0f0f0;
+  padding: 10px 16px;
+  border-radius: 20px;
+  display: flex;
+  gap: 4px;
+}
+
+.typing-dots span {
+  animation: typing 1.4s infinite;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.typing-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+  30% { transform: translateY(-5px); opacity: 1; }
+}
+
+.suggestions {
+  margin-bottom: 12px;
+  padding: 8px 0;
+}
+
+.chat-input {
+  display: flex;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.chat-input .ant-input {
+  flex: 1;
+  border-radius: 20px;
+}
+
+.chat-input .ant-btn {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animation d'entrée */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message {
+  animation: slideIn 0.3s ease-out;
+}

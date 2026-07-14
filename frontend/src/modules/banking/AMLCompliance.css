@@ -1,0 +1,517 @@
+/* src/modules/banking/AMLCompliance.css */
+
+/* Styles généraux */
+.aml-dashboard {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Animation pour les alertes */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.02); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Cartes */
+.aml-card {
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.aml-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* En-tête de section */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--bg-secondary);
+}
+
+.section-header .section-icon {
+  font-size: 24px;
+  color: #722ed1;
+  margin-right: 12px;
+}
+
+/* Tableau des transactions */
+.transactions-table .ant-table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.transactions-table .ant-table-thead > tr > th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: var(--bg-secondary);
+  border-bottom: 2px solid #e9ecef;
+}
+
+.transactions-table .ant-table-tbody > tr:hover > td {
+  background: #f5f5f5;
+}
+
+/* Badges de risque */
+.risk-badge-low {
+  background-color: #f6ffed;
+  color: #52c41a;
+  border: 1px solid #b7eb8f;
+}
+
+.risk-badge-medium {
+  background-color: var(--bg-secondary)7e6;
+  color: #faad14;
+  border: 1px solid #ffe58f;
+}
+
+.risk-badge-high {
+  background-color: var(--bg-secondary)2e8;
+  color: #fa8c16;
+  border: 1px solid #ffd591;
+}
+
+.risk-badge-critical {
+  background-color: var(--bg-secondary)1f0;
+  color: #f5222d;
+  border: 1px solid #ffccc7;
+  animation: pulse 2s infinite;
+}
+
+/* Statuts */
+.status-reported {
+  background-color: var(--bg-secondary)1f0;
+  color: #f5222d;
+  border: 1px solid #ffccc7;
+}
+
+.status-review {
+  background-color: #e6f7ff;
+  color: #1890ff;
+  border: 1px solid #91d5ff;
+}
+
+.status-pending {
+  background-color: var(--bg-secondary)7e6;
+  color: #faad14;
+  border: 1px solid #ffe58f;
+}
+
+.status-cleared {
+  background-color: #f6ffed;
+  color: #52c41a;
+  border: 1px solid #b7eb8f;
+}
+
+/* Alertes temps réel */
+.real-time-alerts {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 1000;
+  width: 320px;
+  max-height: 500px;
+  overflow-y: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  animation: slideInRight 0.3s ease;
+}
+
+.real-time-alert {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.real-time-alert:hover {
+  background: #f5f5f5;
+}
+
+.real-time-alert.critical {
+  border-left: 4px solid #f5222d;
+  background: var(--bg-secondary)1f0;
+}
+
+.real-time-alert.high {
+  border-left: 4px solid #fa8c16;
+  background: var(--bg-secondary)2e8;
+}
+
+.real-time-alert.medium {
+  border-left: 4px solid #faad14;
+  background: var(--bg-secondary)7e6;
+}
+
+/* Formulaire personnalisé */
+.custom-flow-form .ant-form-item {
+  margin-bottom: 20px;
+}
+
+.custom-flow-form .ant-upload-drag {
+  background: #fafafa;
+  border: 1px dashed #d9d9d9;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.custom-flow-form .ant-upload-drag:hover {
+  border-color: #722ed1;
+  background: #f9f0ff;
+}
+
+/* Carte mondiale */
+.map-container {
+  height: 450px;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.map-container .leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.map-legend {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.map-legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* Techniques innovantes */
+.tech-card {
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tech-card:hover {
+  transform: translateY(-8px);
+}
+
+.tech-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.tech-metric {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+/* Filtres */
+.filters-bar {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Modal */
+.aml-modal .ant-modal-header {
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+  color: white;
+  border-radius: 12px 12px 0 0;
+  padding: 16px 24px;
+}
+
+.aml-modal .ant-modal-title {
+  color: white;
+}
+
+.aml-modal .ant-modal-close {
+  color: white;
+}
+
+/* KPIs */
+.kpi-card {
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.kpi-value {
+  font-size: 28px;
+  font-weight: bold;
+  color: #1890ff;
+}
+
+.kpi-label {
+  font-size: 14px;
+  color: var(--text-primary);
+  margin-top: 8px;
+}
+
+/* Statistiques */
+.stats-row {
+  margin-bottom: 24px;
+}
+
+.stats-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: none;
+  border-radius: 16px;
+}
+
+/* Timeline */
+.aml-timeline .ant-timeline-item-tail {
+  border-left: 2px solid #e9ecef;
+}
+
+.aml-timeline .ant-timeline-item-head {
+  background-color: #722ed1;
+  border-color: #722ed1;
+}
+
+/* Progress bar */
+.risk-progress {
+  margin-top: 8px;
+  height: 4px;
+  border-radius: 2px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .real-time-alerts {
+    width: 280px;
+    right: 10px;
+    top: 70px;
+  }
+  
+  .map-container {
+    height: 300px;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .stats-card {
+    margin-bottom: 12px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .aml-card {
+    background: #1f1f2f;
+    border-color: #2f2f3f;
+  }
+  
+  .aml-card .ant-statistic-title {
+    color: rgba(255, 255, 255, 0.65);
+  }
+  
+  .aml-card .ant-statistic-content {
+    color: #fff;
+  }
+  
+  .real-time-alerts {
+    background: #1f1f2f;
+    border-color: #2f2f3f;
+  }
+  
+  .real-time-alert:hover {
+    background: #2f2f3f;
+  }
+  
+  .filters-bar {
+    background: #1f1f2f;
+  }
+}
+
+/* Scrollbar personnalisée */
+.aml-dashboard::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.aml-dashboard::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.aml-dashboard::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.aml-dashboard::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Animation pour les nouveaux éléments */
+@keyframes highlight {
+  0% {
+    background-color: rgba(114, 46, 209, 0.2);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.new-item {
+  animation: highlight 1s ease;
+}
+
+/* Tooltip personnalisé */
+.aml-tooltip .ant-tooltip-inner {
+  background: var(--bg-secondary);
+  color: white;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+/* Boutons d'action */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.action-button {
+  transition: all 0.2s;
+}
+
+.action-button:hover {
+  transform: scale(1.05);
+}
+
+/* Tableau des transactions en mode sombre */
+.dark-mode .transactions-table .ant-table {
+  background: #1f1f2f;
+}
+
+.dark-mode .transactions-table .ant-table-thead > tr > th {
+  background: #2f2f3f;
+  color: #fff;
+}
+
+.dark-mode .transactions-table .ant-table-tbody > tr > td {
+  color: #e0e0e0;
+}
+
+.dark-mode .transactions-table .ant-table-tbody > tr:hover > td {
+  background: #2f2f3f;
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Badge personnalisé */
+.custom-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.custom-badge.warning {
+  background: var(--bg-secondary)7e6;
+  color: #faad14;
+}
+
+.custom-badge.error {
+  background: var(--bg-secondary)1f0;
+  color: #f5222d;
+}
+
+.custom-badge.success {
+  background: #f6ffed;
+  color: #52c41a;
+}
+
+/* Header avec gradient */
+.gradient-header {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  color: white;
+}
+
+/* Tableau de bord */
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* Responsive tables */
+@media (max-width: 1200px) {
+  .transactions-table .ant-table {
+    overflow-x: auto;
+  }
+}

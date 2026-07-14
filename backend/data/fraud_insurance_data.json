@@ -1,0 +1,194 @@
+{
+  "claims": [
+    {
+      "id": 1,
+      "claim_number": "CLM-001",
+      "client_name": "Jean Dupont",
+      "client_id": 1,
+      "amount": 15000,
+      "claim_type": "auto",
+      "risk_level": "critical",
+      "fraud_score": 85.5,
+      "status": "investigating",
+      "created_at": "2026-03-25 05:49:25.828491",
+      "description": "Accident de voiture avec dégâts importants",
+      "location": "Paris",
+      "documents": [
+        "constat.pdf",
+        "photos_accident.jpg"
+      ]
+    },
+    {
+      "id": 2,
+      "claim_number": "CLM-002",
+      "client_name": "Marie Martin",
+      "client_id": 2,
+      "amount": 2500,
+      "claim_type": "habitation",
+      "risk_level": "high",
+      "fraud_score": 72.3,
+      "status": "blocked",
+      "created_at": "2026-03-25 02:49:25.828502",
+      "description": "Dégât des eaux",
+      "location": "Paris",
+      "documents": [
+        "devis_plombier.pdf"
+      ]
+    },
+    {
+      "id": 3,
+      "claim_number": "CLM-003",
+      "client_name": "Pierre Durand",
+      "client_id": 3,
+      "amount": 5000,
+      "claim_type": "sante",
+      "risk_level": "medium",
+      "fraud_score": 65.0,
+      "status": "detected",
+      "created_at": "2026-03-25 06:49:25.828504",
+      "description": "Frais médicaux",
+      "location": "Lyon",
+      "documents": [
+        "facture_hopital.pdf"
+      ]
+    }
+  ],
+  "clients": [
+    {
+      "id": 1,
+      "client_name": "Jean Dupont",
+      "client_email": "jean.dupont@example.com",
+      "client_phone": "+33123456789",
+      "client_address": "12 rue de Paris, 75001 Paris",
+      "claims_count": 3,
+      "total_amount": 15750,
+      "risk_level": "high",
+      "status": "active",
+      "created_at": "2025-09-26T07:49:25.828506"
+    },
+    {
+      "id": 2,
+      "client_name": "Marie Martin",
+      "client_email": "marie.martin@example.com",
+      "client_phone": "+33987654321",
+      "client_address": "45 avenue des Champs, 75008 Paris",
+      "claims_count": 1,
+      "total_amount": 2500,
+      "risk_level": "medium",
+      "status": "active",
+      "created_at": "2025-12-25T07:49:25.828527"
+    },
+    {
+      "id": 3,
+      "client_name": "Pierre Durand",
+      "client_email": "pierre.durand@example.com",
+      "client_phone": "+33655443322",
+      "client_address": "8 rue de la République, 69001 Lyon",
+      "claims_count": 0,
+      "total_amount": 0,
+      "risk_level": "low",
+      "status": "active",
+      "created_at": "2026-02-08T07:49:25.828529"
+    },
+    {
+      "id": 4,
+      "client_name": "Sophie Bernard",
+      "client_email": "sophie.bernard@example.com",
+      "client_phone": "+33455667788",
+      "client_address": "23 boulevard Gambetta, 13001 Marseille",
+      "claims_count": 2,
+      "total_amount": 8900,
+      "risk_level": "medium",
+      "status": "active",
+      "created_at": "2025-11-25T07:49:25.828531"
+    },
+    {
+      "id": 5,
+      "client_name": "Lucas Petit",
+      "client_email": "lucas.petit@example.com",
+      "client_phone": "+33566778899",
+      "client_address": "67 rue Nationale, 59000 Lille",
+      "claims_count": 4,
+      "total_amount": 32500,
+      "risk_level": "critical",
+      "status": "blocked",
+      "created_at": "2025-09-06T07:49:25.828532"
+    }
+  ],
+  "rules": [
+    {
+      "id": 1,
+      "rule_id": "RULE-001",
+      "rule_name": "Montant anormalement élevé",
+      "threshold": 10000,
+      "weight": 30,
+      "is_active": true,
+      "rule_type": "amount",
+      "description": "Détecte les sinistres dont le montant dépasse le seuil défini"
+    },
+    {
+      "id": 2,
+      "rule_id": "RULE-002",
+      "rule_name": "Délai de déclaration trop court",
+      "threshold": 2,
+      "weight": 20,
+      "is_active": true,
+      "rule_type": "velocity",
+      "description": "Détecte les sinistres déclarés moins de 2 jours après l'incident"
+    },
+    {
+      "id": 3,
+      "rule_id": "RULE-003",
+      "rule_name": "Nombre de sinistres suspect",
+      "threshold": 3,
+      "weight": 25,
+      "is_active": true,
+      "rule_type": "behavioral",
+      "description": "Détecte les clients ayant plus de 3 sinistres en moins d'un an"
+    }
+  ],
+  "alerts": [
+    {
+      "id": 1,
+      "alert_id": "FRD-001",
+      "claim_id": 1,
+      "claim_number": "CLM-001",
+      "amount": 15000,
+      "risk_score": 85.5,
+      "risk_level": "critical",
+      "status": "investigating",
+      "reason": "Montant inhabituellement élevé",
+      "customer_name": "Jean Dupont",
+      "customer_email": "jean@example.com",
+      "created_at": "2026-03-25T05:49:25.828536"
+    },
+    {
+      "id": 2,
+      "alert_id": "FRD-002",
+      "claim_id": 2,
+      "claim_number": "CLM-002",
+      "amount": 2500,
+      "risk_score": 72.3,
+      "risk_level": "high",
+      "status": "blocked",
+      "reason": "Localisation suspecte",
+      "customer_name": "Marie Martin",
+      "customer_email": "marie@example.com",
+      "created_at": "2026-03-25T02:49:25.828538"
+    },
+    {
+      "id": 3,
+      "alert_id": "FRD-003",
+      "claim_id": 3,
+      "claim_number": "CLM-003",
+      "amount": 5000,
+      "risk_score": 65.0,
+      "risk_level": "medium",
+      "status": "detected",
+      "reason": "Comportement inhabituel",
+      "customer_name": "Pierre Durand",
+      "customer_email": "pierre@example.com",
+      "created_at": "2026-03-25T06:49:25.828540"
+    }
+  ]
+}

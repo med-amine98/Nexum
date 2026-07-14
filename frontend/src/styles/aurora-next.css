@@ -1,0 +1,1026 @@
+/* ============================================
+   Aurora Next v4.0 - Design System Unifié
+   Nexum ERP - Source Unique de Vérité
+   Appliqué à tout le frontend
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+/* ============================================
+   1. VARIABLES AURORA NEXT - ROOT
+   ============================================ */
+
+:root {
+  color-scheme: dark;
+
+  /* ── Palette Principale ── */
+  --primary:              #2563eb;   /* Indigo vibrant */
+  --primary-dark:         #1d4ed8;
+  --primary-darker:       #1e40af;
+  --primary-light:        #60a5fa;
+  --primary-lighter:      #93c5fd;
+  --primary-soft:         rgba(37, 99, 235, 0.12);
+  --primary-glow:         rgba(37, 99, 235, 0.35);
+  --primary-subtle:       rgba(37, 99, 235, 0.08);
+
+  /* ── Palette Secondaire - Cyber Teal ── */
+  --secondary:            #475569;
+  --secondary-dark:       #334155;
+  --secondary-darker:     #1e293b;
+  --secondary-light:      #94a3b8;
+  --secondary-soft:       rgba(71, 85, 105, 0.12);
+
+  /* ── Palette Tertiaire - Sunset Coral ── */
+  --tertiary:             #0f172a;
+  --tertiary-dark:        #020617;
+  --tertiary-light:       #1e293b;
+  --tertiary-soft:        rgba(15, 23, 42, 0.12);
+
+  /* ── Accent - Electric Violet ── */
+  --accent:               #10b981;
+  --accent-dark:          #059669;
+  --accent-light:         #34d399;
+  --accent-soft:          rgba(16, 185, 129, 0.12);
+  --accent-glow:          rgba(16, 185, 129, 0.35);
+
+  /* ── États Sémantiques ── */
+  --success:              #10b981;
+  --success-dark:         #059669;
+  --success-light:        #34d399;
+  --success-soft:         rgba(16, 185, 129, 0.12);
+
+  --warning:              #f59e0b;
+  --warning-dark:         #d97706;
+  --warning-light:        #fbbf24;
+  --warning-soft:         rgba(245, 158, 11, 0.12);
+
+  --error:                #ef4444;
+  --error-dark:           #dc2626;
+  --error-light:          #f87171;
+  --error-soft:           rgba(239, 68, 68, 0.12);
+
+  --info:                 #3b82f6;
+  --info-dark:            #2563eb;
+  --info-light:           #60a5fa;
+  --info-soft:            rgba(59, 130, 246, 0.12);
+
+  /* ── Fonds & Surfaces ── */
+  --surface:              #0f172a;
+  --surface-container:    #1e293b;
+  --surface-bright:       #334155;
+
+  --bg-deep:              #020617;
+  --bg-primary:           #0f172a;
+  --bg-secondary:         #1e293b;
+  --bg-tertiary:          #334155;
+  --bg-sidebar:           #0f172a;
+  --bg-overlay:           rgba(0, 0, 0, 0.7);
+  --bg-card:              var(--surface-container);
+
+  /* ── Glassmorphism ── */
+  --glass-bg:             rgba(30, 41, 59, 0.7);
+  --glass-bg-strong:      rgba(15, 23, 42, 0.85);
+  --glass-border:         rgba(255, 255, 255, 0.1);
+  --glass-border-hover:   rgba(255, 255, 255, 0.18);
+  --blur-sm:              blur(4px);
+  --blur-md:              blur(10px);
+  --blur-lg:              blur(20px);
+  --blur-xl:              blur(24px);
+  --blur-2xl:             blur(48px);
+
+  /* Alias pour compat. backdrop-filter */
+  --blur-sm-val:          4px;
+  --blur-md-val:          12px;
+  --blur-lg-val:          24px;
+  --blur-xl-val:          40px;
+
+  /* ── Textes ── */
+  --on-surface:           #ffffff;
+  --on-surface-variant:   #94a3b8;
+  --text-primary:         #ffffff;
+  --text-secondary:       #e2e8f0;
+  --text-tertiary:        #cbd5e1;
+  --text-muted:           #94a3b8;
+  --text-disabled:        #64748b;
+  --text-inverse:         #0f172a;
+
+  /* ── Bordures ── */
+  --border:               rgba(255, 255, 255, 0.08);
+  --border-light:         rgba(255, 255, 255, 0.04);
+  --border-medium:        rgba(255, 255, 255, 0.12);
+  --border-heavy:         rgba(255, 255, 255, 0.18);
+
+  /* ── Dégradés Aurora ── */
+  --gradient-aurora:      linear-gradient(135deg, #2563eb 0%, #10b981 50%, #475569 100%);
+  --gradient-text:        linear-gradient(to right, #60a5fa, #94a3b8);
+  --gradient-primary:     linear-gradient(135deg, #2563eb 0%, #10b981 50%, #475569 100%);
+  --gradient-primary-hover: linear-gradient(135deg, #60a5fa 0%, #34d399 50%, #94a3b8 100%);
+  --gradient-secondary:   linear-gradient(135deg, #475569 0%, #334155 100%);
+  --gradient-tertiary:    linear-gradient(135deg, #0f172a 0%, #020617 100%);
+  --gradient-accent:      linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --gradient-success:     linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --gradient-warning:     linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  --gradient-error:       linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  --gradient-hero:        linear-gradient(135deg, #2563eb 0%, #10b981 40%, #475569 70%, #0f172a 100%);
+  --gradient-glass:       linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.75));
+  --gradient-mesh:        radial-gradient(circle at 25% 25%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
+                          radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+                          radial-gradient(circle at 50% 50%, rgba(71, 85, 105, 0.05) 0%, transparent 70%);
+  --gradient-border:      linear-gradient(135deg, var(--primary), var(--secondary), var(--tertiary));
+
+  /* ── Ombres Aurora ── */
+  --shadow-xs:            0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-sm:            0 2px 4px rgba(0, 0, 0, 0.4);
+  --shadow-md:            0 4px 12px rgba(0, 0, 0, 0.45);
+  --shadow-lg:            0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-xl:            0 12px 36px rgba(0, 0, 0, 0.55);
+  --shadow-2xl:           0 24px 48px rgba(0, 0, 0, 0.6);
+  --shadow-3xl:           0 32px 64px rgba(0, 0, 0, 0.65);
+  --shadow-glow:          0 0 25px rgba(37, 99, 235, 0.5);
+  --shadow-glow-strong:   0 0 35px rgba(37, 99, 235, 0.7);
+  --shadow-glow-secondary:0 0 25px rgba(71, 85, 105, 0.4);
+  --shadow-primary:       0 4px 15px rgba(37, 99, 235, 0.4);
+  --shadow-secondary:     0 4px 15px rgba(71, 85, 105, 0.4);
+  --shadow-accent:        0 4px 15px rgba(16, 185, 129, 0.4);
+  --shadow-card:          0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(37, 99, 235, 0.2);
+  --shadow-inset:         inset 0 1px 2px rgba(0, 0, 0, 0.15);
+
+  /* ── Border Radius ── */
+  --radius-xs:            4px;
+  --radius-sm:            6px;
+  --radius-md:            8px;
+  --radius-lg:            12px;
+  --radius-xl:            16px;
+  --radius-2xl:           20px;
+  --radius-3xl:           24px;
+  --radius-4xl:           32px;
+  --radius-full:          9999px;
+
+  /* Alias compat */
+  --border-radius-sm:     6px;
+  --border-radius-md:     10px;
+  --border-radius-lg:     16px;
+  --border-radius-xl:     20px;
+  --border-radius-2xl:    24px;
+  --border-radius-full:   9999px;
+
+  /* ── Transitions ── */
+  --transition-fast:      150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base:      all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:      all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce:    all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-smooth:    300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-spring:    500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Z-Index ── */
+  --z-dropdown:           1000;
+  --z-sticky:             1020;
+  --z-fixed:              1030;
+  --z-modal-backdrop:     1040;
+  --z-modal:              1050;
+  --z-popover:            1060;
+  --z-tooltip:            1070;
+  --z-toast:              1080;
+
+  /* ── Layout ── */
+  --header-height:        72px;
+  --sidebar-width:        280px;
+  --sidebar-collapsed-width: 80px;
+  --content-max-width:    1440px;
+
+  /* ── Typographie ── */
+  --font-family:          'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-xs:         11px;
+  --font-size-sm:         12px;
+  --font-size-base:       14px;
+  --font-size-md:         16px;
+  --font-size-lg:         18px;
+  --font-size-xl:         20px;
+  --font-size-2xl:        24px;
+  --font-size-3xl:        30px;
+  --font-size-4xl:        36px;
+
+  /* ── Spacing ── */
+  --spacing-xs:           4px;
+  --spacing-sm:           8px;
+  --spacing-md:           16px;
+  --spacing-lg:           24px;
+  --spacing-xl:           32px;
+  --spacing-2xl:          48px;
+  --spacing-3xl:          64px;
+
+  /* ── Dashboard compat ── */
+  --dashboard-primary:        #2563eb;
+  --dashboard-primary-light:  #60a5fa;
+  --dashboard-primary-dark:   #1d4ed8;
+  --dashboard-accent:         #10b981;
+  --dashboard-success:        #10b981;
+  --dashboard-warning:        #f59e0b;
+  --dashboard-error:          #ef4444;
+  --dashboard-info:           #3b82f6;
+  --primary-color:            #2563eb;
+  --secondary-color:          #475569;
+  --accent-color:             #10b981;
+  --success-color:            #10b981;
+  --warning-color:            #f59e0b;
+  --error-color:              #ef4444;
+  --info-color:               #3b82f6;
+  --border-color:             rgba(255, 255, 255, 0.08);
+  --bg-surface:               var(--surface-container);
+  --shadow-glow-secondary:    0 0 25px rgba(71, 85, 105, 0.4);
+
+  /* ── Nexum-global compat ── */
+  --primary-gradient:     var(--gradient-aurora);
+  --accent-gradient:      var(--gradient-accent);
+  --shadow-glow-old:      0 4px 12px rgba(37, 99, 235, 0.4);
+  --shadow-glow-secondary-old: 0 4px 12px rgba(71, 85, 105, 0.3);
+}
+
+/* ============================================
+   2. MODE CLAIR (override)
+   ============================================ */
+
+[data-theme='light'] {
+  color-scheme: light;
+
+  --surface:              #f0f4f8;
+  --surface-container:    #ffffff;
+  --surface-bright:       #e8ecf0;
+
+  --bg-deep:              #f0f4f8;
+  --bg-primary:           #ffffff;
+  --bg-secondary:         #f8fafc;
+  --bg-tertiary:          #e2e8f0;
+  --bg-sidebar:           #ffffff;
+  --bg-overlay:           rgba(0, 0, 0, 0.3);
+  --bg-card:              #ffffff;
+
+  --glass-bg:             rgba(255, 255, 255, 0.85);
+  --glass-bg-strong:      rgba(255, 255, 255, 0.95);
+  --glass-border:         rgba(0, 0, 0, 0.06);
+  --glass-border-hover:   rgba(37, 99, 235, 0.3);
+
+  --on-surface:           #0f172a;
+  --on-surface-variant:   #64748b;
+  --text-primary:         #0f172a;
+  --text-secondary:       #1e293b;
+  --text-tertiary:        #334155;
+  --text-muted:           #64748b;
+  --text-disabled:        #94a3b8;
+  --text-inverse:         #ffffff;
+
+  --border:               rgba(0, 0, 0, 0.06);
+  --border-light:         rgba(0, 0, 0, 0.03);
+  --border-medium:        rgba(0, 0, 0, 0.1);
+  --border-heavy:         rgba(0, 0, 0, 0.14);
+  --border-color:         rgba(0, 0, 0, 0.08);
+
+  --shadow-xs:            0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm:            0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md:            0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg:            0 8px 24px rgba(0, 0, 0, 0.1);
+  --shadow-xl:            0 12px 36px rgba(0, 0, 0, 0.12);
+  --shadow-2xl:           0 24px 48px rgba(0, 0, 0, 0.15);
+  --shadow-glow:          0 0 25px rgba(37, 99, 235, 0.2);
+  --shadow-primary:       0 4px 15px rgba(37, 99, 235, 0.25);
+  --shadow-card:          0 8px 24px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(37, 99, 235, 0.08);
+
+  --gradient-glass:       linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  --gradient-mesh:        radial-gradient(circle at 25% 25%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+                          radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+  --bg-surface:           #ffffff;
+  --bg-dark:              #0a0a1a;
+  --bg-glass:             rgba(255, 255, 255, 0.92);
+  --bg-glass-light:       rgba(255, 255, 255, 0.75);
+}
+
+/* ============================================
+   3. BASE & RESET
+   ============================================ */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--surface);
+  background-image: var(--gradient-mesh);
+  color: var(--on-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+  font-size: 14px;
+  font-weight: 400;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 20%, rgba(37, 99, 235, 0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+a:hover { color: var(--primary-light); }
+
+/* ============================================
+   4. SCROLLBAR AURORA
+   ============================================ */
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); border-radius: var(--radius-full); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary), var(--accent));
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--primary-light), var(--accent-light));
+}
+::-webkit-scrollbar-corner { background: var(--bg-primary); }
+
+/* ============================================
+   5. NAVIGATION & HEADER (nav-glass)
+   ============================================ */
+
+.nav-glass,
+.topbar,
+.ant-layout-header {
+  background: var(--glass-bg) !important;
+  backdrop-filter: var(--blur-xl) !important;
+  -webkit-backdrop-filter: var(--blur-xl) !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+  box-shadow: 0 1px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ============================================
+   6. HERO TITLE (texte dégradé)
+   ============================================ */
+
+.hero-title,
+.text-gradient-aurora,
+.text-gradient-primary {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  animation: gradientShift 5s ease infinite;
+  background-size: 200% auto;
+}
+
+.text-gradient-hero {
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientShift 5s ease infinite;
+  background-size: 200% auto;
+}
+
+.text-gradient-secondary {
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-accent {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ============================================
+   7. MODULE CARDS (glassmorphism + hover)
+   ============================================ */
+
+.module-card {
+  background: var(--surface-container) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-3xl) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+  color: var(--text-primary) !important;
+}
+
+.module-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.module-card:hover {
+  transform: translateY(-8px) !important;
+  background: var(--surface-bright) !important;
+  box-shadow: var(--shadow-card) !important;
+  border-color: var(--primary) !important;
+}
+
+.module-card .ant-card-body { color: var(--text-secondary) !important; }
+.module-card h4 { color: var(--text-primary) !important; font-weight: 700 !important; }
+.module-card .ant-paragraph { color: var(--text-secondary) !important; }
+.module-card .ant-list-item { color: var(--text-secondary) !important; }
+.module-card .ant-list-item .ant-typography { color: var(--text-secondary) !important; }
+
+/* ── Module stats tags ── */
+.module-stats .ant-tag {
+  background: rgba(37, 99, 235, 0.15) !important;
+  color: #60a5fa !important;
+  border: none !important;
+  padding: 4px 12px !important;
+  border-radius: 20px !important;
+  font-weight: 600 !important;
+}
+
+/* ── Module feature ── */
+.module-feature { color: var(--primary-light) !important; }
+.module-feature .anticon-check-circle { color: var(--primary) !important; }
+
+/* ── Card header ── */
+.ant-card-head-title { color: var(--text-primary) !important; font-weight: 700 !important; }
+
+/* ============================================
+   8. BUTTONS (Aurora)
+   ============================================ */
+
+.btn-primary,
+.ant-btn-primary {
+  background: var(--gradient-aurora) !important;
+  border: none !important;
+  box-shadow: var(--shadow-primary) !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-lg) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after,
+.ant-btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.btn-primary:hover,
+.ant-btn-primary:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.6) !important;
+}
+
+.btn-secondary {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  color: var(--text-primary) !important;
+  backdrop-filter: var(--blur-md) !important;
+  border-radius: var(--radius-lg) !important;
+  font-weight: 600 !important;
+  transition: var(--transition-base) !important;
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary) !important;
+  background: var(--primary-soft) !important;
+  transform: translateY(-2px) !important;
+}
+
+.btn-ghost {
+  background: transparent !important;
+  border: 1px solid var(--glass-border) !important;
+  color: var(--text-secondary) !important;
+  border-radius: var(--radius-lg) !important;
+  transition: var(--transition-base) !important;
+}
+
+.btn-ghost:hover {
+  border-color: var(--primary) !important;
+  color: var(--primary-light) !important;
+  background: var(--primary-soft) !important;
+}
+
+/* ============================================
+   9. CARDS GÉNÉRIQUES (glass)
+   ============================================ */
+
+.glass-card,
+.ant-card {
+  background: var(--glass-bg) !important;
+  backdrop-filter: var(--blur-xl) !important;
+  -webkit-backdrop-filter: var(--blur-xl) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-3xl) !important;
+  color: var(--text-primary) !important;
+  transition: var(--transition-base) !important;
+}
+
+.ant-card:hover {
+  border-color: var(--glass-border-hover) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.ant-card-head {
+  background: transparent !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+  color: var(--text-primary) !important;
+}
+
+.ant-card-body { color: var(--text-secondary) !important; }
+
+/* ============================================
+   10. FAQ & ACCORDIONS
+   ============================================ */
+
+.faq-item,
+.ant-collapse-item {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-lg) !important;
+  margin-bottom: 8px !important;
+  overflow: hidden;
+  transition: var(--transition-base) !important;
+}
+
+.faq-item:hover,
+.ant-collapse-item:hover {
+  border-color: var(--primary-soft) !important;
+  background: rgba(37, 99, 235, 0.05) !important;
+}
+
+.ant-collapse-header {
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+}
+
+.ant-collapse-content {
+  background: transparent !important;
+  border-top: 1px solid var(--glass-border) !important;
+  color: var(--text-secondary) !important;
+}
+
+/* ============================================
+   11. SIDEBAR AURORA
+   ============================================ */
+
+.professional-sidebar,
+.ant-layout-sider {
+  background: linear-gradient(180deg, var(--bg-sidebar) 0%, var(--bg-secondary) 100%) !important;
+  border-right: 1px solid var(--glass-border) !important;
+}
+
+.sidebar-logo-aurora {
+  background: var(--gradient-aurora);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+/* ── Scrollbar sidebar ── */
+.sidebar-menu-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(37, 99, 235, 0.3) transparent;
+}
+.sidebar-menu-scroll::-webkit-scrollbar { width: 4px; }
+.sidebar-menu-scroll::-webkit-scrollbar-track { background: transparent; border-radius: 4px; }
+.sidebar-menu-scroll::-webkit-scrollbar-thumb { background: rgba(37, 99, 235, 0.3); border-radius: 4px; }
+.sidebar-menu-scroll::-webkit-scrollbar-thumb:hover { background: rgba(37, 99, 235, 0.5); }
+
+/* ── Ant Menu Aurora ── */
+.professional-sidebar .ant-menu { background: transparent !important; border: none !important; }
+.professional-sidebar .ant-menu-item { color: var(--text-muted) !important; border-radius: var(--radius-lg) !important; margin: 2px 8px !important; }
+.professional-sidebar .ant-menu-item:hover { color: var(--text-primary) !important; background: var(--primary-soft) !important; }
+.professional-sidebar .ant-menu-item-selected { color: var(--primary-light) !important; background: var(--primary-soft) !important; }
+.professional-sidebar .ant-menu-item-selected::after { border-color: var(--primary) !important; }
+.professional-sidebar .ant-menu-submenu-title { color: var(--text-muted) !important; border-radius: var(--radius-lg) !important; }
+.professional-sidebar .ant-menu-submenu-title:hover { color: var(--text-primary) !important; background: var(--primary-soft) !important; }
+
+/* ============================================
+   12. TOPBAR / HEADER
+   ============================================ */
+
+.global-search .ant-input-affix-wrapper {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 6px 12px !important;
+  transition: var(--transition-base);
+}
+.global-search .ant-input-affix-wrapper:hover,
+.global-search .ant-input-affix-wrapper-focused {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px var(--primary-glow) !important;
+}
+.global-search .ant-input { background: transparent !important; color: var(--text-primary) !important; }
+.global-search .ant-input::placeholder { color: var(--text-muted) !important; }
+
+.user-profile-premium {
+  display: flex; align-items: center; gap: 10px;
+  padding: 4px 12px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+.user-profile-premium:hover {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-primary);
+}
+
+.theme-toggle-btn, .header-action {
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-lg);
+  transition: var(--transition-base);
+}
+.theme-toggle-btn:hover, .header-action:hover {
+  background: var(--primary-soft) !important;
+  color: var(--primary-light) !important;
+}
+.theme-toggle-btn:hover { transform: rotate(15deg); }
+
+/* ============================================
+   13. FORM INPUTS AURORA
+   ============================================ */
+
+.ant-input, .ant-input-affix-wrapper, .ant-select-selector,
+.ant-picker, .ant-input-number {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-lg) !important;
+  color: var(--text-primary) !important;
+  transition: var(--transition-base) !important;
+}
+
+.ant-input:hover, .ant-select-selector:hover,
+.ant-input-affix-wrapper:hover {
+  border-color: var(--primary) !important;
+}
+
+.ant-input:focus, .ant-input-focused,
+.ant-input-affix-wrapper-focused,
+.ant-select-focused .ant-select-selector,
+.ant-picker-focused {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px var(--primary-soft) !important;
+  outline: none !important;
+}
+
+.ant-input::placeholder, .ant-select-selection-placeholder {
+  color: var(--text-muted) !important;
+}
+
+.ant-form-item-label > label { color: var(--text-secondary) !important; font-weight: 500 !important; }
+
+/* ============================================
+   14. TABLE AURORA
+   ============================================ */
+
+.ant-table { background: transparent !important; color: var(--text-primary) !important; }
+.ant-table-thead > tr > th {
+  background: rgba(37, 99, 235, 0.08) !important;
+  color: var(--text-muted) !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+.ant-table-tbody > tr > td {
+  border-bottom: 1px solid var(--border-light) !important;
+  color: var(--text-secondary) !important;
+  transition: var(--transition-fast) !important;
+}
+.ant-table-tbody > tr:hover > td {
+  background: rgba(37, 99, 235, 0.05) !important;
+}
+.ant-table-wrapper .ant-table-pagination { margin: 16px 0 !important; }
+
+/* ============================================
+   15. MODAL & DRAWER AURORA
+   ============================================ */
+
+.ant-modal-content {
+  background: var(--surface-container) !important;
+  backdrop-filter: var(--blur-xl) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-3xl) !important;
+  box-shadow: var(--shadow-2xl) !important;
+  color: var(--text-primary) !important;
+}
+
+.ant-modal-header {
+  background: transparent !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+}
+
+.ant-modal-title { color: var(--text-primary) !important; font-weight: 700 !important; }
+.ant-modal-close { color: var(--text-muted) !important; }
+.ant-modal-close:hover { color: var(--text-primary) !important; }
+
+.ant-drawer-content {
+  background: var(--surface-container) !important;
+  border-left: 1px solid var(--glass-border) !important;
+}
+.ant-drawer-header {
+  background: transparent !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+}
+.ant-drawer-title { color: var(--text-primary) !important; font-weight: 700 !important; }
+
+/* ============================================
+   16. TAG & BADGE AURORA
+   ============================================ */
+
+.ant-tag {
+  background: var(--primary-soft) !important;
+  border: 1px solid var(--primary-soft) !important;
+  color: var(--primary-light) !important;
+  border-radius: var(--radius-full) !important;
+  font-weight: 600 !important;
+}
+
+.ant-badge-count {
+  background: var(--gradient-aurora) !important;
+  box-shadow: 0 0 8px var(--primary-glow) !important;
+}
+
+/* ============================================
+   17. STAT CARDS / KPI CARDS
+   ============================================ */
+
+.stat-card, .kpi-card {
+  background: var(--glass-bg) !important;
+  backdrop-filter: var(--blur-lg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-2xl) !important;
+  transition: var(--transition-base) !important;
+  color: var(--text-primary) !important;
+}
+.stat-card:hover, .kpi-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--shadow-primary) !important;
+  border-color: var(--primary) !important;
+}
+
+/* ============================================
+   18. DROPDOWN / SELECT AURORA
+   ============================================ */
+
+.ant-dropdown-menu,
+.ant-select-dropdown {
+  background: var(--surface-container) !important;
+  backdrop-filter: var(--blur-xl) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-xl) !important;
+}
+
+.ant-dropdown-menu-item,
+.ant-select-item {
+  color: var(--text-secondary) !important;
+  border-radius: var(--radius-md) !important;
+  transition: var(--transition-fast) !important;
+}
+
+.ant-dropdown-menu-item:hover,
+.ant-select-item:hover,
+.ant-select-item-option-active {
+  background: var(--primary-soft) !important;
+  color: var(--text-primary) !important;
+}
+
+.ant-select-item-option-selected {
+  background: rgba(37, 99, 235, 0.2) !important;
+  color: var(--primary-light) !important;
+  font-weight: 600 !important;
+}
+
+/* ============================================
+   19. TOOLTIP AURORA
+   ============================================ */
+
+.ant-tooltip-inner {
+  background: var(--surface-bright) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-lg) !important;
+  color: var(--text-primary) !important;
+  font-size: 12px !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+.ant-tooltip-arrow-content { background: var(--surface-bright) !important; }
+
+/* ============================================
+   20. PAGINATION AURORA
+   ============================================ */
+
+.ant-pagination-item {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-md) !important;
+}
+.ant-pagination-item a { color: var(--text-secondary) !important; }
+.ant-pagination-item:hover { border-color: var(--primary) !important; }
+.ant-pagination-item:hover a { color: var(--primary-light) !important; }
+.ant-pagination-item-active {
+  background: var(--primary-soft) !important;
+  border-color: var(--primary) !important;
+}
+.ant-pagination-item-active a { color: var(--primary-light) !important; font-weight: 700 !important; }
+
+/* ============================================
+   21. NOTIFICATION & ALERT AURORA
+   ============================================ */
+
+.ant-notification-notice {
+  background: var(--surface-container) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-xl) !important;
+}
+.ant-notification-notice-message { color: var(--text-primary) !important; font-weight: 600 !important; }
+.ant-notification-notice-description { color: var(--text-secondary) !important; }
+
+.ant-alert {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-lg) !important;
+}
+.ant-alert-info { border-left: 3px solid var(--info) !important; }
+.ant-alert-success { border-left: 3px solid var(--success) !important; }
+.ant-alert-warning { border-left: 3px solid var(--warning) !important; }
+.ant-alert-error { border-left: 3px solid var(--error) !important; }
+
+/* ============================================
+   22. PROGRESS BAR AURORA
+   ============================================ */
+
+.ant-progress-bg {
+  background: var(--gradient-aurora) !important;
+}
+.ant-progress-inner {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* ============================================
+   23. SWITCH AURORA
+   ============================================ */
+
+.ant-switch {
+  background: var(--glass-border) !important;
+}
+.ant-switch-checked {
+  background: var(--gradient-aurora) !important;
+  box-shadow: 0 0 10px var(--primary-glow) !important;
+}
+
+/* ============================================
+   24. ANIMATIONS AURORA
+   ============================================ */
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes aurora-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes aurora-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(37, 99, 235, 0.6), 0 0 60px rgba(16, 185, 129, 0.3); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes spin-aurora {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Animation classes */
+.glow-effect { animation: pulse-glow 4s ease-in-out infinite; }
+.aurora-float { animation: aurora-float 6s ease-in-out infinite; }
+.aurora-pulse { animation: aurora-pulse 3s ease-in-out infinite; }
+.fade-in-up { animation: fadeInUp 0.6s ease forwards; }
+.fade-in-scale { animation: fadeInScale 0.4s ease forwards; }
+
+/* ============================================
+   25. UTILITY CLASSES
+   ============================================ */
+
+/* Colors */
+.text-primary-aurora { color: var(--primary) !important; }
+.text-secondary-aurora { color: var(--secondary) !important; }
+.text-accent-aurora { color: var(--accent) !important; }
+.text-success { color: var(--success) !important; }
+.text-warning { color: var(--warning) !important; }
+.text-error { color: var(--error) !important; }
+.text-info { color: var(--info) !important; }
+.text-muted { color: var(--text-muted) !important; }
+
+/* Backgrounds */
+.bg-surface { background: var(--surface) !important; }
+.bg-surface-container { background: var(--surface-container) !important; }
+.bg-glass { background: var(--glass-bg) !important; backdrop-filter: var(--blur-xl) !important; }
+
+/* Borders */
+.border-glass { border: 1px solid var(--glass-border) !important; }
+.border-primary { border: 1px solid var(--primary) !important; }
+
+/* Shadows */
+.shadow-aurora { box-shadow: var(--shadow-card) !important; }
+.shadow-glow-primary { box-shadow: var(--shadow-primary) !important; }
+
+/* Gradients backgrounds */
+.bg-gradient-aurora { background: var(--gradient-aurora) !important; }
+.bg-gradient-primary { background: var(--gradient-primary) !important; }
+
+/* Glassmorphism */
+.glass {
+  background: var(--glass-bg) !important;
+  backdrop-filter: var(--blur-xl) !important;
+  -webkit-backdrop-filter: var(--blur-xl) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-2xl) !important;
+}
+
+/* ============================================
+   26. LAYOUT GLOBAL
+   ============================================ */
+
+.ant-layout { background: var(--surface) !important; }
+.ant-layout-content { background: transparent !important; }
+
+/* ============================================
+   27. RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .user-info-hide-mobile { display: none; }
+  .global-search { width: 150px !important; }
+  body { font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+  .module-card { border-radius: var(--radius-xl) !important; }
+}

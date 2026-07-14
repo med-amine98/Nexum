@@ -1,0 +1,1227 @@
+/* ============================================
+   Profile.css - Design Professionnel v4.0
+   Profil utilisateur - Interface Premium
+   TOUS LES TEXTES EN NOIR
+   ============================================ */
+
+/* ============================================
+   1. VARIABLES CSS - Design System
+   ============================================ */
+
+:root {
+  /* Couleurs principales - Mode Clair */
+  --primary: #2d6a4f;
+  --primary-light: #40916c;
+  --primary-dark: #1b4332;
+  --primary-soft: rgba(45, 106, 79, 0.1);
+  --primary-glow: rgba(45, 106, 79, 0.2);
+  
+  /* Couleurs secondaires */
+  --secondary: #1e6091;
+  --secondary-light: #34a0a4;
+  --accent: #e9c46a;
+  --accent-dark: #f4a261;
+  
+  /* États */
+  --success: #2ecc71;
+  --success-light: #d5f5e3;
+  --warning: #f39c12;
+  --warning-light: #fef9e7;
+  --error: #e74c3c;
+  --error-light: #fdecea;
+  --info: #3498db;
+  --info-light: #ebf5fb;
+  
+  /* Fonds */
+  --bg-white: #ffffff;
+  --bg-gray-50: #f8f9fa;
+  --bg-gray-100: #f1f3f5;
+  --bg-gray-200: #e9ecef;
+  --bg-card: #ffffff;
+  --bg-surface: #f8f9fa;
+  
+  /* Textes - TOUT EN NOIR */
+  --text-primary: #000000;
+  --text-secondary: #000000;
+  --text-muted: #000000;
+  --text-disabled: #000000;
+  --text-light: #000000;
+  
+  /* Bordures */
+  --border: #e9ecef;
+  --border-light: #f1f3f5;
+  --border-medium: #dee2e6;
+  
+  /* Dégradés */
+  --gradient-primary: linear-gradient(135deg, #2d6a4f 0%, #1b4332 100%);
+  --gradient-secondary: linear-gradient(135deg, #1e6091 0%, #0b3b4f 100%);
+  --gradient-accent: linear-gradient(135deg, #e9c46a 0%, #f4a261 100%);
+  --gradient-hero: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  
+  /* Ombres */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
+  --shadow-primary: 0 4px 12px rgba(45, 106, 79, 0.15);
+  --shadow-primary-hover: 0 6px 20px rgba(45, 106, 79, 0.25);
+  
+  /* Rayons */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+  --radius-full: 9999px;
+  
+  /* Espacements */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+  
+  /* Typographie */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+}
+
+/* ============================================
+   2. PAGE PRINCIPALE
+   ============================================ */
+
+.profile-page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+  font-family: var(--font-sans);
+  background: var(--bg-gray-50);
+  min-height: 100vh;
+}
+
+/* ============================================
+   3. HEADER PROFIL
+   ============================================ */
+
+.profile-header {
+  position: relative;
+  margin-bottom: var(--spacing-xl);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  background: var(--bg-white);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-base);
+}
+
+.profile-header:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Container de la couverture */
+.header-cover-container {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+}
+
+/* Image de couverture */
+.header-cover {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  transition: transform var(--transition-slow);
+}
+
+.header-cover-container:hover .header-cover {
+  transform: scale(1.02);
+}
+
+/* Dégradé overlay */
+.header-cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+  pointer-events: none;
+}
+
+/* Bouton upload couverture */
+.cover-upload-btn {
+  position: absolute;
+  bottom: var(--spacing-md);
+  right: var(--spacing-md);
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: var(--transition-base);
+}
+
+.cover-upload-btn:hover {
+  background: rgba(0, 0, 0, 0.85);
+  transform: translateY(-2px);
+}
+
+/* Informations du header */
+.header-info {
+  position: relative;
+  padding: 0 var(--spacing-xl) var(--spacing-xl) var(--spacing-xl);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--spacing-xl);
+  background: var(--bg-white);
+}
+
+/* Container avatar */
+.profile-avatar-container {
+  position: relative;
+  margin-top: -75px;
+  flex-shrink: 0;
+}
+
+/* Avatar */
+.profile-avatar {
+  border: 4px solid var(--bg-white);
+  box-shadow: var(--shadow-lg);
+  background: var(--bg-gray-100);
+  transition: var(--transition-base);
+}
+
+.profile-avatar:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Bouton upload avatar */
+.avatar-upload-btn {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  border: none;
+  color: white;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  transition: var(--transition-base);
+}
+
+.avatar-upload-btn:hover {
+  background: var(--primary);
+  transform: scale(1.05);
+}
+
+/* Titres du profil */
+.profile-title {
+  flex: 1;
+  padding-top: var(--spacing-md);
+}
+
+.profile-title h2 {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: -0.02em;
+}
+
+.profile-title .ant-typography {
+  font-size: 0.9rem;
+  color: #000000 !important;
+}
+
+/* Badges */
+.profile-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.profile-badges .ant-tag {
+  margin: 0;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  color: #000000 !important;
+}
+
+/* Actions du profil */
+.profile-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  padding-bottom: var(--spacing-md);
+}
+
+.profile-actions .ant-btn {
+  height: 40px;
+  padding: 0 var(--spacing-lg);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transition: var(--transition-base);
+}
+
+.profile-actions .ant-btn-primary {
+  background: var(--gradient-primary);
+  border: none;
+  box-shadow: var(--shadow-primary);
+  color: white !important;
+}
+
+.profile-actions .ant-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-primary-hover);
+  color: white !important;
+}
+
+.profile-actions .ant-btn-default {
+  color: #000000 !important;
+  border-color: var(--border);
+}
+
+/* ============================================
+   4. STATISTIQUES RAPIDES - FORCÉ SUR UNE LIGNE
+   ============================================ */
+
+/* Conteneur flex pour forcer 3 cartes sur une ligne */
+.stats-row {
+  display: flex !important;
+  gap: 16px;
+  margin-bottom: var(--spacing-xl);
+  flex-wrap: nowrap !important;
+}
+
+.stats-row > * {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+/* Cartes statistiques */
+.stat-card {
+  height: 100%;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  transition: var(--transition-base);
+  cursor: pointer;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-light);
+}
+
+/* TITRE DES CARTES - NOIR */
+.stat-card .ant-statistic-title {
+  color: #000000 !important;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* VALEUR PRINCIPALE - NOIR */
+.stat-card .ant-statistic-content {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000000 !important;
+}
+
+/* SUFFIXE (ex: /24, %) - NOIR */
+.stat-card .ant-statistic-content-suffix {
+  color: #000000 !important;
+  font-size: 1rem;
+}
+
+/* VALEUR NUMÉRIQUE - NOIR */
+.stat-card .ant-statistic-content-value {
+  color: #000000 !important;
+}
+
+/* PRÉFIXE (icônes) - NOIR */
+.stat-card .ant-statistic-content-prefix {
+  color: #000000 !important;
+  font-size: 1.5rem;
+  margin-right: var(--spacing-sm);
+}
+
+/* PROGRESS TEXT - NOIR */
+.stat-card .ant-progress-text {
+  color: #000000 !important;
+  font-weight: 600;
+}
+
+/* Icônes dans les cartes - NOIR */
+.stat-card .ant-statistic-content .anticon {
+  font-size: 1.5rem;
+  color: #000000 !important;
+  margin-right: var(--spacing-sm);
+}
+
+/* Progress bar background */
+.stat-card .ant-progress-bg {
+  background: #2d6a4f !important;
+}
+
+/* Responsive : sur mobile, les cartes restent sur une ligne horizontale avec scroll */
+@media (max-width: 768px) {
+  .stats-row {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: var(--spacing-sm);
+  }
+  
+  .stats-row > * {
+    min-width: 200px !important;
+  }
+  
+  .stat-card .ant-statistic-content {
+    font-size: 1.5rem;
+  }
+}
+
+/* ============================================
+   5. CONTENU PRINCIPAL - TABS
+   ============================================ */
+
+.profile-content {
+  background: var(--bg-white);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+/* Navigation des tabs */
+.profile-content .ant-tabs-nav {
+  margin: 0;
+  padding: 0 var(--spacing-xl);
+  background: var(--bg-gray-50);
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-content .ant-tabs-tab {
+  padding: var(--spacing-md) 0;
+  margin: 0 var(--spacing-xl) 0 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #000000 !important;
+  transition: var(--transition-base);
+}
+
+.profile-content .ant-tabs-tab:hover {
+  color: #000000 !important;
+}
+
+.profile-content .ant-tabs-tab-active {
+  color: var(--primary) !important;
+}
+
+.profile-content .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: var(--primary) !important;
+  font-weight: 600;
+}
+
+.profile-content .ant-tabs-ink-bar {
+  background: var(--gradient-primary);
+  height: 3px;
+  border-radius: var(--radius-full);
+}
+
+/* Contenu des tabs */
+.profile-content .ant-tabs-content-holder {
+  padding: var(--spacing-xl);
+}
+
+/* ============================================
+   6. FORMULAIRES
+   ============================================ */
+
+.ant-form-item {
+  margin-bottom: var(--spacing-lg);
+}
+
+.ant-form-item-label > label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #000000 !important;
+  letter-spacing: 0.3px;
+}
+
+.ant-form-item-label > label.ant-form-item-required:before {
+  color: var(--error);
+}
+
+/* Inputs */
+.ant-input,
+.ant-input-password,
+.ant-select-selector,
+.ant-input-textarea textarea {
+  background: var(--bg-gray-50) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-md) !important;
+  color: #000000 !important;
+  font-size: 0.9rem !important;
+  padding: 10px 14px !important;
+  transition: var(--transition-base) !important;
+}
+
+.ant-input::placeholder,
+.ant-input-password::placeholder {
+  color: #666666 !important;
+  font-size: 0.85rem;
+}
+
+.ant-input:hover,
+.ant-input-password:hover,
+.ant-select-selector:hover,
+.ant-input-textarea textarea:hover {
+  border-color: var(--primary-light) !important;
+}
+
+.ant-input:focus,
+.ant-input-password:focus,
+.ant-select-focused .ant-select-selector,
+.ant-input-textarea textarea:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px var(--primary-soft) !important;
+}
+
+/* Affix wrapper */
+.ant-input-affix-wrapper {
+  background: var(--bg-gray-50) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 0 !important;
+}
+
+.ant-input-affix-wrapper .ant-input {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #000000 !important;
+}
+
+.ant-input-affix-wrapper:hover {
+  border-color: var(--primary-light) !important;
+}
+
+.ant-input-affix-wrapper-focused {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px var(--primary-soft) !important;
+}
+
+/* Select */
+.ant-select-selector {
+  height: auto !important;
+  min-height: 42px;
+}
+
+.ant-select-selection-item {
+  line-height: 1.5 !important;
+  color: #000000 !important;
+}
+
+.ant-select-arrow {
+  color: #000000 !important;
+}
+
+/* TextArea */
+.ant-input-textarea textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ============================================
+   7. CARTES DE SÉCURITÉ
+   ============================================ */
+
+.security-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-lg);
+  transition: var(--transition-base);
+  background: var(--bg-white);
+}
+
+.security-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.security-card .ant-card-head {
+  border-bottom: 1px solid var(--border);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--bg-gray-50);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.security-card .ant-card-head-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #000000 !important;
+}
+
+.security-card .ant-card-body {
+  padding: var(--spacing-lg);
+}
+
+/* Password info */
+.password-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.password-info .ant-progress {
+  flex-shrink: 0;
+}
+
+.password-info .ant-progress-text {
+  font-weight: 600;
+  color: #000000 !important;
+}
+
+.password-info button {
+  margin-top: var(--spacing-sm);
+}
+
+/* Descriptions */
+.ant-descriptions-item-label {
+  font-weight: 600;
+  color: #000000 !important;
+  font-size: 0.85rem;
+}
+
+.ant-descriptions-item-content {
+  color: #000000 !important;
+}
+
+/* ============================================
+   8. ACTIVITÉS
+   ============================================ */
+
+.activity-timeline {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: var(--spacing-sm);
+}
+
+.activity-item {
+  margin-bottom: var(--spacing-sm);
+}
+
+.activity-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.activity-header .ant-typography {
+  font-weight: 600;
+  color: #000000 !important;
+}
+
+.activity-details {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
+  font-size: 0.8rem;
+}
+
+.activity-details .ant-typography {
+  color: #000000 !important;
+}
+
+/* Timeline */
+.ant-timeline-item-content {
+  background: var(--bg-gray-50);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  transition: var(--transition-base);
+  color: #000000 !important;
+}
+
+.ant-timeline-item-content:hover {
+  background: var(--bg-gray-100);
+  transform: translateX(4px);
+}
+
+.ant-timeline-item-tail {
+  border-left-color: var(--border) !important;
+}
+
+.ant-timeline-item-head {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
+/* ============================================
+   9. NOTIFICATIONS - TEXTE NOIR
+   ============================================ */
+
+/* Liste des notifications */
+.ant-list {
+  background: transparent;
+}
+
+/* Élément de liste */
+.ant-list-item {
+  padding: var(--spacing-md) 0 !important;
+  border-bottom: 1px solid var(--border-light) !important;
+}
+
+.ant-list-item:last-child {
+  border-bottom: none !important;
+}
+
+/* Meta title (titre de la notification) */
+.ant-list-item-meta-title {
+  font-weight: 600 !important;
+  color: #000000 !important;
+  margin-bottom: var(--spacing-xs) !important;
+  font-size: 1rem !important;
+}
+
+/* Meta description (description de la notification) */
+.ant-list-item-meta-description {
+  color: #000000 !important;
+  font-size: 0.85rem !important;
+  line-height: 1.4 !important;
+}
+
+/* Avatar dans la liste */
+.ant-list-item-meta-avatar {
+  color: #000000 !important;
+}
+
+/* Pour les notifications spécifiquement */
+.ant-list-item-meta-title,
+.ant-list-item-meta-description {
+  color: #000000 !important;
+}
+
+/* Switch à côté des notifications - garder sa couleur normale */
+.ant-switch {
+  background-color: var(--border-medium);
+}
+
+.ant-switch-checked {
+  background-color: var(--primary);
+}
+
+/* ============================================
+   10. SESSIONS ACTIVES
+   ============================================ */
+
+.sessions-list .ant-list-item {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-light);
+  transition: var(--transition-base);
+}
+
+.sessions-list .ant-list-item:hover {
+  background: var(--bg-gray-50);
+}
+
+.sessions-list .ant-list-item-meta-title {
+  font-weight: 600;
+  color: #000000 !important;
+}
+
+.sessions-list .ant-list-item-meta-description {
+  color: #000000 !important;
+  font-size: 0.8rem;
+}
+
+/* ============================================
+   11. MODALS
+   ============================================ */
+
+.ant-modal-content {
+  border-radius: var(--radius-2xl) !important;
+  overflow: hidden;
+  background: var(--bg-white);
+}
+
+.ant-modal-header {
+  padding: var(--spacing-lg) var(--spacing-xl) !important;
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border);
+}
+
+.ant-modal-title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #000000 !important;
+}
+
+.ant-modal-close {
+  top: var(--spacing-lg);
+  right: var(--spacing-xl);
+  color: #000000 !important;
+}
+
+.ant-modal-close:hover {
+  color: var(--error) !important;
+}
+
+.ant-modal-body {
+  padding: var(--spacing-xl) !important;
+  color: #000000 !important;
+}
+
+.ant-modal-footer {
+  padding: var(--spacing-md) var(--spacing-xl) !important;
+  border-top: 1px solid var(--border);
+}
+
+/* 2FA Modal */
+.twofa-setup {
+  text-align: center;
+}
+
+.qr-code-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-lg);
+  background: var(--bg-gray-50);
+  border-radius: var(--radius-lg);
+  margin: var(--spacing-lg) 0;
+}
+
+.qr-code-container .anticon {
+  color: #000000 !important;
+}
+
+/* ============================================
+   12. BOUTONS
+   ============================================ */
+
+.ant-btn {
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: var(--transition-base);
+}
+
+.ant-btn-primary {
+  background: var(--gradient-primary);
+  border: none;
+  box-shadow: var(--shadow-primary);
+  color: white !important;
+}
+
+.ant-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-primary-hover);
+  color: white !important;
+}
+
+.ant-btn-default {
+  border: 1px solid var(--border);
+  color: #000000 !important;
+  background: var(--bg-white);
+}
+
+.ant-btn-default:hover {
+  border-color: var(--primary);
+  color: var(--primary) !important;
+  transform: translateY(-1px);
+}
+
+.ant-btn-link {
+  color: var(--primary) !important;
+}
+
+.ant-btn-link:hover {
+  color: var(--primary-light) !important;
+}
+
+.ant-btn-dangerous {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  border: none;
+  color: white !important;
+}
+
+.ant-btn-dangerous:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  color: white !important;
+}
+
+/* ============================================
+   13. TAGS ET BADGES
+   ============================================ */
+
+.ant-tag {
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+  font-weight: 500;
+  font-size: 0.75rem;
+  border: none;
+  color: #000000 !important;
+}
+
+.ant-tag-blue {
+  background: #e3f2fd !important;
+}
+
+.ant-tag-green {
+  background: #e8f5e9 !important;
+}
+
+.ant-tag-purple {
+  background: #f3e5f5 !important;
+}
+
+.ant-badge-status-dot {
+  width: 8px;
+  height: 8px;
+}
+
+.ant-badge-status-success {
+  background-color: var(--success);
+}
+
+.ant-badge-status-text {
+  color: #000000 !important;
+}
+
+/* ============================================
+   14. SWITCH
+   ============================================ */
+
+.ant-switch {
+  background-color: var(--border-medium);
+}
+
+.ant-switch-checked {
+  background-color: var(--primary);
+}
+
+.ant-switch-inner {
+  color: white !important;
+}
+
+/* ============================================
+   15. PROGRESS
+   ============================================ */
+
+.ant-progress-circle .ant-progress-text {
+  color: #000000 !important;
+  font-weight: 600;
+}
+
+.ant-progress-bg {
+  background: var(--gradient-primary) !important;
+}
+
+.ant-progress-text {
+  color: #000000 !important;
+}
+
+/* ============================================
+   16. LOADING
+   ============================================ */
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  background: var(--bg-white);
+  border-radius: var(--radius-xl);
+}
+
+.ant-spin-text {
+  color: #000000 !important;
+  margin-top: var(--spacing-md);
+}
+
+.ant-spin-dot-item {
+  background-color: var(--primary) !important;
+}
+
+/* ============================================
+   17. DIVIDER
+   ============================================ */
+
+.ant-divider {
+  border-color: var(--border);
+  color: #000000 !important;
+  font-size: 0.85rem;
+}
+
+.ant-divider-inner-text {
+  font-weight: 600;
+  color: #000000 !important;
+}
+
+/* ============================================
+   18. SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--border-light);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* ============================================
+   19. ANIMATIONS
+   ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.fade-in-left {
+  animation: fadeInLeft 0.5s ease-out;
+}
+
+.scale-in {
+  animation: scaleIn 0.3s ease-out;
+}
+
+/* ============================================
+   20. RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablettes */
+@media (max-width: 992px) {
+  .profile-page {
+    padding: var(--spacing-md);
+  }
+  
+  .header-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .profile-title {
+    text-align: center;
+  }
+  
+  .profile-badges {
+    justify-content: center;
+  }
+  
+  .profile-actions {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .profile-content .ant-tabs-nav {
+    padding: 0 var(--spacing-md);
+  }
+  
+  .profile-content .ant-tabs-tab {
+    margin: 0 var(--spacing-md) 0 0;
+  }
+}
+
+/* Mobiles */
+@media (max-width: 768px) {
+  :root {
+    --spacing-xl: 24px;
+    --spacing-lg: 16px;
+  }
+  
+  .profile-page {
+    padding: var(--spacing-sm);
+  }
+  
+  .header-cover-container {
+    height: 180px;
+  }
+  
+  .profile-avatar-container {
+    margin-top: -60px;
+  }
+  
+  .profile-avatar {
+    width: 100px !important;
+    height: 100px !important;
+  }
+  
+  .profile-title h2 {
+    font-size: 1.35rem;
+  }
+  
+  .profile-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .profile-actions .ant-btn {
+    width: 100%;
+  }
+  
+  .profile-content .ant-tabs-content-holder {
+    padding: var(--spacing-md);
+  }
+  
+  .password-info {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .activity-details {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+}
+
+/* Petits mobiles */
+@media (max-width: 576px) {
+  .header-cover-container {
+    height: 140px;
+  }
+  
+  .profile-avatar-container {
+    margin-top: -50px;
+  }
+  
+  .profile-avatar {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  
+  .profile-title h2 {
+    font-size: 1.2rem;
+  }
+  
+  .profile-badges .ant-tag {
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+  
+  .cover-upload-btn,
+  .avatar-upload-btn {
+    font-size: 11px;
+    padding: 2px 8px;
+  }
+  
+  .ant-timeline-item-content {
+    padding: var(--spacing-sm);
+  }
+  
+  .ant-modal-body {
+    padding: var(--spacing-md) !important;
+  }
+}
+
+/* ============================================
+   21. ACCESSIBILITÉ & PRINT
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  .profile-actions,
+  .cover-upload-btn,
+  .avatar-upload-btn,
+  .ant-tabs-nav {
+    display: none !important;
+  }
+  
+  .profile-page {
+    background: white;
+    padding: 0;
+  }
+  
+  .profile-header,
+  .profile-content {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
+
+/* Focus visible pour accessibilité */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--primary-soft);
+  color: #000000;
+}

@@ -1,0 +1,16 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Installation minimale
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
+# Uniquement l'essentiel pour Kafka
+RUN pip install --no-cache-dir --retries 10 --timeout 120 kafka-python==2.0.2 redis==5.0.1 requests==2.31.0 python-dotenv==1.0.0
+
+# Copier seulement le worker
+COPY kafka_worker.py .
+
+ENV PYTHONUNBUFFERED=1
+
+CMD ["python", "kafka_worker.py"]

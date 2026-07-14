@@ -1,0 +1,1119 @@
+/* ============================================
+   Signup.css - Design Premium Nexum v3.0
+   Palette professionnelle & UI moderne - DARK MODE
+   VERSION AMÉLIORÉE AVEC ANIMATIONS PREMIUM
+   ============================================ */
+
+/* ============================================
+   1. VARIABLES CSS - SYSTÈME DE DESIGN DARK PREMIUM
+   ============================================ */
+
+/* ── Variables CSS gérées par aurora-next.css ──
+   Palette bleu/orange-dark remplacée par Aurora Next (indigo/violet/teal)
+   ============================================ */
+
+
+
+
+
+/* ============================================
+   2. STYLES DE BASE PREMIUM
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--gray-800);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.signup-page {
+  min-height: 100vh;
+  background: var(--hero-gradient);
+  position: relative;
+  overflow-x: hidden;
+  isolation: isolate;
+}
+
+/* Effet de grain premium */
+.signup-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+/* Effet de particules flottantes premium */
+.signup-page::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+  animation: pulseGlow 8s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* ============================================
+   3. HEADER PREMIUM
+   ============================================ */
+
+.signup-header {
+  text-align: center;
+  padding: 48px 24px 32px;
+  position: relative;
+  z-index: 2;
+}
+
+.header-logo-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  animation: fadeInDown 0.6s var(--transition-bounce);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header-logo-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--primary-gradient);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-primary);
+  transition: var(--transition-bounce);
+  animation: float 3s ease-in-out infinite;
+}
+
+.header-logo-icon:hover {
+  transform: scale(1.05) rotate(5deg);
+  box-shadow: var(--shadow-glow);
+}
+
+.header-logo-icon .anticon {
+  font-size: 28px;
+  color: white;
+}
+
+.header-title {
+  margin: 0;
+  font-weight: 800;
+  font-size: 40px;
+  background: linear-gradient(135deg, #ffffff, var(--gray-400));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -1px;
+}
+
+.header-title-accent {
+  background: linear-gradient(135deg, var(--primary-light), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.header-badge {
+  background: var(--glass-gradient);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  padding: 0 12px;
+}
+
+.header-subtitle {
+  color: var(--gray-500);
+  font-size: 16px;
+  animation: fadeInUp 0.6s var(--transition-bounce) 0.1s both;
+}
+
+/* ============================================
+   4. CARD PRINCIPALE PREMIUM
+   ============================================ */
+
+.signup-form-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+}
+
+.signup-card {
+  border-radius: var(--radius-2xl) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid rgba(59, 130, 246, 0.1) !important;
+  box-shadow: var(--shadow-2xl) !important;
+  overflow: hidden;
+  transition: var(--transition-base);
+  backdrop-filter: blur(10px);
+}
+
+.signup-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-2xl), var(--shadow-glow) !important;
+  border-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+.card-gradient-bar {
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.card-content {
+  padding: 40px 48px;
+}
+
+@media (max-width: 768px) {
+  .card-content {
+    padding: 28px 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-content {
+    padding: 20px 16px;
+  }
+}
+
+/* ============================================
+   5. PLAN SÉLECTIONNÉ BANNER PREMIUM
+   ============================================ */
+
+.selected-plan-banner {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(249, 115, 22, 0.05));
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 28px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  transition: var(--transition-base);
+}
+
+.selected-plan-banner:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: var(--shadow-md);
+}
+
+.plan-banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.plan-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.plan-icon {
+  font-size: 28px;
+  color: var(--accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.plan-name {
+  font-size: 17px;
+  color: var(--gray-800);
+}
+
+.plan-price {
+  color: var(--gray-500);
+  font-size: 13px;
+}
+
+.plan-trial-tag {
+  background: rgba(249, 115, 22, 0.15);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  color: var(--accent-light);
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+}
+
+/* ============================================
+   6. FORMULAIRES & CHAMPS PREMIUM
+   ============================================ */
+
+.form-label {
+  font-weight: 600;
+  color: var(--gray-700);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.required-star {
+  color: var(--error);
+  margin-left: 2px;
+}
+
+.form-input,
+.ant-input-affix-wrapper,
+.ant-input,
+.ant-select-selector,
+.ant-input-password {
+  border-radius: var(--radius-md) !important;
+  padding: 12px 16px !important;
+  border: 2px solid var(--gray-300) !important;
+  background: var(--bg-secondary) !important;
+  transition: var(--transition-smooth) !important;
+  font-size: 15px;
+}
+
+.form-input:hover,
+.ant-input-affix-wrapper:hover,
+.ant-input:hover,
+.ant-select-selector:hover,
+.ant-input-password:hover {
+  border-color: var(--primary-light) !important;
+  background: var(--bg-hover) !important;
+  transform: translateY(-1px);
+}
+
+.form-input:focus,
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused,
+.ant-input:focus,
+.ant-select-focused .ant-select-selector,
+.ant-input-password:focus,
+.ant-input-password-focused {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15) !important;
+  background: var(--bg-hover) !important;
+  transform: translateY(-1px);
+}
+
+.input-prefix-icon {
+  color: var(--gray-500);
+  transition: var(--transition-fast);
+}
+
+.ant-input-affix-wrapper:hover .input-prefix-icon {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
+.form-select {
+  border-radius: var(--radius-md) !important;
+}
+
+/* Password Strength Premium */
+.password-strength-container {
+  margin-top: -4px;
+  margin-bottom: 16px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.password-strength-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.strength-text {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.strength-count {
+  font-size: 12px;
+  color: var(--gray-500);
+}
+
+/* ============================================
+   7. ÉTAPES - STEP HEADER PREMIUM
+   ============================================ */
+
+.step-header-container {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.step-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 28px;
+  transition: var(--transition-bounce);
+}
+
+.step-icon:hover {
+  transform: scale(1.05) rotate(5deg);
+}
+
+.personal-icon {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.05));
+  color: var(--primary);
+}
+
+.company-icon {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(249, 115, 22, 0.05));
+  color: var(--accent);
+}
+
+.confirm-icon {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
+  color: var(--success);
+}
+
+.step-title {
+  margin-bottom: 8px;
+  color: var(--gray-800);
+  font-weight: 700;
+}
+
+.step-description {
+  color: var(--gray-500);
+  font-size: 14px;
+}
+
+/* ============================================
+   8. SUMMARY & FEATURES PREMIUM
+   ============================================ */
+
+.summary-container {
+  background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 28px;
+  border: 1px solid var(--gray-300);
+  transition: var(--transition-base);
+}
+
+.summary-container:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-subtle);
+}
+
+.summary-title {
+  margin-bottom: 20px;
+  color: var(--gray-800);
+  font-size: 16px;
+}
+
+.summary-title .anticon {
+  margin-right: 8px;
+  color: var(--accent);
+}
+
+.features-container {
+  background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 28px;
+  border: 1px solid var(--gray-300);
+  transition: var(--transition-base);
+}
+
+.features-container:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.features-title {
+  margin-bottom: 20px;
+  color: var(--gray-800);
+  font-size: 16px;
+}
+
+.features-title .anticon {
+  margin-right: 8px;
+  color: var(--accent);
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  transition: var(--transition-fast);
+  cursor: default;
+}
+
+.feature-item:hover {
+  transform: translateX(5px);
+  background: var(--bg-hover);
+}
+
+.feature-icon-wrapper {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-subtle), transparent);
+  border-radius: var(--radius-sm);
+  color: var(--primary);
+  font-size: 18px;
+}
+
+.feature-title-text {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--gray-700);
+}
+
+.feature-desc-text {
+  font-size: 11px;
+  color: var(--gray-500);
+}
+
+.view-details-btn {
+  margin-top: 16px;
+  padding: 0;
+  color: var(--primary);
+  transition: var(--transition-fast);
+}
+
+.view-details-btn:hover {
+  transform: translateX(5px);
+  color: var(--primary-light);
+}
+
+.terms-link {
+  color: var(--primary);
+  transition: var(--transition-fast);
+}
+
+.terms-link:hover {
+  color: var(--primary-light);
+  text-decoration: underline;
+}
+
+.info-alert {
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(14, 165, 233, 0.05));
+  border: 1px solid rgba(14, 165, 233, 0.2);
+}
+
+/* ============================================
+   9. BOUTONS DE NAVIGATION PREMIUM
+   ============================================ */
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  gap: 16px;
+}
+
+.nav-button {
+  height: 52px !important;
+  border-radius: var(--radius-md) !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  transition: var(--transition-base) !important;
+  padding: 0 32px !important;
+}
+
+.prev-button {
+  background: var(--bg-secondary);
+  border: 2px solid var(--gray-300);
+  color: var(--gray-700);
+}
+
+.prev-button:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateX(-4px);
+  background: var(--bg-hover);
+}
+
+.next-button {
+  background: var(--primary-gradient);
+  border: none;
+  color: white;
+  box-shadow: var(--shadow-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.next-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.next-button:hover::before {
+  left: 100%;
+}
+
+.next-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+.next-button-auto {
+  margin-left: auto;
+}
+
+.submit-button {
+  background: linear-gradient(135deg, var(--success), var(--primary));
+  border: none;
+  color: white;
+  box-shadow: var(--shadow-primary);
+  margin-left: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.submit-button:hover::before {
+  left: 100%;
+}
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+.submit-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .navigation-buttons {
+    flex-direction: column-reverse;
+  }
+  
+  .nav-button {
+    width: 100%;
+    padding: 0 20px !important;
+  }
+  
+  .next-button-auto {
+    margin-left: 0;
+  }
+  
+  .submit-button {
+    margin-left: 0;
+  }
+}
+
+/* ============================================
+   10. BOUTONS SOCIAUX PREMIUM
+   ============================================ */
+
+.social-divider {
+  margin: 28px 0;
+}
+
+.divider-text {
+  color: var(--gray-500);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.social-buttons {
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+.social-button-wrapper {
+  width: 100%;
+}
+
+.social-button {
+  border-radius: var(--radius-md) !important;
+  height: 48px !important;
+  border: 2px solid var(--gray-300) !important;
+  background: var(--bg-secondary) !important;
+  color: var(--gray-700) !important;
+  font-weight: 500 !important;
+  transition: var(--transition-base) !important;
+}
+
+.social-button:hover {
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+  transform: translateY(-2px);
+  background: var(--bg-hover) !important;
+}
+
+/* ============================================
+   11. LOGIN REDIRECT PREMIUM
+   ============================================ */
+
+.login-redirect {
+  text-align: center;
+  padding-top: 8px;
+}
+
+.login-text {
+  color: var(--gray-500);
+  font-size: 14px;
+}
+
+.login-link-text {
+  color: var(--primary);
+  font-weight: 700;
+  transition: var(--transition-fast);
+}
+
+.login-link-text:hover {
+  color: var(--primary-light);
+  text-decoration: underline;
+  transform: translateX(2px);
+}
+
+/* ============================================
+   12. MODAL PREMIUM
+   ============================================ */
+
+.preview-modal .ant-modal-content {
+  border-radius: var(--radius-xl) !important;
+  overflow: hidden;
+}
+
+.preview-modal .ant-modal-header {
+  background: var(--primary-gradient);
+  border-bottom: none;
+  padding: 20px 28px;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+.modal-title .anticon {
+  font-size: 20px;
+}
+
+.preview-modal .ant-modal-close {
+  color: white;
+  transition: var(--transition-base);
+}
+
+.preview-modal .ant-modal-close:hover {
+  transform: rotate(90deg);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.modal-close-btn {
+  border-radius: var(--radius-md) !important;
+  height: 40px !important;
+  font-weight: 500 !important;
+}
+
+/* ============================================
+   13. CHECKBOX & RADIO PREMIUM
+   ============================================ */
+
+.ant-checkbox-wrapper {
+  color: var(--gray-700) !important;
+  transition: var(--transition-fast);
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.ant-checkbox-wrapper:hover .ant-checkbox-inner,
+.ant-checkbox:hover .ant-checkbox-inner {
+  border-color: var(--primary);
+  transform: scale(1.05);
+}
+
+/* ============================================
+   14. ALERT & MESSAGE PREMIUM
+   ============================================ */
+
+.signup-alert {
+  border-radius: var(--radius-md);
+  margin-bottom: 24px;
+  border: none;
+  animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================
+   15. SELECT DROPDOWN PREMIUM
+   ============================================ */
+
+.ant-select-dropdown {
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-300);
+  animation: fadeInUp 0.2s ease;
+}
+
+.ant-select-dropdown .ant-select-item {
+  color: var(--gray-700);
+  padding: 10px 16px !important;
+  transition: var(--transition-fast);
+}
+
+.ant-select-dropdown .ant-select-item:hover {
+  background: var(--bg-hover);
+  transform: translateX(4px);
+}
+
+.ant-select-dropdown .ant-select-item-option-selected {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.05));
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ============================================
+   16. PROGRESS BAR PREMIUM
+   ============================================ */
+
+.ant-progress-bg {
+  height: 6px !important;
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+.ant-progress-inner {
+  border-radius: var(--radius-full);
+  background-color: var(--gray-300);
+}
+
+/* ============================================
+   17. SCROLLBAR PREMIUM
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--gray-500), var(--gray-400));
+  border-radius: var(--radius-full);
+  transition: var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--gray-400), var(--gray-500));
+}
+
+/* ============================================
+   18. ANIMATIONS PREMIUM
+   ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Classes d'animation */
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s var(--transition-smooth);
+}
+
+.animate-fadeInLeft {
+  animation: fadeInLeft 0.5s var(--transition-smooth);
+}
+
+.animate-fadeInRight {
+  animation: fadeInRight 0.5s var(--transition-smooth);
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.4s var(--transition-smooth);
+}
+
+/* ============================================
+   19. RESPONSIVE PREMIUM
+   ============================================ */
+
+/* Tablettes */
+@media (max-width: 992px) {
+  .signup-page {
+    padding: 32px 20px;
+  }
+  
+  .signup-header {
+    padding: 32px 20px 24px;
+  }
+  
+  .header-title {
+    font-size: 34px;
+  }
+}
+
+/* Mobiles */
+@media (max-width: 768px) {
+  .signup-page {
+    padding: 20px 16px;
+  }
+  
+  .signup-header {
+    padding: 24px 16px 20px;
+  }
+  
+  .header-logo-icon {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .header-logo-icon .anticon {
+    font-size: 24px;
+  }
+  
+  .header-title {
+    font-size: 28px;
+  }
+  
+  .header-subtitle {
+    font-size: 14px;
+  }
+  
+  .step-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+  }
+  
+  .step-title {
+    font-size: 20px;
+  }
+  
+  .summary-container,
+  .features-container {
+    padding: 18px;
+  }
+  
+  .feature-item {
+    padding: 8px 12px;
+  }
+}
+
+/* Petits mobiles */
+@media (max-width: 576px) {
+  .signup-page {
+    padding: 12px;
+  }
+  
+  .signup-header {
+    padding: 20px 12px 16px;
+  }
+  
+  .header-logo-icon {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .header-logo-icon .anticon {
+    font-size: 20px;
+  }
+  
+  .header-title {
+    font-size: 24px;
+  }
+  
+  .header-badge {
+    font-size: 10px;
+  }
+  
+  .header-subtitle {
+    font-size: 13px;
+  }
+  
+  .step-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+  
+  .step-title {
+    font-size: 18px;
+  }
+  
+  .step-description {
+    font-size: 12px;
+  }
+  
+  .summary-container,
+  .features-container {
+    padding: 14px;
+  }
+  
+  .modal-title {
+    font-size: 16px;
+  }
+}
+
+/* ============================================
+   20. ACCESSIBILITÉ PREMIUM
+   ============================================ */
+
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.2);
+  color: var(--primary-light);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,31 @@
+/* ============================================
+   theme.css - Nexum Aurora Next v4.0
+   Variables gérées par : src/styles/aurora-next.css
+   ============================================ */
+
+/* ── Toutes les variables de thème (light/dark) sont définies dans
+   aurora-next.css importé via index.css.
+   Ce fichier est conservé pour compatibilité d'import uniquement. ── */
+
+/* Utilitaires de thème globaux */
+.body {
+  background-color: var(--surface);
+  color: var(--on-surface);
+}
+
+.btn-primary {
+  background: var(--gradient-aurora);
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: var(--shadow-primary);
+  transition: var(--transition-base);
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+}

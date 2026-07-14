@@ -1,0 +1,68 @@
+/* src/pages/SplashScreen.css */
+.splashscreen-container {
+  position: relative;
+  overflow: hidden;
+  background: #0A0A1A;
+}
+
+/* Animation de brillance du logo */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(99, 102, 241, 0.4), 0 0 100px rgba(20, 184, 166, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+  }
+}
+
+.logo-wrapper {
+  animation: glow 3s ease-in-out infinite;
+}
+
+/* Animation de transition vers Home */
+@keyframes splashOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+}
+
+.splashscreen-exit {
+  animation: splashOut 0.6s ease-in forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .logo-container h1 {
+    font-size: 48px !important;
+  }
+  
+  .logo-container .anticon {
+    width: 60px !important;
+    height: 60px !important;
+    font-size: 30px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-container h1 {
+    font-size: 32px !important;
+  }
+  
+  .logo-container {
+    gap: 12px !important;
+  }
+  
+  .logo-container .anticon {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 24px !important;
+  }
+}

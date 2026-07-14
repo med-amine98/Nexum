@@ -1,0 +1,147 @@
+/* SmartDashboard.css */
+.grid-item {
+  transition: all 0.2s ease;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.grid-item:hover {
+  transform: translateY(-1px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.kpi-card {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.kpi-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-2px);
+}
+
+/* Style des cartes en mode édition */
+.react-grid-item.react-grid-placeholder {
+  background: #1890ff20 !important;
+  border: 2px dashed #1890ff !important;
+  border-radius: 8px !important;
+}
+
+.react-grid-item.react-draggable-dragging {
+  opacity: 0.8;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.react-grid-item.resizing {
+  opacity: 0.9;
+  box-shadow: 0 0 0 2px #1890ff;
+}
+
+/* Personnalisation des graphiques */
+.antv-chart-mini {
+  border-radius: 8px;
+}
+
+/* Scrollbar personnalisé */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bfbfbf;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8c8c8c;
+}
+
+/* Mode sombre */
+[data-theme='dark'] ::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ant-statistic-content {
+    font-size: 20px !important;
+  }
+  
+  .ant-card-head-title {
+    font-size: 13px !important;
+  }
+  
+  .kpi-card .ant-avatar {
+    width: 32px !important;
+    height: 32px !important;
+    line-height: 32px !important;
+  }
+}
+
+/* Animations de chargement */
+.skeleton-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Tooltips améliorés */
+.ant-tooltip-inner {
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+/* Badges de tendance */
+.trend-up {
+  animation: pulse-green 1s ease;
+}
+
+.trend-down {
+  animation: pulse-red 1s ease;
+}
+
+@keyframes pulse-green {
+  0%, 100% {
+    background-color: #52c41a20;
+  }
+  50% {
+    background-color: #52c41a80;
+  }
+}
+
+@keyframes pulse-red {
+  0%, 100% {
+    background-color: #ff4d4f20;
+  }
+  50% {
+    background-color: #ff4d4f80;
+  }
+}

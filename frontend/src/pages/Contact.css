@@ -1,0 +1,131 @@
+/* Contact.css - Design Elite */
+:root {
+  --primary: var(--primary-color);
+  --primary-light: var(--primary-light);
+  --primary-dark: var(--primary-dark);
+  --accent: var(--warning-color);
+  --text-primary: var(--text-primary);
+  --text-secondary: var(--text-muted);
+  --bg-deep: var(--bg-deep);
+  --bg-surface: var(--bg-surface);
+  --border-color: var(--border-color);
+  --radius-lg: var(--radius-lg);
+  --transition-base: var(--transition-base);
+}
+
+/* Animations personnalisées */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Styles des cartes */
+.ant-card {
+  background: var(--bg-surface) !important;
+  backdrop-filter: var(--blur-md);
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-lg) !important;
+  transition: var(--transition-base) !important;
+}
+
+.ant-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: var(--shadow-glow) !important;
+  border-color: var(--primary) !important;
+}
+
+/* Styles des champs de formulaire */
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-select-selector,
+.ant-picker {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+.ant-input:focus,
+.ant-input-affix-wrapper-focused,
+.ant-select-focused .ant-select-selector {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.2) !important;
+}
+
+/* Styles des labels */
+.ant-form-item-label > label {
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+}
+
+/* Styles des timelines */
+.ant-timeline-item-content {
+  color: var(--text-secondary);
+}
+
+/* Styles des collapses */
+.ant-collapse {
+  background: transparent !important;
+  border: none !important;
+}
+
+.ant-collapse-item {
+  border-bottom: 1px solid var(--border-color) !important;
+  margin-bottom: 8px;
+  border-radius: var(--radius-md) !important;
+  overflow: hidden;
+}
+
+.ant-collapse-header {
+  color: var(--text-primary) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+}
+
+.ant-collapse-content {
+  background: transparent !important;
+  border-top: 1px solid var(--border-color) !important;
+  color: var(--text-secondary) !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-gradient);
+  border-radius: 4px;
+}

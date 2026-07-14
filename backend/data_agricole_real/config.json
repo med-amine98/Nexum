@@ -1,0 +1,10 @@
+{
+  "classes": [
+    "healthy",
+    "disease"
+  ],
+  "num_classes": 2,
+  "description": "Classification des maladies des plantes",
+  "dataset": "PlantVillage",
+  "total_images": 0
+}

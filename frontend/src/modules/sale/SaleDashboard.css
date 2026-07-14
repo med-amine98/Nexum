@@ -1,0 +1,572 @@
+/* SaleDashboard.css - Design Premium pour le module Ventes */
+
+/* ============================================
+   VARIABLES CSS
+   ============================================ */
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --primary-light: #60a5fa;
+  --primary-subtle: rgba(37, 99, 235, 0.08);
+  
+  --secondary: #475569;
+  --secondary-dark: #334155;
+  --secondary-light: #a78bfa;
+  
+  --accent: #10b981;
+  --accent-dark: #d97706;
+  --accent-light: #fbbf24;
+  
+  --success: #10b981;
+  --success-dark: #059669;
+  --success-light: #34d399;
+  
+  --error: #ef4444;
+  --error-dark: #dc2626;
+  --error-light: #f87171;
+  
+  --warning: #10b981;
+  --info: #0ea5e9;
+  
+  --discord: #5865f2;
+  --discord-dark: #4752c4;
+  --discord-light: #7983f5;
+  
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  --shadow-primary: 0 8px 20px rgba(37, 99, 235, 0.15);
+  --shadow-discord: 0 8px 20px rgba(88, 101, 242, 0.15);
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ============================================
+   CARTES STATISTIQUES
+   ============================================ */
+
+.sales-stat-card {
+  transition: all var(--transition-base);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.sales-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.sales-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+  transform: scaleX(0);
+  transition: transform var(--transition-base);
+}
+
+.sales-stat-card:hover::before {
+  transform: scaleX(1);
+}
+
+.stat-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-subtle), transparent);
+  transition: all var(--transition-base);
+}
+
+.sales-stat-card:hover .stat-icon-wrapper {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, var(--primary-subtle), var(--primary-subtle));
+}
+
+/* ============================================
+   DISCOUNT NOTIFICATION
+   ============================================ */
+
+.discord-notification {
+  transition: all var(--transition-base);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.discord-notification:hover {
+  transform: translateX(4px);
+  border-color: var(--discord) !important;
+  box-shadow: var(--shadow-discord);
+}
+
+.discord-notification::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--discord), var(--primary));
+  transform: scaleY(0);
+  transition: transform var(--transition-base);
+}
+
+.discord-notification:hover::before {
+  transform: scaleY(1);
+}
+
+/* ============================================
+   EN-TÊTE
+   ============================================ */
+
+.sales-header {
+  background: white;
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--gray-200);
+  transition: all var(--transition-base);
+}
+
+.sales-header:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.header-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+  animation: float 3s ease-in-out infinite;
+}
+
+.header-icon:hover {
+  transform: scale(1.05) rotate(5deg);
+}
+
+/* ============================================
+   FILTRES
+   ============================================ */
+
+.filters-card {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--gray-200);
+  background: white;
+  transition: all var(--transition-base);
+}
+
+.filters-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* ============================================
+   TABLEAUX
+   ============================================ */
+
+.ant-table-wrapper {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.ant-table-thead > tr > th {
+  background: linear-gradient(180deg, var(--gray-50), white);
+  font-weight: 600;
+  color: var(--gray-700);
+  border-bottom: 2px solid var(--gray-200);
+}
+
+.ant-table-tbody > tr {
+  transition: all var(--transition-fast);
+}
+
+.ant-table-tbody > tr:hover {
+  background: var(--primary-subtle);
+  cursor: pointer;
+}
+
+.ant-table-tbody > tr > td {
+  border-bottom-color: var(--gray-100);
+}
+
+/* ============================================
+   MODALS
+   ============================================ */
+
+.ant-modal-content {
+  border-radius: var(--radius-xl) !important;
+  overflow: hidden;
+}
+
+.ant-modal-header {
+  background: linear-gradient(135deg, var(--gray-50), white);
+  border-bottom: 1px solid var(--gray-200);
+  padding: 20px 24px;
+}
+
+.ant-modal-title {
+  font-weight: 700;
+  color: var(--gray-800);
+}
+
+.ant-modal-footer {
+  border-top: 1px solid var(--gray-200);
+  padding: 16px 24px;
+}
+
+/* ============================================
+   FORMULAIRES
+   ============================================ */
+
+.ant-input,
+.ant-select-selector,
+.ant-picker {
+  border-radius: var(--radius-md) !important;
+  transition: all var(--transition-fast);
+}
+
+.ant-input:hover,
+.ant-select-selector:hover,
+.ant-picker:hover {
+  border-color: var(--primary-light) !important;
+}
+
+.ant-input:focus,
+.ant-select-focused .ant-select-selector,
+.ant-picker-focused {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px var(--primary-subtle) !important;
+}
+
+.ant-form-item-label > label {
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+/* ============================================
+   BOUTONS
+   ============================================ */
+
+.ant-btn {
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+}
+
+.ant-btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border: none;
+  box-shadow: var(--shadow-primary);
+}
+
+.ant-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+.ant-btn-default:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Bouton Discord */
+.ant-btn-discord {
+  background: linear-gradient(135deg, var(--discord), var(--discord-dark));
+  border: none;
+  color: white;
+}
+
+.ant-btn-discord:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-discord);
+  color: white;
+}
+
+/* ============================================
+   TAGS & BADGES
+   ============================================ */
+
+.ant-tag {
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.ant-tag:hover {
+  transform: scale(1.02);
+}
+
+/* ============================================
+   STATISTIQUES
+   ============================================ */
+
+.ant-statistic-title {
+  color: var(--gray-500);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ant-statistic-content {
+  font-weight: 700;
+  color: var(--gray-800);
+}
+
+/* ============================================
+   DESSIN (DRAWER)
+   ============================================ */
+
+.ant-drawer-content-wrapper {
+  border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+  overflow: hidden;
+}
+
+.ant-drawer-header {
+  background: linear-gradient(135deg, var(--gray-50), white);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.ant-drawer-title {
+  font-weight: 700;
+  color: var(--gray-800);
+}
+
+/* ============================================
+   DESCRIPTIONS
+   ============================================ */
+
+.ant-descriptions-bordered .ant-descriptions-item-label {
+  background: var(--gray-50);
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.ant-descriptions-bordered .ant-descriptions-item-content {
+  background: white;
+  color: var(--gray-800);
+}
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+
+.ant-divider {
+  border-color: var(--gray-200);
+}
+
+.ant-divider-inner-text {
+  font-weight: 600;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   PROGRESS BAR
+   ============================================ */
+
+.ant-progress-bg {
+  border-radius: var(--radius-full);
+}
+
+/* ============================================
+   SCROLLBAR PERSONNALISÉE
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-400);
+  border-radius: var(--radius-full);
+  transition: background var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-500);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .sales-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+  
+  .header-icon {
+    margin: 0 auto;
+  }
+  
+  .ant-table {
+    font-size: 12px;
+  }
+  
+  .ant-modal {
+    max-width: 95%;
+    margin: 16px;
+  }
+}
+
+/* ============================================
+   SKELETON LOADING
+   ============================================ */
+
+.skeleton-loading {
+  background: linear-gradient(90deg, var(--gray-100) 25%, var(--gray-200) 50%, var(--gray-100) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* ============================================
+   ACCESSIBILITÉ
+   ============================================ */
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+::selection {
+  background: var(--primary-subtle);
+  color: var(--primary-dark);
+}
+
+/* ============================================
+   MODE SOMBRE (PREFERENCE)
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --gray-50: #111827;
+    --gray-100: #1f2937;
+    --gray-200: #374151;
+    --gray-300: #4b5563;
+    --gray-400: #6b7280;
+    --gray-500: #9ca3af;
+    --gray-600: #d1d5db;
+    --gray-700: #e5e7eb;
+    --gray-800: #f3f4f6;
+    --gray-900: #f9fafb;
+  }
+  
+  body {
+    background: var(--gray-900);
+  }
+}
+
+/* ============================================
+   RÉDUCTION DE MOUVEMENT
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

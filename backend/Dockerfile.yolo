@@ -1,0 +1,46 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Dépendances système
+RUN apt-get update && apt-get install -y \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender1 \
+    libgomp1 \
+    libpq-dev \
+    gcc \
+    python3-dev \
+    wget \
+    curl \
+    libgl1 \
+    tesseract-ocr \
+    libtesseract-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+
+# Mise à jour de pip
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+
+# Forcer NumPy 1.26.3
+RUN pip install --no-cache-dir numpy==1.26.3
+
+# Installer PyTorch CPU séparément avec un timeout plus long
+RUN pip install --no-cache-dir --timeout 1000 torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
+# Installer le reste des dépendances (sans PyTorch cette fois)
+RUN pip install --no-cache-dir --retries 10 --timeout 120 -r requirements.txt
+
+COPY . .
+RUN mkdir -p logs models data uploads damage_photos
+
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+ENV YOLO_ENABLED=false
+ENV ML_ENABLED=false
+
+EXPOSE 8000
+
+CMD ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

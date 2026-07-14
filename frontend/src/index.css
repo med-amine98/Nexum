@@ -1,0 +1,1115 @@
+/* ============================================
+   index.css - Nexum Global Styles Aurora Next v4.0
+   Design System unifié - Aurora Next
+   ============================================ */
+
+/* ── SOURCE UNIQUE : Aurora Next Design System ── */
+@import './styles/aurora-next.css';
+
+/* ── Variables gérées par aurora-next.css (importé ci-dessus) ──
+   :root, [data-theme='light'], [data-theme='dark'] → aurora-next.css
+   ============================================ */
+
+/* ============================================
+   RESET & BASE (hérite d'aurora-next.css)
+   ============================================ */
+
+
+/* ============================================
+   3. RESET & BASE Améliorés
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--surface);
+  background-image: var(--gradient-mesh);
+  color: var(--on-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.03) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.03) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(37, 99, 235, 0.03) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(16, 185, 129, 0.03) 0px, transparent 50%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* ============================================
+   4. TYPOGRAPHIE Avancée
+   ============================================ */
+
+.text-gradient-primary {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-hero {
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-secondary {
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-accent {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-primary { color: var(--primary); }
+.text-secondary { color: var(--secondary-light); }
+.text-accent { color: var(--accent-light); }
+.text-success { color: var(--success); }
+.text-warning { color: var(--warning); }
+.text-error { color: var(--error); }
+.text-muted { color: var(--text-muted); }
+
+/* ============================================
+   5. SCROLLBAR Élégante
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: var(--radius-full);
+  transition: var(--transition-base);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}
+
+/* ============================================
+   6. SIDEBAR - Premium Modern
+   ============================================ */
+
+.ant-layout-sider {
+  background: var(--bg-sidebar) !important;
+  border-right: 1px solid var(--border);
+  transition: var(--transition-base);
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.sidebar-logo {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  background: transparent;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-logo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--primary-soft), transparent);
+  transition: left 0.5s ease;
+}
+
+.sidebar-logo:hover::before {
+  left: 100%;
+}
+
+.sidebar-logo span {
+  font-weight: 900;
+  font-size: 24px;
+  letter-spacing: -1.5px;
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+  position: relative;
+}
+
+/* Menu Items Premium améliorés */
+.ant-menu {
+  background: transparent !important;
+  border-right: none !important;
+  padding: 16px 8px;
+}
+
+.ant-menu-item {
+  margin: 4px 8px !important;
+  border-radius: var(--radius-lg) !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  color: var(--text-muted) !important;
+  height: 44px !important;
+  line-height: 44px !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+}
+
+.ant-menu-item:hover {
+  background: var(--primary-soft) !important;
+  color: var(--primary) !important;
+  transform: translateX(4px);
+}
+
+.ant-menu-item-selected {
+  background: var(--gradient-primary) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.ant-menu-item-selected .anticon {
+  color: #fff !important;
+}
+
+.ant-menu-item .anticon {
+  font-size: 20px !important;
+  transition: transform 0.2s ease;
+}
+
+.ant-menu-item:hover .anticon {
+  transform: scale(1.1);
+}
+
+/* Menu Group Title amélioré */
+.ant-menu-item-group-title {
+  padding: 16px 16px 8px 24px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  color: var(--text-disabled) !important;
+  opacity: 0.7;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, transparent, var(--bg-primary));
+}
+
+/* ============================================
+   7. TOPBAR - Glassmorphism Premium
+   ============================================ */
+
+.topbar {
+  background: var(--bg-glass) !important;
+  backdrop-filter: blur(20px) !important;
+  padding: 0 32px !important;
+  height: 80px !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-light);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+  transition: var(--transition-base);
+}
+
+.search-wrapper .ant-input-affix-wrapper {
+  background: var(--bg-glass-light) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+}
+
+.search-wrapper .ant-input-affix-wrapper:hover {
+  background: var(--bg-primary) !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
+
+.search-wrapper .ant-input-affix-wrapper:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+.search-wrapper .ant-input {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.search-wrapper .ant-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* User Profile Premium amélioré */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 20px 8px 12px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  background: var(--bg-glass-light);
+  border: 1px solid var(--border);
+  transition: var(--transition-bounce);
+  backdrop-filter: blur(10px);
+}
+
+.user-profile:hover {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.user-avatar {
+  border: 2px solid var(--primary);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-base);
+}
+
+.user-profile:hover .user-avatar {
+  transform: scale(1.05);
+  border-color: var(--primary-light);
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.user-role {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* ============================================
+   8. ANIMATIONS Premium
+   ============================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Animation classes */
+.animate-fadeIn { animation: fadeIn 0.5s var(--transition-base); }
+.animate-fadeInUp { animation: fadeInUp 0.6s var(--transition-bounce); }
+.animate-fadeInDown { animation: fadeInDown 0.6s var(--transition-bounce); }
+.animate-fadeInLeft { animation: fadeInLeft 0.5s var(--transition-base); }
+.animate-fadeInRight { animation: fadeInRight 0.5s var(--transition-base); }
+.animate-scaleIn { animation: scaleIn 0.4s var(--transition-bounce); }
+.animate-slideIn { animation: slideIn 0.5s var(--transition-base); }
+.animate-pulse { animation: pulse 2s infinite; }
+
+/* Shimmer loading effect */
+.shimmer {
+  background: linear-gradient(90deg, var(--bg-primary) 25%, var(--bg-tertiary) 50%, var(--bg-primary) 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ============================================
+   9. DROPDOWN - Luxueux
+   ============================================ */
+
+.ant-dropdown {
+  animation: fadeInUp 0.3s var(--transition-base);
+}
+
+.ant-dropdown-menu {
+  border-radius: var(--radius-xl) !important;
+  padding: 8px !important;
+  box-shadow: var(--shadow-xl) !important;
+  background: var(--bg-glass) !important;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+}
+
+.ant-dropdown-menu-item {
+  border-radius: var(--radius-lg) !important;
+  padding: 10px 16px !important;
+  transition: var(--transition-base) !important;
+  color: var(--text-secondary) !important;
+  font-weight: 500 !important;
+}
+
+.ant-dropdown-menu-item:hover {
+  background: var(--primary-soft) !important;
+  color: var(--primary) !important;
+  transform: translateX(4px);
+}
+
+/* ============================================
+   10. MODAL - Premium
+   ============================================ */
+
+.ant-modal-content {
+  border-radius: var(--radius-2xl) !important;
+  overflow: hidden;
+  background: var(--bg-glass) !important;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-2xl);
+  backdrop-filter: blur(20px);
+}
+
+.ant-modal-header {
+  border-bottom: 1px solid var(--border) !important;
+  padding: 24px 28px !important;
+  background: var(--bg-glass-light) !important;
+}
+
+.ant-modal-title {
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  font-size: 20px;
+}
+
+.ant-modal-body {
+  padding: 28px !important;
+}
+
+.ant-modal-footer {
+  border-top: 1px solid var(--border) !important;
+  padding: 20px 28px !important;
+  background: var(--bg-glass-light) !important;
+}
+
+/* ============================================
+   11. BUTTONS - Modernes & Animés
+   ============================================ */
+
+.ant-btn {
+  border-radius: var(--radius-lg) !important;
+  font-weight: 600 !important;
+  transition: var(--transition-bounce);
+  height: 40px;
+  padding: 0 20px;
+}
+
+.ant-btn-primary {
+  background: var(--gradient-primary) !important;
+  border: none !important;
+  box-shadow: var(--shadow-sm);
+  color: white !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.ant-btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.ant-btn-primary:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.ant-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  filter: brightness(1.05);
+}
+
+.ant-btn-default {
+  background: var(--bg-glass-light);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.ant-btn-default:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.ant-btn-danger {
+  background: var(--gradient-error) !important;
+  border: none !important;
+}
+
+/* ============================================
+   12. CARD - Élégantes & Glassmorphism
+   ============================================ */
+
+.ant-card {
+  background: var(--bg-glass) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-2xl) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.ant-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-light) !important;
+}
+
+.ant-card-head {
+  border-bottom: 1px solid var(--border) !important;
+  padding: 20px 24px;
+}
+
+.ant-card-head-title {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.glass-card {
+  background: var(--bg-glass) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* ============================================
+   13. TABLE - Lisible & Moderne
+   ============================================ */
+
+.ant-table {
+  background: transparent !important;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.ant-table-thead > tr > th {
+  background: var(--bg-secondary) !important;
+  border-bottom: 2px solid var(--border) !important;
+  color: var(--text-secondary) !important;
+  font-weight: 600 !important;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ant-table-tbody > tr > td {
+  border-bottom: 1px solid var(--border-light) !important;
+  color: var(--text-secondary) !important;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: var(--primary-soft) !important;
+}
+
+.ant-table-tbody > tr {
+  transition: var(--transition-base);
+}
+
+/* ============================================
+   14. PROGRESS BAR - Améliorée
+   ============================================ */
+
+.ant-progress-bg {
+  background: var(--gradient-primary) !important;
+  border-radius: var(--radius-full) !important;
+}
+
+.ant-progress-trail {
+  background-color: var(--border) !important;
+  border-radius: var(--radius-full) !important;
+}
+
+.ant-progress-text {
+  color: var(--text-secondary) !important;
+  font-weight: 600;
+}
+
+/* ============================================
+   15. SWITCH - Moderne
+   ============================================ */
+
+.ant-switch {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border);
+}
+
+.ant-switch-checked {
+  background: var(--gradient-primary) !important;
+}
+
+/* ============================================
+   16. BADGE - Premium
+   ============================================ */
+
+.ant-badge-count {
+  background: var(--gradient-primary) !important;
+  box-shadow: var(--shadow-sm);
+  font-weight: 700;
+  font-size: 11px;
+  min-width: 20px;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 6px;
+  border-radius: var(--radius-full);
+}
+
+/* ============================================
+   17. INPUT - Moderne & Fluide
+   ============================================ */
+
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-input-password {
+  background: var(--bg-glass-light) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  color: var(--text-primary) !important;
+  transition: var(--transition-base);
+  padding: 10px 16px;
+}
+
+.ant-input:hover,
+.ant-input-affix-wrapper:hover,
+.ant-input-password:hover {
+  border-color: var(--primary) !important;
+}
+
+.ant-input:focus,
+.ant-input-affix-wrapper:focus,
+.ant-input-password:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px var(--primary-soft) !important;
+}
+
+.ant-input::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* ============================================
+   18. SELECT - Moderne
+   ============================================ */
+
+.ant-select-selector {
+  background: var(--bg-glass-light) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  color: var(--text-primary) !important;
+  height: 42px !important;
+  display: flex;
+  align-items: center;
+}
+
+.ant-select-selector:hover {
+  border-color: var(--primary) !important;
+}
+
+.ant-select-focused .ant-select-selector {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px var(--primary-soft) !important;
+}
+
+/* ============================================
+   19. TAG - Élégant
+   ============================================ */
+
+.ant-tag {
+  border-radius: var(--radius-full);
+  padding: 4px 14px;
+  font-weight: 600;
+  transition: var(--transition-base);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.ant-tag:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* ============================================
+   20. DIVIDER - Subtile
+   ============================================ */
+
+.ant-divider {
+  border-color: var(--border) !important;
+}
+
+.ant-divider-inner-text {
+  color: var(--text-muted) !important;
+  font-weight: 500;
+}
+
+/* ============================================
+   21. NOTIFICATION - Premium
+   ============================================ */
+
+.ant-notification {
+  background: var(--bg-glass) !important;
+  border-radius: var(--radius-xl) !important;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+}
+
+.ant-notification-notice {
+  background: transparent !important;
+}
+
+.ant-notification-notice-message {
+  color: var(--text-primary) !important;
+  font-weight: 700;
+}
+
+.ant-notification-notice-description {
+  color: var(--text-muted) !important;
+}
+
+/* ============================================
+   22. TABS - Modernes
+   ============================================ */
+
+.ant-tabs-tab {
+  padding: 12px 20px !important;
+  font-weight: 600 !important;
+  color: var(--text-muted) !important;
+  transition: var(--transition-base);
+}
+
+.ant-tabs-tab:hover {
+  color: var(--primary) !important;
+}
+
+.ant-tabs-tab-active {
+  color: var(--primary) !important;
+}
+
+.ant-tabs-ink-bar {
+  background: var(--gradient-primary) !important;
+  height: 3px !important;
+  border-radius: var(--radius-full);
+}
+
+/* ============================================
+   23. RESPONSIVE - Optimisé
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .search-wrapper {
+    width: 300px;
+  }
+}
+
+@media (max-width: 992px) {
+  .search-wrapper {
+    width: 250px;
+  }
+  
+  .user-info {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    padding: 0 20px !important;
+  }
+  
+  .search-wrapper {
+    display: none;
+  }
+  
+  .user-name {
+    display: none;
+  }
+  
+  .sidebar-logo span {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .topbar {
+    padding: 0 16px !important;
+  }
+  
+  .user-profile {
+    padding: 6px 12px;
+  }
+  
+  .ant-modal-body {
+    padding: 20px !important;
+  }
+  
+  .ant-card {
+    border-radius: var(--radius-xl) !important;
+  }
+}
+
+/* ============================================
+   24. ACCESSIBILITÉ
+   ============================================ */
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+::selection {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   25. UTILITAIRES
+   ============================================ */
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-1 { margin-top: 8px; }
+.mt-2 { margin-top: 16px; }
+.mt-3 { margin-top: 24px; }
+.mt-4 { margin-top: 32px; }
+.mt-5 { margin-top: 40px; }
+.mt-6 { margin-top: 48px; }
+
+.mb-1 { margin-bottom: 8px; }
+.mb-2 { margin-bottom: 16px; }
+.mb-3 { margin-bottom: 24px; }
+.mb-4 { margin-bottom: 32px; }
+.mb-5 { margin-bottom: 40px; }
+.mb-6 { margin-bottom: 48px; }
+
+.pt-1 { padding-top: 8px; }
+.pt-2 { padding-top: 16px; }
+.pt-3 { padding-top: 24px; }
+.pt-4 { padding-top: 32px; }
+.pt-5 { padding-top: 40px; }
+.pt-6 { padding-top: 48px; }
+
+.pb-1 { padding-bottom: 8px; }
+.pb-2 { padding-bottom: 16px; }
+.pb-3 { padding-bottom: 24px; }
+.pb-4 { padding-bottom: 32px; }
+.pb-5 { padding-bottom: 40px; }
+.pb-6 { padding-bottom: 48px; }
+
+.d-flex { display: flex; }
+.flex-column { flex-direction: column; }
+.align-center { align-items: center; }
+.align-start { align-items: flex-start; }
+.align-end { align-items: flex-end; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+.gap-1 { gap: 8px; }
+.gap-2 { gap: 16px; }
+.gap-3 { gap: 24px; }
+.gap-4 { gap: 32px; }
+.gap-5 { gap: 40px; }
+
+.w-100 { width: 100%; }
+.h-100 { height: 100%; }
+.w-auto { width: auto; }
+.vh-100 { min-height: 100vh; }
+
+.cursor-pointer { cursor: pointer; }
+.overflow-hidden { overflow: hidden; }
+.overflow-auto { overflow: auto; }
+.position-relative { position: relative; }
+.position-absolute { position: absolute; }
+.position-fixed { position: fixed; }
+.position-sticky { position: sticky; }
+
+.rounded-sm { border-radius: var(--radius-sm); }
+.rounded-md { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-xl { border-radius: var(--radius-xl); }
+.rounded-2xl { border-radius: var(--radius-2xl); }
+.rounded-3xl { border-radius: var(--radius-3xl); }
+.rounded-full { border-radius: var(--radius-full); }
+
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+.shadow-2xl { box-shadow: var(--shadow-2xl); }
+.shadow-glow { box-shadow: var(--shadow-glow); }
+
+/* ============================================
+   26. MAGIC TOUCHES - Effets Premium
+   ============================================ */
+
+.magic-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-2xl);
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.magic-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: all 0.7s ease;
+}
+
+.magic-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-2xl), 0 0 30px var(--primary-glow);
+  border-color: var(--primary);
+}
+
+.magic-card:hover::before {
+  left: 200%;
+}
+
+.magic-glow-text {
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  text-shadow: 0 0 30px rgba(37, 99, 235, 0.2);
+}
+
+.magic-button {
+  background: var(--gradient-primary);
+  border: none;
+  border-radius: var(--radius-lg);
+  color: white;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+  padding: 12px 28px;
+  cursor: pointer;
+}
+
+.magic-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-secondary);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.magic-button:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+.magic-button:hover::after {
+  opacity: 1;
+}
+
+.magic-pulse {
+  animation: magicPulse 2.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes magicPulse {
+  0% { 
+    transform: scale(1); 
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); 
+  }
+  70% { 
+    transform: scale(1.03); 
+    box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); 
+  }
+  100% { 
+    transform: scale(1); 
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); 
+  }
+}
+
+/* Loader personnalisé */
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--border);
+  border-radius: 50%;
+  border-top-color: var(--primary);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Toast notifications personnalisées */
+.custom-toast {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  color: var(--text-primary);
+}

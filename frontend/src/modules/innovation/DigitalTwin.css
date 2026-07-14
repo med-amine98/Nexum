@@ -1,0 +1,511 @@
+/* ============================================================
+   DigitalTwin.css — Premium 3D Dashboard
+   Palette: Navy · Teal · Slate · Dark
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+/* ── Root tokens ─────────────────────────────────────────── */
+:root {
+  --dt-navy:      #1e3a8a;
+  --dt-blue:      #3b82f6;
+  --dt-teal:      #0d9488;
+  --dt-teal-lt:   #2dd4bf;
+  --dt-emerald:   #10b981;
+  --dt-amber:     #10b981;
+  --dt-red:       #ef4444;
+  --dt-slate-900: #0f172a;
+  --dt-slate-800: #1e293b;
+  --dt-slate-700: #334155;
+  --dt-slate-500: #64748b;
+  --dt-slate-300: #cbd5e1;
+  --dt-slate-200: #e2e8f0;
+  --dt-bg:        #070d1b;
+  --dt-card-bg:   rgba(15, 23, 42, 0.85);
+  --dt-border:    rgba(45, 212, 191, 0.12);
+  --dt-shadow:    0 8px 32px rgba(0, 0, 0, 0.5);
+  --dt-glow-teal: 0 0 24px rgba(13, 148, 136, 0.35);
+  --dt-glow-blue: 0 0 24px rgba(59, 130, 246, 0.3);
+  --dt-radius:    16px;
+  --dt-transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Container ───────────────────────────────────────────── */
+.dt-container {
+  min-height: 100vh;
+  background: var(--dt-bg);
+  padding: 32px 36px 60px;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+
+  /* Animated grid background */
+  background-image:
+    linear-gradient(rgba(45, 212, 191, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 212, 191, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Global ambient orbs */
+.dt-container::before {
+  content: '';
+  position: fixed;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(30, 64, 175, 0.12) 0%, transparent 70%);
+  top: -200px;
+  left: -100px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dt-container::after {
+  content: '';
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.1) 0%, transparent 70%);
+  bottom: -100px;
+  right: -100px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ══════════════════════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════════════════════ */
+.dt-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 10;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.dt-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(45, 212, 191, 0.1);
+  border: 1px solid rgba(45, 212, 191, 0.25);
+  border-radius: 100px;
+  padding: 4px 14px;
+  color: var(--dt-teal-lt);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  width: fit-content;
+}
+
+.dt-badge-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--dt-teal-lt);
+  border-radius: 50%;
+  animation: dt-pulse 1.4s ease-in-out infinite;
+  box-shadow: 0 0 6px var(--dt-teal-lt);
+}
+
+@keyframes dt-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.6); opacity: .5; }
+}
+
+.dt-title {
+  color: #fff !important;
+  font-family: 'Space Grotesk', 'Inter', sans-serif !important;
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.5px !important;
+  margin: 0 !important;
+  text-shadow: 0 0 40px rgba(45, 212, 191, 0.3);
+}
+
+.dt-subtitle {
+  color: rgba(148, 163, 184, 0.85);
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.dt-header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.dt-update-time {
+  color: var(--dt-slate-500);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.dt-refresh-btn {
+  background: rgba(45, 212, 191, 0.1) !important;
+  border: 1px solid rgba(45, 212, 191, 0.25) !important;
+  color: var(--dt-teal-lt) !important;
+  font-weight: 600 !important;
+  border-radius: 10px !important;
+  transition: var(--dt-transition) !important;
+}
+
+.dt-refresh-btn:hover {
+  background: rgba(45, 212, 191, 0.2) !important;
+  border-color: rgba(45, 212, 191, 0.5) !important;
+  transform: translateY(-1px);
+  box-shadow: var(--dt-glow-teal) !important;
+}
+
+/* ══════════════════════════════════════════════════════════
+   KPI CARDS
+══════════════════════════════════════════════════════════ */
+.dt-kpi-card {
+  background: var(--dt-card-bg);
+  border: 1px solid var(--dt-border);
+  border-radius: var(--dt-radius);
+  padding: 20px 22px;
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+  transition: var(--dt-transition);
+  z-index: 10;
+}
+
+.dt-kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--dt-teal-lt), transparent);
+  opacity: 0.6;
+}
+
+.dt-kpi-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(45, 212, 191, 0.25);
+  box-shadow: var(--dt-glow-teal);
+}
+
+.dt-kpi-icon {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.dt-kpi-value {
+  font-size: 1.85rem;
+  font-weight: 800;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  line-height: 1;
+  margin-bottom: 4px;
+  letter-spacing: -1px;
+}
+
+.dt-kpi-label {
+  font-size: 12px;
+  color: var(--dt-slate-500);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.dt-kpi-trend {
+  font-size: 11px;
+  color: var(--dt-emerald);
+  font-weight: 600;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 2px 8px;
+  border-radius: 100px;
+  display: inline-block;
+}
+
+/* ══════════════════════════════════════════════════════════
+   TABS
+══════════════════════════════════════════════════════════ */
+.dt-tabs {
+  position: relative;
+  z-index: 10;
+}
+
+.dt-tabs .ant-tabs-nav {
+  margin-bottom: 24px !important;
+}
+
+.dt-tabs .ant-tabs-nav::before {
+  border-color: rgba(45, 212, 191, 0.12) !important;
+}
+
+.dt-tabs .ant-tabs-tab {
+  color: var(--dt-slate-500) !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  padding: 10px 16px !important;
+  transition: var(--dt-transition) !important;
+}
+
+.dt-tabs .ant-tabs-tab:hover {
+  color: var(--dt-teal-lt) !important;
+}
+
+.dt-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: var(--dt-teal-lt) !important;
+}
+
+.dt-tabs .ant-tabs-ink-bar {
+  background: linear-gradient(90deg, var(--dt-teal), var(--dt-blue)) !important;
+  height: 2.5px !important;
+  border-radius: 2px !important;
+}
+
+/* ══════════════════════════════════════════════════════════
+   3D CANVAS
+══════════════════════════════════════════════════════════ */
+.dt-canvas-wrap {
+  background: var(--dt-card-bg);
+  border: 1px solid var(--dt-border);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(12px);
+  box-shadow: var(--dt-shadow);
+}
+
+.dt-canvas-label {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  z-index: 20;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(45, 212, 191, 0.15);
+  border-radius: 8px;
+  padding: 6px 14px;
+  color: var(--dt-slate-300);
+  font-size: 11.5px;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+  letter-spacing: 0.3px;
+}
+
+.dt-node-legend {
+  position: absolute;
+  bottom: 16px;
+  left: 20px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dt-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(45, 212, 191, 0.12);
+  border-radius: 8px;
+  padding: 5px 12px;
+  backdrop-filter: blur(8px);
+}
+
+.dt-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.dt-legend-label {
+  color: var(--dt-slate-300);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ══════════════════════════════════════════════════════════
+   SHARED CARD BASE
+══════════════════════════════════════════════════════════ */
+.dt-gauge-card,
+.dt-status-card,
+.dt-chart-card,
+.dt-pred-card {
+  background: var(--dt-card-bg);
+  border: 1px solid var(--dt-border);
+  border-radius: var(--dt-radius);
+  padding: 20px 22px;
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+  transition: var(--dt-transition);
+  z-index: 10;
+}
+
+.dt-gauge-card:hover,
+.dt-status-card:hover,
+.dt-chart-card:hover,
+.dt-pred-card:hover {
+  border-color: rgba(45, 212, 191, 0.22);
+  box-shadow: var(--dt-glow-teal);
+}
+
+.dt-card-title {
+  color: var(--dt-teal-lt);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+}
+
+/* ── Status card rows ─────────────────────────────────────── */
+.dt-node-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: var(--dt-transition);
+}
+
+.dt-node-row:last-of-type {
+  border-bottom: none;
+}
+
+.dt-node-row:hover {
+  padding-left: 4px;
+}
+
+.dt-node-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.dt-node-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: dt-pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.dt-node-name {
+  color: rgba(226, 232, 240, 0.9);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.dt-node-value {
+  color: var(--dt-teal-lt);
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.dt-infra-bar {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dt-infra-label {
+  color: var(--dt-slate-500);
+  font-size: 12px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* ── Ant progress overrides for dark mode ─────────────────── */
+.dt-container .ant-progress-text {
+  color: #94a3b8 !important;
+  font-size: 12px;
+}
+
+.dt-container .ant-progress-trail {
+  background-color: rgba(148, 163, 184, 0.15) !important;
+}
+
+/* ══════════════════════════════════════════════════════════
+   PREDICTIONS TAB
+══════════════════════════════════════════════════════════ */
+.dt-pred-card {
+  padding: 18px 20px;
+}
+
+.dt-pred-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.dt-pred-name {
+  color: rgba(226, 232, 240, 0.95);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.dt-pred-value {
+  color: var(--dt-slate-500);
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.dt-pred-value strong {
+  color: var(--dt-teal-lt);
+}
+
+.dt-pred-ai {
+  margin-top: 10px;
+  font-size: 11.5px;
+  color: rgba(148, 163, 184, 0.7);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  padding: 6px 10px;
+  border-left: 2px solid rgba(45, 212, 191, 0.4);
+  font-style: italic;
+}
+
+/* Ant badge in dark mode */
+.dt-container .ant-badge-status-text {
+  color: #94a3b8 !important;
+  font-size: 12px !important;
+}
+
+/* Ant tabs in dark mode */
+.dt-container .ant-tabs-nav {
+  background: transparent !important;
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .dt-container   { padding: 20px 16px 40px; }
+  .dt-header      { flex-direction: column; align-items: flex-start; }
+  .dt-title       { font-size: 1.5rem !important; }
+  .dt-kpi-value   { font-size: 1.4rem; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   SCROLLBAR
+══════════════════════════════════════════════════════════ */
+.dt-container ::-webkit-scrollbar { width: 5px; height: 5px; }
+.dt-container ::-webkit-scrollbar-track  { background: transparent; }
+.dt-container ::-webkit-scrollbar-thumb  { background: rgba(45,212,191,.25); border-radius: 4px; }
+.dt-container ::-webkit-scrollbar-thumb:hover { background: rgba(45,212,191,.5); }

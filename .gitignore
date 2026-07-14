@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.db
+*.sqlite3
+*.log
+
+# Environnements virtuels
+venv/
+.venv/
+env/
+qdrant_env/
+
+# Variables d'environnement
+.env
+.env.*
+
+# Pytest
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+
+# Frontend
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+
+# Backend
+backend/__pycache__/
+backend/.pytest_cache/
+backend/venv/
+backend/qdrant_env/
+
+# Logs
+logs/
+*.log
+
+# Fichiers lourds
+*.zip
+*.tgz
+*.pt
+
+# OS
+.DS_Store
+Thumbs.db

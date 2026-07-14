@@ -1,0 +1,859 @@
+/* ============================================
+   Sidebar.css - Design Premium Nexum v3.0
+   Mode Sombre Permanent - Glassmorphism
+   Contraste optimisé
+   ============================================ */
+
+/* ============================================
+   1. VARIABLES CSS - SYSTÈME PROFESSIONNEL
+   ============================================ */
+/* Sidebar.css - Styles pour le scroll */
+
+.professional-sidebar {
+  overflow: hidden !important;
+}
+
+.professional-sidebar .ant-menu {
+  background: transparent !important;
+  border: none !important;
+}
+
+.professional-sidebar .ant-menu-inline {
+  overflow-y: visible !important;
+}
+
+/* Conteneur de scroll personnalisé */
+.sidebar-menu-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
+  height: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.sidebar-menu-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-menu-scroll::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
+}
+
+.sidebar-menu-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.sidebar-menu-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Ajustement pour les menus déroulants */
+.ant-menu-submenu-title {
+  padding-right: 16px !important;
+}
+
+.ant-menu-item {
+  margin: 4px 0 !important;
+}
+/* ── Variables CSS gérées par aurora-next.css ──
+   :root redondant supprimé (palette navy/slate remplacée Aurora Next)
+   ============================================ */
+
+
+/* ============================================
+   2. SIDEBAR PRINCIPAL
+   ============================================ */
+
+.professional-sidebar {
+  background: linear-gradient(180deg, var(--bg-sidebar) 0%, var(--bg-secondary) 100%) !important;
+  border-right: 1px solid var(--glass-border) !important;
+  transition: var(--transition-base);
+  position: fixed !important;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  overflow: auto;
+  box-shadow: var(--shadow-glow);
+}
+
+/* ============================================
+   3. SCROLLBAR PREMIUM
+   ============================================ */
+
+.professional-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.professional-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.professional-sidebar::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: var(--radius-full);
+  transition: var(--transition-fast);
+}
+
+.professional-sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}
+
+/* ============================================
+   4. HEADER SIDEBAR
+   ============================================ */
+
+.sidebar-header {
+  position: relative;
+  transition: var(--transition-base);
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logo-container {
+  transition: var(--transition-base);
+  cursor: pointer;
+}
+
+.logo-container:hover .logo-icon {
+  transform: rotate(5deg) scale(1.05);
+}
+
+/* Logo icon animation */
+@keyframes logoPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.logo-icon {
+  animation: logoPulse 2s ease-in-out infinite;
+  transition: var(--transition-base);
+  background: var(--gradient-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-glow);
+}
+
+.menu-toggle-btn {
+  transition: var(--transition-base);
+}
+
+.menu-toggle-btn:hover {
+  background: rgba(0, 82, 204, 0.15) !important;
+  transform: scale(1.05);
+}
+
+/* ============================================
+   5. MENU ITEMS - CONTRASTE OPTIMISÉ
+   ============================================ */
+
+.professional-sidebar .ant-menu {
+  background: transparent !important;
+}
+
+.professional-sidebar .ant-menu-item {
+  transition: var(--transition-base);
+  margin: 4px 12px !important;
+  height: 44px !important;
+  line-height: 44px !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--text-secondary) !important;
+  position: relative;
+  overflow: hidden;
+  font-weight: 500;
+}
+
+.professional-sidebar .ant-menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 82, 204, 0.15), transparent);
+  transition: left 0.5s ease;
+}
+
+.professional-sidebar .ant-menu-item:hover::before {
+  left: 100%;
+}
+
+.professional-sidebar .ant-menu-item:hover {
+  background: rgba(0, 82, 204, 0.1) !important;
+  color: var(--text-primary) !important;
+  transform: translateX(4px);
+}
+
+.professional-sidebar .ant-menu-item-selected {
+  background: var(--gradient-menu) !important;
+  border-left: 3px solid var(--primary) !important;
+  color: var(--primary-light) !important;
+  font-weight: 600;
+}
+
+.professional-sidebar .ant-menu-item-selected .anticon {
+  color: var(--primary-light) !important;
+}
+
+.professional-sidebar .ant-menu-item:hover .anticon {
+  color: var(--primary-light);
+  transform: scale(1.1);
+}
+
+.professional-sidebar .ant-menu-item .anticon {
+  transition: var(--transition-base);
+  font-size: 18px;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   6. SUBMENU
+   ============================================ */
+
+.professional-sidebar .ant-menu-submenu-title {
+  margin: 8px 0 !important;
+  border-radius: var(--radius-md) !important;
+  transition: var(--transition-base);
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+}
+
+.professional-sidebar .ant-menu-submenu-title:hover {
+  background: rgba(0, 82, 204, 0.1) !important;
+  color: var(--primary-light) !important;
+}
+
+.professional-sidebar .ant-menu-submenu-arrow {
+  color: var(--text-muted) !important;
+  transition: var(--transition-base);
+}
+
+.professional-sidebar .ant-menu-submenu-title:hover .ant-menu-submenu-arrow {
+  color: var(--primary-light) !important;
+}
+
+.professional-sidebar .ant-menu-submenu-open .ant-menu-submenu-title {
+  color: var(--primary-light) !important;
+}
+
+/* ============================================
+   7. MENU GROUP LABELS
+   ============================================ */
+
+.professional-sidebar .ant-menu-item-group-title {
+  padding: var(--spacing-md) var(--spacing-md) var(--spacing-xs) var(--spacing-lg) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 8px;
+}
+
+/* ============================================
+   8. DIVIDER
+   ============================================ */
+
+.professional-sidebar .ant-menu-item-divider {
+  background: var(--border-color) !important;
+  margin: 8px 0 !important;
+  height: 1px;
+}
+
+/* ============================================
+   9. ADD MODULES BUTTON
+   ============================================ */
+
+.add-modules-item {
+  background: linear-gradient(135deg, rgba(0, 82, 204, 0.12) 0%, rgba(0, 163, 196, 0.12) 100%) !important;
+  margin-bottom: 8px !important;
+  border-radius: var(--radius-md) !important;
+  border: 1px solid rgba(0, 82, 204, 0.25) !important;
+}
+
+.add-modules-item:hover {
+  background: linear-gradient(135deg, rgba(0, 82, 204, 0.2) 0%, rgba(0, 163, 196, 0.2) 100%) !important;
+  transform: translateY(-2px);
+  border-color: var(--primary) !important;
+}
+
+.add-modules-item .anticon {
+  color: var(--primary-light) !important;
+}
+
+/* ============================================
+   10. REMOVE MODULE BUTTON
+   ============================================ */
+
+.remove-module-btn {
+  opacity: 0;
+  transition: var(--transition-fast);
+  color: var(--error) !important;
+}
+
+.remove-module-btn:hover {
+  background: rgba(231, 76, 60, 0.15) !important;
+  transform: scale(1.1);
+  color: var(--error) !important;
+}
+
+.menu-item-with-actions:hover .remove-module-btn {
+  opacity: 1;
+}
+
+/* ============================================
+   11. ASSISTANT SECTION
+   ============================================ */
+
+.sidebar-assistant-section {
+  transition: var(--transition-base);
+  border-radius: var(--radius-md);
+  background: rgba(0, 82, 204, 0.05);
+  margin: var(--spacing-md);
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-light);
+}
+
+.sidebar-assistant-section:hover {
+  background: rgba(0, 82, 204, 0.12) !important;
+  transform: translateY(-2px);
+  border-color: var(--primary);
+}
+
+/* ============================================
+   12. FOOTER
+   ============================================ */
+
+.sidebar-footer {
+  transition: var(--transition-base);
+  border-top: 1px solid var(--border-color);
+  padding: var(--spacing-md) !important;
+  margin-top: auto;
+}
+
+.sidebar-footer .ant-btn {
+  transition: var(--transition-base);
+  font-weight: 600;
+}
+
+.sidebar-footer .ant-btn-danger {
+  background: rgba(231, 76, 60, 0.1);
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.sidebar-footer .ant-btn-danger:hover {
+  transform: translateY(-2px);
+  background: rgba(231, 76, 60, 0.2);
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.sidebar-footer .ant-btn-primary {
+  background: var(--gradient-primary);
+  border: none;
+}
+
+.sidebar-footer .ant-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ============================================
+   13. PROGRESS BAR
+   ============================================ */
+
+.ant-progress-bg {
+  background: var(--gradient-primary) !important;
+  border-radius: var(--radius-full) !important;
+}
+
+.ant-progress-trail {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-radius: var(--radius-full) !important;
+}
+
+.ant-progress-text {
+  color: var(--text-secondary) !important;
+}
+
+/* ============================================
+   14. BADGE
+   ============================================ */
+
+.ant-badge-count {
+  background: var(--gradient-primary);
+  box-shadow: 0 0 0 1px var(--bg-sidebar);
+  font-size: 10px;
+  height: 18px;
+  line-height: 18px;
+  min-width: 18px;
+  padding: 0 5px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+}
+
+/* ============================================
+   15. SWITCH
+   ============================================ */
+
+.ant-switch {
+  background-color: var(--bg-tertiary) !important;
+  border: 1px solid var(--border-color);
+}
+
+.ant-switch-checked {
+  background-color: var(--primary) !important;
+  border-color: var(--primary);
+}
+
+.ant-switch-checked .ant-switch-handle {
+  background: var(--text-primary);
+}
+
+/* ============================================
+   16. TOOLTIP
+   ============================================ */
+
+.ant-tooltip {
+  font-size: 12px;
+}
+
+.ant-tooltip-inner {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-md);
+}
+
+/* ============================================
+   17. ANIMATIONS
+   ============================================ */
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* ============================================
+   18. ACTIVE MODULE INDICATOR
+   ============================================ */
+
+.active-module-indicator {
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 8px;
+  animation: pulse 1.5s ease-in-out infinite;
+  box-shadow: 0 0 5px var(--success);
+}
+
+/* ============================================
+   19. MODAL
+   ============================================ */
+
+.search-modal .ant-modal-content,
+.modules-modal .ant-modal-content {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+}
+
+.search-modal .ant-modal-header,
+.modules-modal .ant-modal-header {
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.search-modal .ant-modal-title,
+.modules-modal .ant-modal-title {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.search-modal .ant-modal-body,
+.modules-modal .ant-modal-body {
+  background: var(--bg-primary);
+}
+
+.search-modal .ant-modal-close,
+.modules-modal .ant-modal-close {
+  color: var(--text-muted);
+}
+
+.search-modal .ant-modal-close:hover,
+.modules-modal .ant-modal-close:hover {
+  color: var(--primary-light);
+}
+
+/* ============================================
+   20. RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .professional-sidebar {
+    position: fixed !important;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform var(--transition-base);
+  }
+  
+  .professional-sidebar.ant-layout-sider-collapsed {
+    transform: translateX(0);
+  }
+  
+  .sidebar-header {
+    padding: var(--spacing-md) !important;
+  }
+  
+  .professional-sidebar .ant-menu-item {
+    margin: 4px 8px !important;
+  }
+}
+
+/* ============================================
+   21. LOADING STATE
+   ============================================ */
+
+.sidebar-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: var(--bg-sidebar);
+}
+
+.loading-skeleton {
+  animation: shimmer 1.5s infinite;
+  background: linear-gradient(90deg, transparent, rgba(0, 82, 204, 0.1), transparent);
+  background-size: 1000px 100%;
+}
+
+/* ============================================
+   22. COLLAPSED SIDEBAR
+   ============================================ */
+
+.ant-layout-sider-collapsed .professional-sidebar .ant-menu-item {
+  text-align: center;
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-layout-sider-collapsed .professional-sidebar .ant-menu-item .anticon {
+  margin-right: 0 !important;
+  font-size: 20px;
+}
+
+.ant-layout-sider-collapsed .professional-sidebar .ant-menu-item-group-title {
+  text-align: center;
+  padding: var(--spacing-md) 0 !important;
+}
+
+.ant-layout-sider-collapsed .sidebar-footer {
+  text-align: center;
+  padding: var(--spacing-md) 0 !important;
+}
+
+/* ============================================
+   23. FORCAGE DES COULEURS
+   ============================================ */
+
+.ant-menu-dark .ant-menu-item,
+.ant-menu-dark .ant-menu-submenu-title,
+.ant-menu:not(.ant-menu-dark) .ant-menu-item,
+.ant-menu:not(.ant-menu-dark) .ant-menu-submenu-title {
+  color: var(--text-secondary) !important;
+}
+
+.ant-menu-dark .ant-menu-item-selected,
+.ant-menu:not(.ant-menu-dark) .ant-menu-item-selected {
+  background: var(--gradient-menu) !important;
+  color: var(--primary-light) !important;
+}
+
+.ant-menu-dark .ant-menu-item:hover,
+.ant-menu-dark .ant-menu-submenu-title:hover,
+.ant-menu:not(.ant-menu-dark) .ant-menu-item:hover,
+.ant-menu:not(.ant-menu-dark) .ant-menu-submenu-title:hover {
+  background: rgba(0, 82, 204, 0.1) !important;
+  color: var(--primary-light) !important;
+}
+
+/* ============================================
+   24. TEXTES DANS LA SIDEBAR
+   ============================================ */
+
+.professional-sidebar,
+.professional-sidebar * {
+  color: var(--text-secondary);
+}
+
+.professional-sidebar .ant-typography {
+  color: var(--text-primary) !important;
+}
+
+.professional-sidebar .ant-badge-status-text {
+  color: var(--text-muted) !important;
+}
+
+.professional-sidebar .ant-divider-inner-text {
+  color: var(--text-muted) !important;
+}
+
+/* ============================================
+   25. BOUTONS DANS LA SIDEBAR
+   ============================================ */
+
+.professional-sidebar .ant-btn-text {
+  color: var(--text-muted) !important;
+}
+
+.professional-sidebar .ant-btn-text:hover {
+  color: var(--primary-light) !important;
+  background: rgba(0, 82, 204, 0.1) !important;
+}
+
+/* ============================================
+   26. INPUTS DANS LA SIDEBAR
+   ============================================ */
+
+.professional-sidebar .ant-input,
+.professional-sidebar .ant-input-affix-wrapper {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.professional-sidebar .ant-input::placeholder,
+.professional-sidebar .ant-input-affix-wrapper input::placeholder {
+  color: var(--text-muted) !important;
+}
+
+.professional-sidebar .ant-input-affix-wrapper:hover,
+.professional-sidebar .ant-input:hover {
+  border-color: var(--primary) !important;
+}
+
+.professional-sidebar .ant-input-affix-wrapper:focus,
+.professional-sidebar .ant-input:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px rgba(0, 82, 204, 0.15) !important;
+}
+
+/* ============================================
+   27. SELECT DANS LA SIDEBAR
+   ============================================ */
+
+.professional-sidebar .ant-select-selector {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.professional-sidebar .ant-select-selector:hover {
+  border-color: var(--primary) !important;
+}
+
+.professional-sidebar .ant-select-selection-placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* ============================================
+   28. FOND DE LA SIDEBAR
+   ============================================ */
+
+.ant-layout-sider,
+.ant-layout-sider-dark,
+.ant-layout-sider-light {
+  background: var(--bg-sidebar) !important;
+}
+
+/* ============================================
+   29. SEARCH RESULT ITEMS
+   ============================================ */
+
+.search-result-item {
+  transition: var(--transition-base);
+  cursor: pointer;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+}
+
+.search-result-item:hover {
+  background: rgba(0, 82, 204, 0.1);
+  transform: translateX(4px);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   30. NOTIFICATION DROPDOWN
+   ============================================ */
+
+.notification-item {
+  transition: var(--transition-base);
+  padding: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-secondary);
+}
+
+.notification-item:hover {
+  background: rgba(0, 82, 204, 0.08);
+  color: var(--text-primary);
+}
+
+.notification-item.unread {
+  border-left: 3px solid var(--primary);
+  background: rgba(0, 82, 204, 0.05);
+}
+
+/* ============================================
+   31. USER MENU DROPDOWN
+   ============================================ */
+
+.user-menu-dropdown {
+  animation: slideDown 0.2s ease-out;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+}
+
+/* ============================================
+   32. MODULES STATUS CARD
+   ============================================ */
+
+.modules-status-card {
+  transition: var(--transition-base);
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px;
+}
+
+.modules-status-card:hover {
+  transform: translateY(-2px);
+  background: rgba(0, 82, 204, 0.08);
+  box-shadow: var(--shadow-sm);
+  border-color: var(--primary);
+}
+
+/* ============================================
+   33. UTILITAIRES
+   ============================================ */
+
+.text-primary {
+  color: var(--primary) !important;
+}
+
+.text-accent {
+  color: var(--accent) !important;
+}
+
+.text-success {
+  color: var(--success) !important;
+}
+
+.text-warning {
+  color: var(--warning) !important;
+}
+
+.text-error {
+  color: var(--error) !important;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.bg-primary {
+  background: var(--primary) !important;
+}
+
+.bg-gradient {
+  background: var(--gradient-primary) !important;
+}
+
+/* ============================================
+   34. ACCESSIBILITÉ
+   ============================================ */
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(0, 82, 204, 0.3);
+  color: var(--text-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Flex layout structure to solve viewport cutting and scroll limitations */
+.professional-sidebar .ant-layout-sider-children {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+}

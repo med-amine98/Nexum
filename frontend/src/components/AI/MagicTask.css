@@ -1,0 +1,133 @@
+.magic-task-container {
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.magic-task-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 20px !important;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.magic-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(114, 46, 209, 0.15) 0%,
+    rgba(24, 144, 255, 0.1) 30%,
+    transparent 70%
+  );
+  z-index: 0;
+  pointer-events: none;
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.magic-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.magic-icon-wrapper {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, #722ed1 0%, #1890ff 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(114, 46, 209, 0.4);
+}
+
+.magic-wand {
+  color: white;
+  font-size: 20px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.magic-title {
+  color: white !important;
+  margin: 0 !important;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.magic-tag {
+  background: rgba(114, 46, 209, 0.2) !important;
+  border: 1px solid rgba(114, 46, 209, 0.5) !important;
+  color: #b37feb !important;
+  font-size: 10px !important;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.magic-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.magic-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.magic-impact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #1890ff;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.magic-button {
+  background: linear-gradient(90deg, #722ed1, #1890ff) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  height: 40px !important;
+  padding: 0 25px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 15px rgba(114, 46, 209, 0.3) !important;
+  transition: all 0.3s !important;
+}
+
+.magic-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(114, 46, 209, 0.5) !important;
+}
+
+/* Dark mode overrides for common card elements if needed */
+.ant-card-body {
+  padding: 24px !important;
+}

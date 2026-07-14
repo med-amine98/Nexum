@@ -1,0 +1,169 @@
+/* src/modules/insurance/WarrantyRecommender.css */
+
+/* Styles globaux pour le thème sombre */
+.ant-input,
+.ant-input-number,
+.ant-select-selector,
+.ant-picker,
+.ant-input-textarea {
+  background: #1a1a1a !important;
+  border-color: rgba(255,255,255,0.1) !important;
+  color: rgba(255,255,255,0.85) !important;
+}
+
+.ant-input:focus,
+.ant-input-number:focus,
+.ant-select-focused .ant-select-selector,
+.ant-picker-focused {
+  border-color: #00d4ff !important;
+  box-shadow: 0 0 0 2px rgba(0,212,255,0.1) !important;
+}
+
+.ant-input-number-handler-wrap {
+  background: #1a1a1a !important;
+  border-color: rgba(255,255,255,0.1) !important;
+}
+
+.ant-input-number-handler-up,
+.ant-input-number-handler-down {
+  border-color: rgba(255,255,255,0.1) !important;
+}
+
+.ant-form-item-label > label {
+  color: rgba(255,255,255,0.7) !important;
+}
+
+.ant-form-item {
+  margin-bottom: 16px;
+}
+
+/* Styles pour les modals */
+.ant-modal-content {
+  background: transparent !important;
+}
+
+.ant-modal-header {
+  background: #1a1a1a !important;
+  border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+  border-radius: 16px 16px 0 0 !important;
+}
+
+.ant-modal-title {
+  color: white !important;
+}
+
+.ant-modal-close {
+  color: rgba(255,255,255,0.5) !important;
+}
+
+.ant-modal-close:hover {
+  color: white !important;
+}
+
+.ant-modal-footer {
+  background: #1a1a1a !important;
+  border-top: 1px solid rgba(255,255,255,0.05) !important;
+  border-radius: 0 0 16px 16px !important;
+}
+
+/* Styles pour les descriptions */
+.ant-descriptions-item-label {
+  background: rgba(255,255,255,0.03) !important;
+  color: rgba(255,255,255,0.5) !important;
+  border-color: rgba(255,255,255,0.05) !important;
+}
+
+.ant-descriptions-item-content {
+  background: rgba(255,255,255,0.02) !important;
+  border-color: rgba(255,255,255,0.05) !important;
+}
+
+/* Styles pour les tabs */
+.ant-tabs-tab {
+  color: rgba(255,255,255,0.5) !important;
+}
+
+.ant-tabs-tab:hover {
+  color: rgba(255,255,255,0.85) !important;
+}
+
+.ant-tabs-tab-active {
+  color: #00d4ff !important;
+}
+
+.ant-tabs-ink-bar {
+  background: #00d4ff !important;
+}
+
+/* Styles pour les checkboxes */
+.ant-checkbox-checked .ant-checkbox-inner {
+  background: #00d4ff !important;
+  border-color: #00d4ff !important;
+}
+
+.ant-checkbox-wrapper {
+  color: rgba(255,255,255,0.85) !important;
+}
+
+/* Styles pour les selects dans les modals */
+.ant-select-dropdown {
+  background: #1a1a1a !important;
+  border: 1px solid rgba(255,255,255,0.05) !important;
+}
+
+.ant-select-item {
+  color: rgba(255,255,255,0.85) !important;
+}
+
+.ant-select-item-option:hover {
+  background: rgba(0,212,255,0.1) !important;
+}
+
+.ant-select-item-option-selected {
+  background: rgba(0,212,255,0.2) !important;
+  color: #00d4ff !important;
+}
+
+/* Styles pour les cartes en fond blanc */
+.ant-card {
+  transition: all 0.3s ease !important;
+}
+
+.ant-card-bordered {
+  border-color: #e8e8e8 !important;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ant-card {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Scrollbar personnalisée */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.2);
+}

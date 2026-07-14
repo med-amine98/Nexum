@@ -1,0 +1,43 @@
+/* src/modules/ai/assistants/NexyRisk/NexyRisk.css */
+.nexy-risk-assistant {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.nexy-risk-assistant .ant-card {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.nexy-risk-assistant .ant-card-body {
+  padding: 0;
+}
+
+/* Scrollbar */
+.nexy-risk-assistant .messages-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.nexy-risk-assistant .messages-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.nexy-risk-assistant .messages-container::-webkit-scrollbar-thumb {
+  background: #f5222d;
+  border-radius: 10px;
+}
+
+.nexy-risk-assistant .messages-container::-webkit-scrollbar-thumb:hover {
+  background: #ff4d4f;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.risk-critical {
+  animation: pulse 2s infinite;
+}

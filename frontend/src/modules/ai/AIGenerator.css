@@ -1,0 +1,123 @@
+/* AIGenerator.css */
+.ai-generator {
+  transition: all 0.3s ease;
+}
+
+.ai-generator.dark-mode {
+  background: #141414;
+}
+
+.ai-generator.dark-mode .ant-card {
+  background: #1f1f1f;
+  border-color: #303030;
+}
+
+.ai-generator.dark-mode .ant-card-head {
+  border-bottom-color: #303030;
+}
+
+.ai-generator.dark-mode .ant-typography,
+.ai-generator.dark-mode .ant-statistic-title,
+.ai-generator.dark-mode .ant-statistic-content {
+  color: #ffffff;
+}
+
+.ai-generator.dark-mode .ant-steps-item-title {
+  color: #ffffff;
+}
+
+.ai-generator.dark-mode .ant-steps-item-description {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.ai-generator.dark-mode .report-content {
+  background: #2a2a2a;
+  color: #e8e8e8;
+}
+
+.ai-generator.dark-mode .report-content th,
+.ai-generator.dark-mode .report-content td {
+  border-color: #404040;
+}
+
+.ai-generator.dark-mode .report-content th {
+  background: #3a3a3a;
+}
+
+.ai-tabs .ant-tabs-nav {
+  margin-bottom: 0;
+}
+
+.ai-tabs .ant-tabs-tab {
+  padding: 12px 24px;
+  font-weight: 500;
+}
+
+.ai-tabs .ant-tabs-tab-active {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border-radius: 12px 12px 0 0;
+}
+
+/* Animation pour le contenu */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.report-content {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Style pour les graphiques */
+.ant-card .ant-card-body {
+  padding: 20px;
+}
+
+/* Scrollbar personnalisée */
+.report-content::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.report-content::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 3px;
+}
+
+.report-content::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-radius: 3px;
+}
+
+.report-content::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+.dark-mode .report-content::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+
+.dark-mode .report-content::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+.dark-mode .report-content::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ai-generator {
+    padding: 16px !important;
+  }
+  
+  .ai-tabs .ant-tabs-tab {
+    padding: 8px 16px;
+  }
+}

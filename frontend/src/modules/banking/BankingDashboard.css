@@ -1,0 +1,32 @@
+/* BankingDashboard.css */
+
+.banking-dashboard-premium .banner-card {
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.header-icon-container {
+  width: 60px;
+  height: 60px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kpi-card-mini {
+  padding: 16px;
+  border-radius: 16px;
+  transition: var(--transition-base);
+}
+
+.kpi-card-mini:hover {
+  transform: translateY(-5px);
+}
+
+.chart-card, .table-card {
+  border-radius: 20px;
+  height: 100%;
+}

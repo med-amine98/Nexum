@@ -1,0 +1,1197 @@
+/* ============================================
+   Pricing.css - Design Premium Nexum v2.0
+   Palette professionnelle & UI moderne
+   CORRIGÉ - Contraste amélioré
+   ============================================ */
+
+/* ============================================
+   1. VARIABLES CSS - SYSTÈME DE DESIGN
+   ============================================ */
+
+/* ── Variables CSS gérées par aurora-next.css ──
+   Palette navy/slate remplacée par Aurora Next (indigo/violet/teal)
+   ============================================ */
+
+
+
+
+
+/* ============================================
+   2. RESET & BASE
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--gray-800);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.pricing-layout {
+  min-height: 100vh;
+  background: var(--bg-primary);
+}
+
+/* ============================================
+   3. HEADER
+   ============================================ */
+
+.pricing-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-fixed);
+  padding: 20px 0;
+  transition: var(--transition-base);
+}
+
+.pricing-header.scrolled {
+  background: var(--bg-glass-dark);
+  backdrop-filter: var(--blur-lg);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+
+.logo-container {
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.logo-container:hover {
+  transform: scale(1.05);
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ============================================
+   4. HERO SECTION - CONTRASTE CORRIGÉ
+   ============================================ */
+
+.pricing-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 24px 80px;
+  overflow: hidden;
+  background: var(--gradient-dark);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pricing-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 50%, var(--primary) 0%, transparent 50%);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: var(--z-base);
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* CORRECTION: Texte blanc sur fond sombre avec bonne lisibilité */
+.hero-content h1 {
+  font-size: 56px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-content h1 span {
+  color: var(--primary-light);
+}
+
+.hero-subtitle {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.hero-description {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 40px;
+}
+
+/* Billing Toggle */
+.billing-toggle {
+  margin-bottom: 48px;
+  padding: 16px 24px;
+  background: var(--bg-glass-dark);
+  backdrop-filter: var(--blur-md);
+  border-radius: var(--radius-full);
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.billing-toggle .ant-switch {
+  background: var(--gradient-primary);
+}
+
+.billing-toggle .ant-switch-checked {
+  background: var(--gradient-primary);
+}
+
+.billing-toggle .ant-typography {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500;
+}
+
+/* Hero Stats */
+.hero-stats {
+  margin-top: 48px;
+}
+
+.hero-stats .ant-statistic {
+  padding: 20px;
+  background: var(--bg-glass-dark);
+  backdrop-filter: var(--blur-md);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition-base);
+}
+
+.hero-stats .ant-statistic:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-primary);
+}
+
+.hero-stats .ant-statistic-title {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.hero-stats .ant-statistic-content {
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+}
+
+/* ============================================
+   5. PRICING CARDS - CONTRASTE CORRIGÉ
+   ============================================ */
+
+.pricing-cards-section {
+  padding: 80px 24px;
+  position: relative;
+  background: var(--bg-primary);
+}
+
+
+.pricing-card {
+  background: var(--bg-tertiary);
+  backdrop-filter: var(--blur-md);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-2xl);
+  transition: var(--transition-base);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-primary);
+}
+
+.pricing-card.recommended {
+  border: 2px solid var(--accent);
+  transform: scale(1.02);
+}
+
+.pricing-card.recommended:hover {
+  transform: scale(1.02) translateY(-10px);
+}
+
+/* Plan Badge */
+.plan-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: var(--z-base);
+}
+
+.plan-badge .ant-tag {
+  background: var(--gradient-accent);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+/* Plan Header - Texte sombre sur fond clair */
+.plan-header {
+  text-align: center;
+  padding: 32px 24px 24px;
+}
+
+.plan-icon {
+  width: 70px;
+  height: 70px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 32px;
+  color: white;
+  transition: var(--transition-base);
+}
+
+.pricing-card:hover .plan-icon {
+  transform: scale(1.1) rotate(10deg);
+}
+
+.plan-header h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: white !important;
+}
+
+.plan-header p {
+  color: var(--gray-400) !important;
+  font-size: 14px;
+}
+
+
+/* Plan Price */
+.plan-price {
+  text-align: center;
+  padding: 0 24px;
+  margin-bottom: 24px;
+}
+
+.plan-price h1 {
+  font-size: 48px;
+  font-weight: 800;
+  color: white !important;
+  margin: 0;
+}
+
+.plan-price h1 small {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--gray-400);
+}
+
+
+.plan-price .ant-tag {
+  margin-top: 8px;
+  background: rgba(39, 174, 96, 0.15);
+  border: none;
+  color: var(--success);
+  font-weight: 600;
+}
+
+/* Plan Specs */
+.plan-specs {
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  margin: 0 24px 24px;
+}
+
+.plan-specs .ant-space-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gray-600) !important;
+  font-size: 14px;
+}
+
+.plan-specs .ant-space-item .anticon {
+  color: var(--primary);
+}
+
+/* Plan Features */
+.plan-features {
+  padding: 0 24px;
+  margin-bottom: 24px;
+}
+
+.plan-features .ant-list-item {
+  border: none;
+  padding: 8px 0;
+  color: var(--gray-300) !important;
+}
+
+
+.plan-features .ant-list-item .anticon {
+  margin-right: 12px;
+  color: var(--success);
+  font-size: 14px;
+}
+
+/* Popular For */
+.popular-for {
+  text-align: center;
+  padding: 16px 24px 24px;
+  color: var(--gray-400) !important;
+  font-size: 12px;
+}
+
+/* ============================================
+   6. COMPARISON SECTION
+   ============================================ */
+
+.comparison-section {
+  padding: 80px 24px;
+  background: var(--bg-primary);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-tag {
+  background: var(--gradient-primary);
+  border: none;
+  color: white;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.section-header h2 {
+  font-size: 40px;
+  font-weight: 800;
+  color: white !important;
+  margin-bottom: 16px;
+}
+
+.section-header p {
+  color: var(--gray-400) !important;
+  font-size: 18px;
+}
+
+
+.comparison-card {
+  background: white;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.comparison-card .ant-tabs-tab {
+  color: var(--gray-600);
+  font-weight: 500;
+}
+
+.comparison-card .ant-tabs-tab-active {
+  color: var(--primary);
+}
+
+.comparison-card .ant-tabs-ink-bar {
+  background: var(--gradient-primary);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.comparison-table th {
+  text-align: left;
+  padding: 16px;
+  background: var(--gray-50);
+  color: var(--gray-700) !important;
+  font-weight: 600;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.comparison-table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--gray-200);
+  color: var(--gray-600) !important;
+}
+
+.comparison-table tr:hover td {
+  background: var(--primary-subtle);
+}
+
+.comparison-table .anticon-check-circle {
+  color: var(--success);
+}
+
+.comparison-table .anticon-close-circle {
+  color: var(--error);
+}
+
+/* ============================================
+   7. ADDONS SECTION
+   ============================================ */
+
+.addons-section {
+  padding: 80px 24px;
+  background: var(--bg-secondary);
+}
+
+.addon-card {
+  background: white;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  transition: var(--transition-base);
+  height: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.addon-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-primary);
+}
+
+.addon-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 24px auto 16px;
+  font-size: 32px;
+  color: white;
+  background: var(--gradient-primary);
+}
+
+.addon-card h4 {
+  color: var(--gray-800) !important;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.addon-card p {
+  color: var(--gray-500) !important;
+  font-size: 14px;
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.addon-price {
+  margin: 16px 0;
+}
+
+.addon-price h3 {
+  font-size: 28px;
+  color: var(--primary) !important;
+  margin: 0;
+  font-weight: 700;
+}
+
+.addon-price h3 small {
+  font-size: 14px;
+  color: var(--gray-500);
+}
+
+/* ============================================
+   8. CALCULATOR SECTION
+   ============================================ */
+
+.calculator-section {
+  padding: 80px 24px;
+  background: var(--bg-primary);
+}
+
+.calculator-card {
+  background: white;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.calculator-form {
+  padding: 32px;
+}
+
+.calculator-form .ant-form-item-label > label {
+  color: var(--gray-700) !important;
+  font-weight: 600;
+}
+
+.calculator-form .ant-slider-track {
+  background: var(--gradient-primary);
+}
+
+.calculator-form .ant-slider-handle {
+  border-color: var(--primary);
+}
+
+.calculator-form .ant-slider-handle:focus {
+  box-shadow: 0 0 0 2px rgba(0, 82, 204, 0.2);
+}
+
+.result-card {
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  text-align: center;
+  border: 1px solid var(--gray-200);
+}
+
+.result-card h3 {
+  color: var(--gray-700) !important;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.estimated-price {
+  margin: 24px 0;
+}
+
+.estimated-price .countup {
+  font-size: 64px;
+  font-weight: 800;
+  color: var(--success);
+}
+
+.estimated-price small {
+  font-size: 18px;
+  color: var(--gray-500);
+}
+
+/* ============================================
+   9. FAQ SECTION
+   ============================================ */
+
+.pricing-faq {
+  padding: 80px 24px;
+  background: var(--bg-secondary);
+}
+
+.faq-card {
+  background: white;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.faq-card .ant-list-item {
+  border-bottom: 1px solid var(--gray-200);
+  padding: 20px 0;
+}
+
+.faq-card .ant-list-item-meta-title {
+  color: var(--gray-800) !important;
+  font-weight: 600;
+}
+
+.faq-card .ant-list-item-meta-description {
+  color: var(--gray-500) !important;
+}
+
+.contact-card {
+  background: var(--gradient-primary);
+  border: none;
+  border-radius: var(--radius-xl);
+  text-align: center;
+  padding: 48px 24px;
+  color: white;
+}
+
+.contact-card .ant-avatar {
+  background: rgba(255, 255, 255, 0.2);
+  margin-bottom: 24px;
+}
+
+.contact-card h4 {
+  color: white;
+  margin-bottom: 16px;
+  font-size: 24px;
+}
+
+.contact-card p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 24px;
+}
+
+.contact-card .ant-btn {
+  background: white;
+  color: var(--primary);
+  border: none;
+  font-weight: 600;
+}
+
+.contact-card .ant-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ============================================
+   10. CTA SECTION
+   ============================================ */
+
+.pricing-cta {
+  padding: 80px 24px;
+  background: var(--gradient-dark);
+}
+
+.cta-card {
+  background: var(--gradient-primary);
+  border: none;
+  border-radius: var(--radius-2xl);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px;
+}
+
+.cta-card h2 {
+  color: white;
+  margin-bottom: 8px;
+  font-size: 32px;
+}
+
+.cta-card p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0;
+  font-size: 16px;
+}
+
+.cta-buttons {
+  width: 100%;
+}
+
+.cta-buttons .ant-btn {
+  height: 48px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  padding: 0 32px;
+}
+
+.cta-buttons .ant-btn-primary {
+  background: white;
+  color: var(--primary);
+  border: none;
+}
+
+.cta-buttons .ant-btn-primary:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.cta-buttons .ant-btn-default {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.cta-buttons .ant-btn-default:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   11. MODALS
+   ============================================ */
+
+.pricing-modal .ant-modal-content,
+.trial-modal .ant-modal-content {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--bg-tertiary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.pricing-modal .ant-modal-header,
+.trial-modal .ant-modal-header {
+  background: var(--gradient-primary);
+  border-bottom: none;
+  padding: 20px 24px;
+}
+
+.pricing-modal .ant-modal-title,
+.trial-modal .ant-modal-title {
+  color: white;
+  font-weight: 600;
+}
+
+.pricing-modal .ant-modal-close,
+.trial-modal .ant-modal-close {
+  color: white;
+}
+
+.pricing-modal .ant-modal-close:hover,
+.trial-modal .ant-modal-close:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.modal-total {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  text-align: center;
+  margin: 16px 0;
+}
+
+.modal-total .ant-typography {
+  color: white;
+}
+
+/* Ant Design overrides for dark modals */
+.ant-modal-content .ant-form-item-label > label {
+  color: var(--gray-300) !important;
+}
+
+.ant-modal-content .ant-input,
+.ant-modal-content .ant-select-selector,
+.ant-modal-content .ant-radio-button-wrapper {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
+
+.ant-modal-content .ant-modal-close {
+  color: white !important;
+}
+
+
+/* ============================================
+   12. ANIMATIONS
+   ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Classes d'animation */
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* ============================================
+   13. RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .hero-content h1 {
+    font-size: 48px;
+  }
+  
+  .hero-subtitle {
+    font-size: 22px;
+  }
+  
+  .section-header h2 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 992px) {
+  .pricing-header {
+    padding: 16px 20px;
+  }
+  
+  .hero-content h1 {
+    font-size: 40px;
+  }
+  
+  .hero-subtitle {
+    font-size: 20px;
+  }
+  
+  .pricing-card.recommended {
+    transform: scale(1);
+  }
+  
+  .section-header h2 {
+    font-size: 32px;
+  }
+  
+  .cta-buttons {
+    margin-top: 24px;
+  }
+  
+  .cta-card {
+    padding: 32px;
+  }
+  
+  .cta-card h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pricing-hero {
+    padding: 100px 16px 60px;
+  }
+  
+  .hero-content h1 {
+    font-size: 32px;
+  }
+  
+  .hero-subtitle {
+    font-size: 18px;
+  }
+  
+  .hero-description {
+    font-size: 16px;
+  }
+  
+  .billing-toggle {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .billing-toggle .ant-space {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .hero-stats .ant-statistic-content {
+    font-size: 24px;
+  }
+  
+  .section-header h2 {
+    font-size: 28px;
+  }
+  
+  .section-header p {
+    font-size: 16px;
+  }
+  
+  .comparison-table {
+    font-size: 14px;
+    display: block;
+    overflow-x: auto;
+  }
+  
+  .calculator-form,
+  .result-card {
+    padding: 20px;
+  }
+  
+  .estimated-price .countup {
+    font-size: 48px;
+  }
+  
+  .cta-card {
+    text-align: center;
+  }
+  
+  .cta-buttons {
+    margin-top: 20px;
+  }
+  
+  .cta-buttons .ant-btn {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .pricing-header {
+    padding: 12px 16px;
+  }
+  
+  .logo-text {
+    font-size: 20px;
+  }
+  
+  .hero-content h1 {
+    font-size: 28px;
+  }
+  
+  .hero-subtitle {
+    font-size: 16px;
+  }
+  
+  .hero-description {
+    font-size: 14px;
+  }
+  
+  .billing-toggle {
+    padding: 12px;
+  }
+  
+  .billing-toggle .ant-space {
+    gap: 12px;
+  }
+  
+  .hero-stats .ant-statistic {
+    padding: 12px;
+  }
+  
+  .hero-stats .ant-statistic-content {
+    font-size: 20px;
+  }
+  
+  .section-header h2 {
+    font-size: 24px;
+  }
+  
+  .plan-header {
+    padding: 24px 16px 16px;
+  }
+  
+  .plan-price h1 {
+    font-size: 36px;
+  }
+  
+  .plan-specs,
+  .plan-features {
+    margin: 0 16px 16px;
+    padding: 12px;
+  }
+  
+  .addon-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+  
+  .addon-price h3 {
+    font-size: 24px;
+  }
+  
+  .estimated-price .countup {
+    font-size: 36px;
+  }
+  
+  .estimated-price small {
+    font-size: 14px;
+  }
+  
+  .cta-card {
+    padding: 24px 16px;
+  }
+  
+  .cta-card h2 {
+    font-size: 24px;
+  }
+  
+  .cta-card p {
+    font-size: 14px;
+  }
+  
+  .contact-card {
+    padding: 32px 16px;
+  }
+  
+  .contact-card h4 {
+    font-size: 20px;
+  }
+}
+
+/* ============================================
+   14. SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-400);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-500);
+}
+
+/* ============================================
+   15. UTILITAIRES
+   ============================================ */
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+.text-success {
+  color: var(--success);
+}
+
+.text-warning {
+  color: var(--warning);
+}
+
+.text-error {
+  color: var(--error);
+}
+
+.text-muted {
+  color: var(--gray-500);
+}
+
+/* Margin utilities */
+.mt-1 { margin-top: var(--spacing-xs); }
+.mt-2 { margin-top: var(--spacing-sm); }
+.mt-3 { margin-top: var(--spacing-md); }
+.mt-4 { margin-top: var(--spacing-lg); }
+.mt-5 { margin-top: var(--spacing-xl); }
+
+.mb-1 { margin-bottom: var(--spacing-xs); }
+.mb-2 { margin-bottom: var(--spacing-sm); }
+.mb-3 { margin-bottom: var(--spacing-md); }
+.mb-4 { margin-bottom: var(--spacing-lg); }
+.mb-5 { margin-bottom: var(--spacing-xl); }
+
+/* Glass effect */
+.glass-effect {
+  background: var(--bg-glass);
+  backdrop-filter: var(--blur-md);
+  border: 1px solid var(--gray-200);
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: var(--transition-base);
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hover-scale {
+  transition: var(--transition-base);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   16. ACCESSIBILITÉ
+   ============================================ */
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--primary-subtle);
+  color: var(--primary-dark);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,60 @@
+.draggable-bubble {
+  position: fixed;
+  cursor: grab;
+  user-select: none;
+  transition: none; /* Pas de transition pour le drag */
+  will-change: bottom, right;
+}
+
+.draggable-bubble:active {
+  cursor: grabbing;
+}
+
+.draggable-bubble.dragging {
+  opacity: 0.9;
+  transform: scale(1.1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* Animation de pulsation douce */
+@keyframes gentlePulse {
+  0% {
+    box-shadow: 0 5px 20px rgba(65, 88, 208, 0.4);
+  }
+  50% {
+    box-shadow: 0 5px 30px rgba(65, 88, 208, 0.6);
+  }
+  100% {
+    box-shadow: 0 5px 20px rgba(65, 88, 208, 0.4);
+  }
+}
+
+.draggable-bubble .ant-avatar {
+  animation: gentlePulse 3s infinite;
+}
+
+/* Indicateur de déplacement */
+.draggable-bubble::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255,255,255,0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.draggable-bubble:hover::after {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .draggable-bubble {
+    touch-action: none; /* Empêche le scroll pendant le drag sur mobile */
+  }
+}

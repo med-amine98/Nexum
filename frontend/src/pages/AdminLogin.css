@@ -1,0 +1,370 @@
+/* src/pages/AdminLogin.css */
+
+.admin-login-page {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-deep, #030014);
+  overflow: hidden;
+}
+
+/* Bannière gauche */
+.admin-login-banner {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #0A0A1A 0%, #111128 100%);
+  overflow: hidden;
+}
+
+.admin-login-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+  animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 400px;
+  width: 100%;
+}
+
+.banner-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 60px;
+}
+
+.logo-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+}
+
+.banner-title {
+  margin: 0 !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px;
+}
+
+.admin-tag {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.banner-headline {
+  font-size: 48px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  margin-bottom: 40px !important;
+  letter-spacing: -2px;
+}
+
+.banner-features {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.feature-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-icon {
+  font-size: 24px;
+}
+
+.feature-item div {
+  flex: 1;
+}
+
+.feature-item strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.feature-item .ant-typography-secondary {
+  font-size: 13px;
+}
+
+.banner-stats {
+  display: flex;
+  gap: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-value {
+  display: block;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.stat-label {
+  display: block;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Formulaire droite */
+.admin-login-form-container {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: var(--bg-deep, #030014);
+}
+
+.admin-login-card {
+  width: 100%;
+  border-radius: 28px !important;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.admin-avatar {
+  margin-bottom: 16px;
+  transition: transform 0.3s ease;
+}
+
+.admin-avatar:hover {
+  transform: scale(1.05);
+}
+
+.security-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.login-alert {
+  margin-bottom: 20px;
+}
+
+/* Tabs */
+.login-tabs .ant-tabs-nav {
+  margin-bottom: 24px;
+}
+
+.login-tabs .ant-tabs-tab {
+  color: var(--text-secondary, #94A3B8);
+  font-weight: 500;
+  padding: 12px 24px;
+}
+
+.login-tabs .ant-tabs-tab-active {
+  color: var(--primary, #2563eb);
+}
+
+.login-tabs .ant-tabs-ink-bar {
+  background: var(--gradient-primary, linear-gradient(135deg, #2563eb, #475569));
+  height: 3px;
+  border-radius: 3px;
+}
+
+/* Form */
+.login-form .ant-form-item-label label {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.input-icon {
+  color: var(--text-muted, #64748B);
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.login-options .ant-checkbox-wrapper {
+  color: var(--text-secondary, #94A3B8);
+}
+
+.forgot-link {
+  padding: 0 !important;
+  height: auto !important;
+  font-size: 14px;
+}
+
+/* Company login */
+.company-login {
+  text-align: center;
+}
+
+.company-hint {
+  font-size: 12px;
+}
+
+/* Divider */
+.login-divider {
+  margin: 24px 0;
+}
+
+/* Quick links */
+.admin-quick-links {
+  margin: 20px 0;
+}
+
+.admin-quick-links .ant-btn {
+  transition: all 0.3s ease;
+}
+
+.admin-quick-links .ant-btn:hover {
+  transform: translateX(5px);
+  border-color: var(--primary, #2563eb) !important;
+  color: var(--primary, #2563eb) !important;
+}
+
+/* Signup section */
+.admin-signup-section {
+  margin-top: 20px;
+}
+
+.admin-signup-button {
+  transition: all 0.3s ease;
+}
+
+.admin-signup-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary, #2563eb) !important;
+  color: var(--primary, #2563eb) !important;
+}
+
+.signup-hint {
+  font-size: 11px;
+}
+
+/* Footer */
+.login-footer {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border, rgba(255, 255, 255, 0.06));
+  text-align: center;
+}
+
+.back-link {
+  transition: color 0.3s ease;
+  margin: 0 4px;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.copyright {
+  font-size: 11px;
+}
+
+/* Modals */
+.twofactor-modal .ant-modal-content,
+.reset-modal .ant-modal-content {
+  background: var(--bg-card, #1A1A3E);
+  border-radius: 20px;
+}
+
+.twofactor-modal .ant-modal-header,
+.reset-modal .ant-modal-header {
+  background: transparent;
+  border-bottom: 1px solid var(--border, rgba(255, 255, 255, 0.06));
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .admin-login-page {
+    flex-direction: column;
+  }
+  
+  .admin-login-banner {
+    min-height: 400px;
+  }
+  
+  .admin-login-form-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .banner-headline {
+    font-size: 36px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-login-banner {
+    padding: 30px 20px;
+  }
+  
+  .admin-login-form-container {
+    padding: 20px;
+  }
+  
+  .banner-headline {
+    font-size: 28px !important;
+  }
+  
+  .banner-stats {
+    gap: 20px;
+  }
+  
+  .stat-value {
+    font-size: 22px;
+  }
+}

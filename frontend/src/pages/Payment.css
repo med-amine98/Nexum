@@ -1,0 +1,569 @@
+/* Payment.css - Version avec palette bleu noir, bleu blanc et doré */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables */
+:root {
+  --blue-dark: #0A0F1F;
+  --blue-navy: #0F1A3A;
+  --blue-deep: #162A5A;
+  --blue-royal: #1E3A8A;
+  --blue-ocean: #2563EB;
+  --blue-sky: #1d4ed8;
+  --white: #FFFFFF;
+  --white-smoke: #F8FAFC;
+  --gold: var(--warning);
+  --gold-dark: var(--warning);
+  --gray: #6B7280;
+  --gray-light: #9CA3AF;
+  --success: #2a9d8f;
+  --error: #EF4444;
+}
+
+.payment-layout {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-dark));
+  position: relative;
+}
+
+/* Header */
+.payment-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+  padding: 0 24px;
+  height: 72px;
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.logo-icon {
+  font-size: 28px;
+  color: var(--secondary);
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: bold;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.secure-badge {
+  margin-left: 8px;
+}
+
+.payment-steps-wrapper {
+  flex: 1;
+  max-width: 500px;
+  margin: 0 24px;
+}
+
+.payment-steps .ant-steps-item-process .ant-steps-item-icon {
+  background: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.payment-steps .ant-steps-item-finish .ant-steps-item-icon {
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
+
+.payment-steps .ant-steps-item-finish .ant-steps-item-icon .ant-steps-icon {
+  color: var(--secondary);
+}
+
+.payment-steps .ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-tail::after {
+  background-color: var(--secondary);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.support-icon {
+  font-size: 24px;
+  color: var(--secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.support-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Content */
+.payment-content {
+  margin-top: 72px;
+  padding: 40px 24px;
+  min-height: calc(100vh - 72px);
+}
+
+.payment-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Payment Card */
+.payment-card {
+  border-radius: 24px !important;
+  background: var(--bg-secondary) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: none;
+}
+
+.step-content {
+  padding: 8px 0;
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid rgba(220, 38, 38, 0.2);
+}
+
+.step-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: white;
+}
+
+.step-title {
+  margin-bottom: 4px !important;
+  color: var(--text-primary) !important;
+}
+
+/* Order Summary */
+.order-summary {
+  margin-bottom: 24px;
+}
+
+.order-summary .ant-descriptions-item-label {
+  font-weight: 600;
+  background: var(--bg-secondary);
+}
+
+/* Features Collapse */
+.features-collapse {
+  margin-bottom: 24px;
+}
+
+.features-collapse .ant-collapse-header {
+  font-weight: 500;
+  color: var(--primary);
+}
+
+/* Terms Section */
+.terms-section {
+  margin: 24px 0;
+}
+
+.guarantee-box {
+  margin-top: 24px;
+}
+
+/* Payment Methods */
+.payment-methods {
+  margin-bottom: 24px;
+}
+
+.payment-method-option {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid var(--text-muted);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.payment-method-option:hover {
+  border-color: var(--secondary);
+  background: rgba(220, 38, 38, 0.05);
+}
+
+.payment-method-option .ant-radio-checked {
+  border-color: var(--secondary);
+}
+
+.method-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  width: 100%;
+}
+
+.method-badge {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* Card Details */
+.card-details {
+  margin-top: 24px;
+  padding: 24px;
+  background: var(--bg-secondary);
+  border-radius: 16px;
+}
+
+/* Transfer Info */
+.transfer-info {
+  margin-top: 24px;
+}
+
+/* Secure Payment */
+.secure-payment {
+  margin-top: 24px;
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* Step Actions */
+.step-actions {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--text-muted);
+  display: flex;
+  justify-content: center;
+}
+
+.prev-button {
+  border-radius: 12px !important;
+}
+
+.next-button {
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+  border: none !important;
+}
+
+.next-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+/* Confirmation Step */
+.confirmation-step {
+  text-align: center;
+}
+
+.confirmation-details {
+  margin-top: 32px;
+  text-align: left;
+}
+
+.next-steps {
+  margin-top: 24px;
+}
+
+/* Order Summary Card */
+.order-summary-card {
+  border-radius: 24px !important;
+  background: var(--bg-secondary) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+.selected-plan {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.05), rgba(220, 38, 38, 0.05));
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.plan-info {
+  flex: 1;
+}
+
+.plan-tag {
+  margin-left: auto;
+}
+
+/* Price Breakdown */
+.price-breakdown {
+  margin: 16px 0;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 0;
+}
+
+.price-row.discount {
+  color: var(--success);
+}
+
+.price-row.total {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 2px solid var(--text-muted);
+}
+
+.savings-badge {
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* Promo Code */
+.promo-code {
+  margin: 16px 0;
+}
+
+/* Features Included */
+.features-included {
+  margin: 16px 0;
+}
+
+/* Payment Guarantees */
+.payment-guarantees {
+  margin: 16px 0;
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+}
+
+/* Help Card */
+.help-card {
+  border-radius: 24px !important;
+  background: linear-gradient(135deg, var(--white), var(--white-smoke)) !important;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+/* Footer */
+.payment-footer {
+  background: var(--bg-secondary);
+  text-align: center;
+  padding: 24px;
+  border-top: 1px solid var(--text-muted);
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Processing Modal */
+.processing-modal .ant-modal-content {
+  border-radius: 24px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .payment-steps-wrapper {
+    display: none;
+  }
+  
+  .payment-steps {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .payment-header {
+    padding: 0 16px;
+  }
+  
+  .payment-content {
+    padding: 24px 16px;
+  }
+  
+  .step-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .step-actions {
+    flex-direction: column;
+  }
+  
+  .step-actions .ant-space {
+    width: 100%;
+  }
+  
+  .step-actions .ant-space-item {
+    width: 100%;
+  }
+  
+  .step-actions button {
+    width: 100%;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .payment-card {
+    border-radius: 16px !important;
+  }
+  
+  .method-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .method-badge {
+    position: static;
+    margin-top: 8px;
+  }
+  
+  .selected-plan {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .plan-tag {
+    margin-left: 0;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Ant Design Overrides */
+.ant-radio-checked .ant-radio-inner {
+  border-color: var(--secondary) !important;
+}
+
+.ant-radio-checked .ant-radio-inner::after {
+  background-color: var(--secondary) !important;
+}
+
+.ant-radio-wrapper:hover .ant-radio-inner {
+  border-color: var(--secondary) !important;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.ant-checkbox-wrapper:hover .ant-checkbox-inner {
+  border-color: var(--secondary);
+}
+
+.ant-input:focus,
+.ant-input:hover,
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper:hover {
+  border-color: var(--secondary) !important;
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.1) !important;
+}
+
+.ant-btn-primary {
+  background: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.ant-btn-primary:hover {
+  background: var(--secondary-dark);
+  border-color: var(--secondary-dark);
+}
+
+.ant-tag-gold {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: var(--text-primary);
+}
+
+.ant-progress-circle .ant-progress-text {
+  color: var(--secondary);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-dark);
+}

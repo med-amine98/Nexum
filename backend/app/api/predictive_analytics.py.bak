@@ -1,0 +1,373 @@
+# app/api/predictive_analytics.py
+from fastapi import APIRouter, Depends, HTTPException, Query
+from typing import List, Dict, Any, Optional
+from datetime import datetime
+from sqlalchemy.orm import Session
+import logging
+
+from app.database import get_db
+from app.services.predictiveAnalytic_service import predictive_service
+
+router = APIRouter(prefix="/predictions", tags=["predictive-analytics"])
+logger = logging.getLogger(__name__)
+
+# Auth dépendance
+async def get_current_user(token: Optional[str] = None):
+    class CurrentUser:
+        id = 1
+        email = "admin@example.com"
+    return CurrentUser()
+
+
+@router.get("/dashboard")
+async def get_dashboard(
+    current_user = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Récupère toutes les données du dashboard prédictif B2B"""
+    try:
+        data = predictive_service.get_dashboard_data(db)
+        return {
+            **data,
+            "timestamp": datetime.now().isoformat()
+        }
+    except Exception as e:
+        logger.error(f"Erreur dashboard: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/sales")
+async def get_sales_forecast(
+    period: str = Query("month", description="Période: week, month, quarter, year"),
+    limit: int = Query(12, description="Nombre de périodes"),
+    db: Session = Depends(get_db)
+):
+    """Récupère les prévisions de ventes B2B pour le futur"""
+    try:
+        # Calculer le nombre de périodes
+        periods_map = {
+            "week": limit,
+            "month": limit,
+            "quarter": limit * 3,
+            "year": limit * 12
+        }
+        periods = periods_map.get(period, 12)
+        
+        # Générer les prévisions futures
+        forecasts = predictive_service.generate_future_forecast(db, periods)
+        
+        # Filtrer pour n'avoir que les dates futures
+        today = datetime.now().date()
+        future_forecasts = [
+            f for f in forecasts 
+            if datetime.strptime(f["date"], "%Y-%m-%d").date() > today
+        ]
+        
+        return future_forecasts
+    except Exception as e:
+        logger.error(f"Erreur sales forecast: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/metrics")
+async def get_metric_predictions(
+    db: Session = Depends(get_db)
+):
+    """Récupère les métriques B2B actuelles et prédictions"""
+    try:
+        predictions = predictive_service.predict_future_metrics(db)
+        return predictions
+    except Exception as e:
+        logger.error(f"Erreur metrics: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/current-metrics")
+async def get_current_metrics(
+    db: Session = Depends(get_db)
+):
+    """Récupère uniquement les métriques B2B actuelles (sans prédictions)"""
+    try:
+        metrics = predictive_service.get_current_metrics(db)
+        return {
+            "revenue": metrics["revenue"],
+            "orders": metrics["orders"],
+            "avg_basket": metrics["avg_basket"],
+            "new_customers": metrics["new_customers"],
+            "timestamp": datetime.now().isoformat()
+        }
+    except Exception as e:
+        logger.error(f"Erreur current metrics: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/scenarios")
+async def get_scenarios(
+    db: Session = Depends(get_db)
+):
+    """Récupère tous les scénarios de simulation"""
+    try:
+        from app.models.predictive_analytics import SimulationScenario
+        scenarios = db.query(SimulationScenario).order_by(
+            SimulationScenario.created_at.desc()
+        ).all()
+        
+        return [{
+            "id": s.id,
+            "name": s.name,
+            "description": s.description,
+            "impact": s.impact,
+            "probability": s.probability,
+            "parameters": s.parameters,
+            "created_at": s.created_at.isoformat()
+        } for s in scenarios]
+    except Exception as e:
+        logger.error(f"Erreur get scenarios: {e}")
+        return []
+
+
+@router.get("/exogenous-factors")
+async def get_exogenous_factors(
+    db: Session = Depends(get_db)
+):
+    """Récupère les facteurs exogènes"""
+    try:
+        from app.models.predictive_analytics import ExogenousFactor
+        factors = db.query(ExogenousFactor).order_by(
+            ExogenousFactor.created_at.desc()
+        ).all()
+        
+        return [{
+            "id": f.id,
+            "name": f.name,
+            "type": f.type,
+            "frequency": f.frequency,
+            "description": f.description,
+            "values": f.values,
+            "created_at": f.created_at.isoformat()
+        } for f in factors]
+    except Exception as e:
+        logger.error(f"Erreur get factors: {e}")
+        return []
+
+
+@router.get("/thresholds")
+async def get_thresholds(
+    db: Session = Depends(get_db)
+):
+    """Récupère les seuils d'alerte"""
+    try:
+        from app.models.predictive_analytics import AlertThreshold
+        thresholds = db.query(AlertThreshold).filter(
+            AlertThreshold.is_active == True
+        ).all()
+        
+        return [{
+            "id": t.id,
+            "metric": t.metric.value,
+            "condition": t.condition,
+            "threshold": t.threshold,
+            "level": t.level.value,
+            "notification_method": t.notification_method,
+            "is_active": t.is_active
+        } for t in thresholds]
+    except Exception as e:
+        logger.error(f"Erreur get thresholds: {e}")
+        return []
+
+
+@router.post("/scenarios")
+async def create_scenario(
+    data: Dict[str, Any],
+    current_user = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Crée un nouveau scénario de simulation"""
+    try:
+        from app.models.predictive_analytics import SimulationScenario
+        scenario = SimulationScenario(
+            name=data["name"],
+            description=data.get("description", ""),
+            impact=data.get("impact", 0),
+            probability=data.get("probability", 50),
+            parameters=data.get("parameters", {})
+        )
+        db.add(scenario)
+        db.commit()
+        db.refresh(scenario)
+        
+        logger.info(f"✅ Scénario créé: {scenario.name}")
+        return {"success": True, "id": scenario.id}
+    except Exception as e:
+        db.rollback()
+        logger.error(f"Erreur create scenario: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/exogenous-factors")
+async def create_exogenous_factor(
+    data: Dict[str, Any],
+    current_user = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Crée un facteur exogène"""
+    try:
+        from app.models.predictive_analytics import ExogenousFactor
+        factor = ExogenousFactor(
+            name=data["name"],
+            type=data.get("type"),
+            frequency=data.get("frequency"),
+            description=data.get("description", ""),
+            values=data.get("values", {})
+        )
+        db.add(factor)
+        db.commit()
+        db.refresh(factor)
+        
+        logger.info(f"✅ Facteur exogène créé: {factor.name}")
+        return {"success": True, "id": factor.id}
+    except Exception as e:
+        db.rollback()
+        logger.error(f"Erreur create factor: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/thresholds")
+async def create_threshold(
+    data: Dict[str, Any],
+    current_user = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Crée un seuil d'alerte"""
+    try:
+        from app.models.predictive_analytics import AlertThreshold, MetricType, AlertLevel
+        
+        threshold = AlertThreshold(
+            metric=MetricType(data["metric"]),
+            condition=data["condition"],
+            threshold=data["threshold"],
+            level=AlertLevel(data.get("level", "warning")),
+            notification_method=data.get("notification_method", ["email"]),
+            is_active=data.get("is_active", True)
+        )
+        db.add(threshold)
+        db.commit()
+        db.refresh(threshold)
+        
+        logger.info(f"✅ Seuil d'alerte créé: {threshold.metric.value} {threshold.condition} {threshold.threshold}")
+        return {"success": True, "id": threshold.id}
+    except Exception as e:
+        db.rollback()
+        logger.error(f"Erreur create threshold: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/historical-data")
+async def add_historical_data(
+    data: Dict[str, Any],
+    current_user = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Ajoute des données historiques manuellement"""
+    try:
+        from app.models.predictive_analytics import HistoricalData, MetricType
+        
+        historical = HistoricalData(
+            date=datetime.fromisoformat(data["date"]),
+            metric=MetricType(data["metric"]),
+            value=data["value"],
+            notes=data.get("notes", "")
+        )
+        db.add(historical)
+        db.commit()
+        db.refresh(historical)
+        
+        logger.info(f"✅ Donnée historique ajoutée: {historical.metric.value} = {historical.value}")
+        return {"success": True, "id": historical.id}
+    except Exception as e:
+        db.rollback()
+        logger.error(f"Erreur add historical: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/simulate")
+async def run_simulation(
+    data: Dict[str, Any],
+    db: Session = Depends(get_db)
+):
+    """Exécute une simulation de scénario B2B"""
+    try:
+        # Vérifier que le scénario existe
+        from app.models.predictive_analytics import SimulationScenario
+        
+        scenario_id = data.get("scenario_id")
+        if scenario_id:
+            scenario = db.query(SimulationScenario).filter(
+                SimulationScenario.id == scenario_id
+            ).first()
+            if not scenario:
+                raise HTTPException(status_code=404, detail="Scénario non trouvé")
+        
+        result = predictive_service.run_simulation(
+            db, 
+            scenario_id, 
+            data.get("custom_params", {})
+        )
+        return result
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Erreur simulation: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/export")
+async def export_predictions(
+    db: Session = Depends(get_db)
+):
+    """Exporte les prévisions au format CSV"""
+    from fastapi.responses import StreamingResponse
+    import io
+    import csv
+    
+    try:
+        data = predictive_service.get_dashboard_data(db)
+        
+        output = io.StringIO()
+        writer = csv.writer(output)
+        
+        # En-têtes
+        writer.writerow(["Date", "Prédiction (€)", "Borne Inf (€)", "Borne Sup (€)", "Confiance"])
+        
+        # Données
+        for forecast in data["sales_forecast"]:
+            writer.writerow([
+                forecast["date"],
+                forecast["predicted_value"],
+                forecast["lower_bound"],
+                forecast["upper_bound"],
+                forecast["confidence"]
+            ])
+        
+        output.seek(0)
+        
+        filename = f"predictions_b2b_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
+        
+        return StreamingResponse(
+            io.BytesIO(output.getvalue().encode('utf-8-sig')),
+            media_type="text/csv",
+            headers={"Content-Disposition": f"attachment; filename={filename}"}
+        )
+    except Exception as e:
+        logger.error(f"Erreur export: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/health")
+async def health_check():
+    """Vérifie que l'API fonctionne"""
+    return {
+        "status": "healthy",
+        "service": "predictive-analytics",
+        "timestamp": datetime.now().isoformat()
+    }

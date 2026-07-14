@@ -1,0 +1,255 @@
+/* ProjectDashboard.css */
+
+.project-dashboard {
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Background decorations */
+.dashboard-bg-decoration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+}
+
+.blob-1 {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  top: -100px;
+  right: -100px;
+}
+
+.blob-2 {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #52c41a, #95de64);
+  bottom: 50px;
+  left: -100px;
+}
+
+.blob-3 {
+  width: 350px;
+  height: 350px;
+  background: linear-gradient(135deg, #722ed1, #b37feb);
+  bottom: 200px;
+  right: 20%;
+}
+
+/* Header styles */
+.dashboard-header-premium {
+  position: relative;
+  overflow: hidden;
+}
+
+.header-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.header-avatar {
+  background: rgba(255,255,255,0.2) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.glass-button {
+  background: rgba(255,255,255,0.15) !important;
+  border: 1px solid rgba(255,255,255,0.3) !important;
+  color: white !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease !important;
+}
+
+.glass-button:hover {
+  background: rgba(255,255,255,0.25) !important;
+  transform: translateY(-2px);
+}
+
+.glass-avatar {
+  background: rgba(255,255,255,0.15) !important;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.glass-avatar:hover {
+  background: rgba(255,255,255,0.25) !important;
+  transform: scale(1.05);
+}
+
+/* Section icons */
+.section-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.alert-icon { background: linear-gradient(135deg, #ff4d4f15, #ff787515); color: #ff4d4f; }
+.chart-icon { background: linear-gradient(135deg, #722ed115, #b37feb15); color: #722ed1; }
+.health-icon { background: linear-gradient(135deg, #faad1415, #ffd66615); color: #faad14; }
+.digital-icon { background: linear-gradient(135deg, #667eea15, #764ba215); color: #667eea; }
+.modules-icon { background: linear-gradient(135deg, #52c41a15, #95de6415); color: #52c41a; }
+.activity-icon { background: linear-gradient(135deg, #13c2c215, #5cdbd315); color: #13c2c2; }
+
+/* Cards animations */
+.alerts-card,
+.chart-card,
+.health-card,
+.digital-twins-card,
+.modules-card,
+.activities-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.alerts-card:hover,
+.chart-card:hover,
+.health-card:hover,
+.digital-twins-card:hover,
+.modules-card:hover,
+.activities-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* KPI Card premium */
+.kpi-card-premium {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.kpi-card-premium:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.kpi-glow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.kpi-icon-wrapper {
+  transition: all 0.3s ease;
+}
+
+.kpi-icon-wrapper:hover {
+  background: linear-gradient(135deg, rgba(0,0,0,0.1), transparent) !important;
+}
+
+/* Digital Twin Card */
+.digital-twin-card {
+  transition: all 0.3s ease;
+}
+
+.digital-twin-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Module Card */
+.module-card {
+  transition: all 0.3s ease;
+}
+
+.module-card:hover {
+  transform: translateX(4px);
+  border-left-color: var(--ant-primary-color) !important;
+}
+
+/* Activity Item */
+.activity-item {
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.activity-item:hover {
+  background: #f8fafc;
+  transform: translateX(4px);
+}
+
+/* Metric Item */
+.metric-item {
+  transition: all 0.3s ease;
+  background: rgba(248, 250, 252, 0.6);
+}
+
+.metric-item:hover {
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Modal styles */
+.digital-twin-modal .ant-modal-content {
+  border-radius: 24px;
+}
+
+.twin-descriptions .ant-descriptions-item-label {
+  font-weight: 600;
+  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+}
+
+.sync-button {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border: none;
+  border-radius: 12px;
+  padding: 0 32px;
+  height: 44px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.sync-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Float buttons */
+.float-buttons {
+  z-index: 100;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-header-premium {
+    padding: 20px !important;
+  }
+  
+  .dashboard-header-premium .ant-space {
+    gap: 12px !important;
+  }
+  
+  .ant-card-head-title {
+    font-size: 14px !important;
+  }
+  
+  .section-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,289 @@
+/* src/pages/AdminSignup.css */
+.admin-signup-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 50%, #0f3460 100%);
+  padding: 48px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-signup-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path d="M10 10 L90 10 L90 90 L10 90 Z" stroke="%23722ed1" fill="none" stroke-width="2"/><circle cx="50" cy="50" r="20" stroke="%23722ed1" fill="none" stroke-width="2"/></svg>') repeat;
+  pointer-events: none;
+}
+
+.admin-signup-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.admin-signup-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.logo-icon {
+  font-size: 48px;
+  color: #722ed1;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.header-logo h2 {
+  color: white !important;
+  margin: 0 !important;
+}
+
+.admin-tag {
+  font-size: 14px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #722ed1, #1890ff);
+  border: none;
+  color: white;
+}
+
+.admin-signup-header .ant-typography-secondary {
+  color: rgba(255, 255, 255, 0.6) !important;
+  display: block;
+  margin-bottom: 24px;
+}
+
+.security-alert {
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-left: 4px solid #faad14;
+  color: white;
+}
+
+.security-alert .ant-alert-message {
+  color: #faad14;
+  font-weight: 600;
+}
+
+.security-alert .ant-alert-description {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.steps-card {
+  margin-bottom: 24px;
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-steps .ant-steps-item-title {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.admin-steps .ant-steps-item-description {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.admin-steps .ant-steps-item-process .ant-steps-item-title {
+  color: #722ed1 !important;
+}
+
+.admin-signup-card {
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  background: white;
+  overflow: hidden;
+}
+
+.step-content {
+  padding: 24px 0;
+}
+
+.step-content h4 {
+  color: #722ed1;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.input-icon {
+  color: #722ed1;
+}
+
+.password-strength {
+  margin: 16px 0 24px;
+  padding: 16px;
+  background: #f9f9f9;
+  border-radius: 12px;
+}
+
+.strength-text {
+  display: block;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.password-checks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.check-valid {
+  color: #52c41a;
+}
+
+.check-invalid {
+  color: #ff4d4f;
+}
+
+.permissions-preview {
+  background: #f9f9f9;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.permissions-preview ul {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+}
+
+.permissions-preview li {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.perm-check {
+  color: #52c41a;
+  font-size: 16px;
+}
+
+.admin-summary {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  background: linear-gradient(135deg, #f9f9f9, #f0f0f0);
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.admin-info {
+  flex: 1;
+}
+
+.admin-info h5 {
+  margin: 0 0 8px !important;
+}
+
+.company-summary {
+  margin-bottom: 24px;
+}
+
+.company-summary .ant-descriptions-bordered {
+  background: #f9f9f9;
+}
+
+.warning-alert {
+  margin: 24px 0;
+  border-radius: 8px;
+  border-left: 4px solid #faad14;
+}
+
+.step-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 2px solid #f0f0f0;
+}
+
+.next-button.admin,
+.submit-button.admin {
+  background: linear-gradient(135deg, #722ed1, #1890ff);
+  border: none;
+  transition: all 0.3s;
+}
+
+.next-button.admin:hover,
+.submit-button.admin:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(114, 46, 209, 0.4);
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.login-link-text {
+  color: #722ed1;
+  font-weight: 600;
+}
+
+.login-link-text:hover {
+  color: #1890ff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-signup-page {
+    padding: 24px 16px;
+  }
+  
+  .password-checks {
+    grid-template-columns: 1fr;
+  }
+  
+  .admin-summary {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .step-navigation {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .step-navigation button {
+    width: 100%;
+  }
+}

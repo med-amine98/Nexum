@@ -1,0 +1,68 @@
+/* Styles pour améliorer la lisibilité du tableau des factures */
+.ant-table {
+  border-radius: 16px !important;
+}
+
+.ant-table-thead > tr > th {
+  background: linear-gradient(135deg, #f8fafc, #f1f5f9) !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  padding: 16px !important;
+  border-bottom: 2px solid #e2e8f0 !important;
+}
+
+.ant-table-tbody > tr > td {
+  padding: 14px 16px !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: #f8fafc !important;
+}
+
+/* Lignes spéciales */
+.row-paid {
+  background: #f6ffed !important;
+}
+
+.row-overdue {
+  background: #fff1f0 !important;
+}
+
+.row-auto {
+  background: #f0f5ff !important;
+}
+
+/* Amélioration des badges */
+.ant-badge-status-text {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+/* Tooltips */
+.ant-tooltip-inner {
+  background: #1a2035 !important;
+  color: white !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+}
+
+/* Animation des lignes */
+.ant-table-row {
+  transition: all 0.3s ease !important;
+}
+
+/* Amélioration des montants */
+.ant-statistic-content {
+  font-size: 28px !important;
+}
+
+/* Cartes KPI */
+.ant-card {
+  transition: all 0.3s ease !important;
+}
+
+.ant-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1) !important;
+}

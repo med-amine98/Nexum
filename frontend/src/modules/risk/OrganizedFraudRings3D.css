@@ -1,0 +1,73 @@
+/* src/modules/intelligence/OrganizedFraudRings3D.css */
+
+.fraud-rings-container {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+
+.fraud-rings-container::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.fraud-rings-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.fraud-rings-container::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+}
+
+.fraud-rings-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* Animation des cartes */
+.stat-card .ant-statistic-title {
+  color: rgba(255,255,255,0.6) !important;
+}
+
+.stat-card .ant-statistic-content {
+  color: #ffffff !important;
+}
+
+/* Timeline personnalisée */
+.ant-timeline-item-tail {
+  border-color: rgba(255,255,255,0.08) !important;
+}
+
+/* Progress bars */
+.ant-progress-inner {
+  background: rgba(255,255,255,0.05) !important;
+}
+
+/* Table hover */
+.ant-table-tbody > tr.ant-table-row:hover > td {
+  background: rgba(255,255,255,0.03) !important;
+}
+
+/* Badge personnalisé */
+.ant-badge-count {
+  box-shadow: none !important;
+}
+
+/* Segmented control */
+.ant-segmented-item {
+  color: rgba(255,255,255,0.5) !important;
+}
+
+.ant-segmented-item-selected {
+  color: #ffffff !important;
+  background: rgba(0, 212, 255, 0.15) !important;
+}
+
+/* Glow effect pour le header */
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.fraud-rings-container .ant-badge-status-processing {
+  animation: pulse 2s infinite;
+}

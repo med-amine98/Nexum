@@ -1,0 +1,968 @@
+/* ============================================
+   Home.css - Design Premium Nexum v4.0
+   Thème Aurora - Élégance Moderne
+   ============================================ */
+
+/* ============================================
+   1. VARIABLES CSS - SYSTÈME AURORA PREMIUM
+   ============================================ */
+/* Dans Home.css - Ajoutez ces règles */
+
+/* Cartes modules - texte lisible */
+.module-card {
+  background: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+}
+
+.module-card .ant-card-body {
+  color: var(--text-secondary) !important;
+}
+
+.module-card h4 {
+  color: var(--text-primary) !important;
+  font-weight: 700 !important;
+}
+
+.module-card .ant-paragraph {
+  color: var(--text-secondary) !important;
+}
+
+.module-card .ant-list-item {
+  color: var(--text-secondary) !important;
+}
+
+.module-card .ant-list-item .ant-typography {
+  color: var(--text-secondary) !important;
+}
+
+.module-card .ant-tag {
+  color: inherit !important;
+  font-weight: 600 !important;
+}
+
+/* Tags stats */
+.module-stats .ant-tag {
+  background: rgba(99, 102, 241, 0.15) !important;
+  color: #818CF8 !important;
+  border: none !important;
+  padding: 4px 12px !important;
+  border-radius: 20px !important;
+  font-weight: 600 !important;
+}
+
+/* Features list */
+.module-feature {
+  color: #026cee !important;
+}
+
+.module-feature .anticon-check-circle {
+  color: #2563eb !important;
+}
+
+/* Titres des cartes */
+.ant-card-head-title {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+}
+/* ── Variables CSS gérées par aurora-next.css ──
+   :root + [data-theme='light'] redondants supprimés
+   ============================================ */
+
+
+
+/* ============================================
+   3. LAYOUT PRINCIPAL
+   ============================================ */
+
+.home-layout {
+  background: var(--bg-deep);
+  background-image: var(--gradient-mesh);
+  min-height: 100vh;
+  color: var(--text-primary);
+  position: relative;
+}
+
+.home-layout::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 50% 50%, rgba(99, 102, 241, 0.02) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================
+   4. HEADER PREMIUM
+   ============================================ */
+
+.home-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-fixed);
+  padding: 24px 0;
+  transition: var(--transition-spring);
+}
+
+.home-header.scrolled {
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur-lg);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+}
+
+.logo-container {
+  cursor: pointer;
+  transition: var(--transition-spring);
+  position: relative;
+}
+
+.logo-container:hover {
+  transform: scale(1.02);
+}
+
+.logo-container span {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.nav-item {
+  transition: var(--transition-spring);
+  position: relative;
+  font-weight: 500;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: var(--transition-base);
+  transform: translateX(-50%);
+  border-radius: var(--radius-full);
+}
+
+.nav-item:hover::after {
+  width: 80%;
+}
+
+.nav-item:hover {
+  color: var(--primary-light) !important;
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   5. HERO SECTION - Premium
+   ============================================ */
+
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  background: var(--gradient-hero);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding-top: 100px;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+  animation: float 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -2px;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientShift 3s ease infinite;
+  background-size: 200% auto;
+}
+
+.hero-subtitle {
+  font-size: 36px !important;
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700 !important;
+}
+
+.hero-description {
+  font-size: 18px !important;
+  color: var(--text-tertiary) !important;
+  line-height: 1.7 !important;
+  max-width: 600px;
+}
+
+.hero-stats {
+  margin-top: 48px;
+}
+
+/* ============================================
+   6. SECTIONS GÉNÉRALES
+   ============================================ */
+
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 64px;
+  padding: 0 24px;
+  position: relative;
+}
+
+.section-header::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+}
+
+.section-tag {
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: var(--primary-subtle);
+  color: var(--primary);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  backdrop-filter: var(--blur-sm);
+  border: 1px solid var(--border-color);
+}
+
+/* ============================================
+   7. CARDS & FEATURES - Premium
+   ============================================ */
+
+.stat-card,
+.feature-card,
+.module-card,
+.testimonial-card,
+.faq-panel {
+  transition: var(--transition-spring);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before,
+.feature-card::before,
+.module-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: transform 0.5s;
+}
+
+.stat-card:hover::before,
+.feature-card:hover::before,
+.module-card:hover::before {
+  transform: scaleX(1);
+}
+
+.stat-card:hover,
+.feature-card:hover,
+.module-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-2xl);
+  border-color: var(--primary-subtle) !important;
+}
+
+.feature-icon,
+.module-icon {
+  transition: var(--transition-spring);
+  background: var(--gradient-primary);
+  border-radius: var(--radius-2xl);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-glow);
+}
+
+.feature-card:hover .feature-icon,
+.module-card:hover .module-icon {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: var(--shadow-glow-strong);
+}
+
+/* ============================================
+   8. ASSISTANTS SECTION
+   ============================================ */
+
+.assistant-icon-large {
+  transition: var(--transition-spring);
+  cursor: pointer;
+}
+
+.assistant-icon-large:hover {
+  transform: scale(1.08) rotate(5deg);
+  filter: drop-shadow(var(--shadow-glow));
+}
+
+.assistant-content,
+.assistant-capabilities {
+  animation: fadeInUp 0.6s var(--transition-smooth);
+}
+
+/* ============================================
+   9. TESTIMONIALS - Premium
+   ============================================ */
+
+.testimonial-card {
+  margin: 20px;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  position: relative;
+}
+
+.testimonial-card::after {
+  content: '"';
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 80px;
+  font-family: Georgia, serif;
+  color: var(--primary-subtle);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.testimonial-avatar {
+  border: 3px solid var(--primary);
+  box-shadow: var(--shadow-glow);
+  transition: var(--transition-spring);
+}
+
+.testimonial-card:hover .testimonial-avatar {
+  transform: scale(1.05);
+  border-color: var(--secondary);
+  box-shadow: var(--shadow-glow-secondary);
+}
+
+.testimonial-text {
+  font-size: 18px;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--text-secondary);
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   10. FAQ SECTION
+   ============================================ */
+
+.faq-panel {
+  background: var(--bg-card) !important;
+  border-radius: var(--radius-lg) !important;
+  margin-bottom: 16px !important;
+  border: 1px solid var(--border-color) !important;
+  transition: var(--transition-spring);
+}
+
+.faq-panel:hover {
+  transform: translateX(8px);
+  border-color: var(--primary) !important;
+  box-shadow: var(--shadow-md);
+}
+
+.faq-contact-card {
+  background: var(--gradient-primary) !important;
+  border-radius: var(--radius-2xl);
+  transition: var(--transition-spring);
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.faq-contact-card:hover::before {
+  left: 100%;
+}
+
+.faq-contact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-2xl);
+}
+
+/* ============================================
+   11. CTA SECTION
+   ============================================ */
+
+.cta-card {
+  transition: var(--transition-spring);
+  position: relative;
+}
+
+.cta-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-2xl);
+}
+
+/* ============================================
+   12. ASSISTANT CHAT
+   ============================================ */
+
+.assistant-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: var(--z-fixed);
+}
+
+.assistant-chat-window {
+  transition: var(--transition-spring);
+  animation: scaleIn 0.3s var(--transition-bounce);
+}
+
+/* ============================================
+   13. ANIMATIONS AVANCÉES
+   ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Classes d'animation */
+.animate-fadeInUp {
+  animation: fadeInUp 0.7s var(--transition-smooth);
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.5s var(--transition-bounce);
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-bounce {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ============================================
+   14. SCROLLBAR PREMIUM
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  transition: var(--transition-base);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gradient-primary-hover);
+}
+
+/* ============================================
+   15. ANT DESIGN OVERRIDES PREMIUM
+   ============================================ */
+
+/* Boutons Premium */
+.ant-btn-primary {
+  background: var(--gradient-primary) !important;
+  border: none !important;
+  transition: var(--transition-spring);
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.ant-btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.ant-btn-primary:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.ant-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-primary);
+  background: var(--gradient-primary-hover) !important;
+}
+
+.ant-btn-default {
+  border-color: var(--border-color) !important;
+  color: var(--text-secondary) !important;
+  transition: var(--transition-spring);
+}
+
+.ant-btn-default:hover {
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Tags Premium */
+.ant-tag {
+  border-radius: var(--radius-full);
+  transition: var(--transition-spring);
+  font-weight: 600;
+  padding: 4px 16px;
+}
+
+.ant-tag:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Cards Premium */
+.ant-card {
+  transition: var(--transition-spring);
+  background: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+  backdrop-filter: var(--blur-sm);
+}
+
+.ant-card-hoverable:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Tabs Premium */
+.ant-tabs-tab {
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+  transition: var(--transition-spring);
+}
+
+.ant-tabs-tab:hover {
+  color: var(--primary) !important;
+  transform: translateY(-2px);
+}
+
+.ant-tabs-tab-active {
+  color: var(--primary) !important;
+}
+
+.ant-tabs-ink-bar {
+  background: var(--gradient-primary) !important;
+  height: 3px !important;
+  border-radius: var(--radius-full);
+}
+
+/* Modal Premium */
+.ant-modal-header {
+  background: var(--gradient-primary);
+  border-bottom: 1px solid var(--border-color);
+  border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+  padding: 24px 28px;
+}
+
+.ant-modal-title {
+  color: white;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.ant-modal-content {
+  background: var(--bg-card);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.ant-modal-close {
+  color: white;
+  transition: var(--transition-spring);
+}
+
+.ant-modal-close:hover {
+  color: var(--secondary);
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* Form Premium */
+.ant-form-item-label > label {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.ant-input,
+.ant-input-password,
+.ant-select-selector,
+.ant-input-textarea textarea {
+  border-radius: var(--radius-lg);
+  border-color: var(--border-color);
+  transition: var(--transition-spring);
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+.ant-input:focus,
+.ant-input:hover,
+.ant-select-focused .ant-select-selector,
+.ant-input-textarea textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-subtle);
+  transform: scale(1.01);
+}
+
+/* Statistic Premium */
+.ant-statistic-title {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.ant-statistic-content {
+  color: var(--text-primary);
+  font-weight: 800;
+}
+
+/* Float Button Premium */
+.ant-float-btn-primary {
+  background: var(--gradient-primary) !important;
+  transition: var(--transition-spring);
+}
+
+.ant-float-btn-primary:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ============================================
+   16. RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablettes */
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 40px !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 28px !important;
+  }
+  
+  .hero-description {
+    font-size: 16px !important;
+  }
+  
+  .section-header h2 {
+    font-size: 32px !important;
+  }
+}
+
+/* Mobiles */
+@media (max-width: 768px) {
+  .home-header {
+    padding: 16px 0;
+  }
+  
+  .hero-section {
+    padding-top: 80px;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 32px !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 24px !important;
+  }
+  
+  .hero-description {
+    font-size: 15px !important;
+  }
+  
+  .section-header h2 {
+    font-size: 28px !important;
+  }
+  
+  .section-header p {
+    font-size: 14px !important;
+  }
+  
+  .stat-card,
+  .feature-card,
+  .module-card,
+  .testimonial-card {
+    padding: 20px !important;
+  }
+  
+  .assistant-chat-window {
+    width: calc(100vw - 32px) !important;
+    right: 16px !important;
+    height: 500px !important;
+  }
+}
+
+/* Petits mobiles */
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 28px !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 20px !important;
+  }
+  
+  .hero-buttons .ant-space,
+  .cta-buttons .ant-space {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px !important;
+  }
+  
+  .hero-buttons button,
+  .cta-buttons button {
+    width: 100%;
+  }
+  
+  .testimonial-text {
+    font-size: 14px;
+  }
+  
+  .faq-contact-card {
+    padding: 24px !important;
+  }
+}
+
+/* ============================================
+   17. ACCESSIBILITÉ & PERFORMANCE
+   ============================================ */
+
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-md);
+}
+
+::selection {
+  background: var(--primary-subtle);
+  color: var(--primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   18. UTILITAIRES PREMIUM
+   ============================================ */
+
+.glass-effect {
+  background: var(--bg-glass);
+  backdrop-filter: var(--blur-lg);
+  border: 1px solid var(--border-color);
+}
+
+.hover-lift {
+  transition: var(--transition-spring);
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+}
+
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.gradient-border {
+  position: relative;
+  border: double 2px transparent;
+  border-radius: var(--radius-2xl);
+  background-image: var(--gradient-primary);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  margin-right: 8px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.status-dot.success { background: var(--success); }
+.status-dot.warning { background: var(--warning); }
+.status-dot.error { background: var(--error); }
+.status-dot.info { background: var(--info); }

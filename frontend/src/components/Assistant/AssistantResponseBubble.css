@@ -1,0 +1,127 @@
+/* AssistantResponseBubble.css */
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.assistant-bubble {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.assistant-bubble:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.assistant-bubble.predict:hover {
+  box-shadow: 0 8px 25px #1890ff;
+}
+
+.assistant-bubble.risk:hover {
+  box-shadow: 0 8px 25px #f5222d;
+}
+
+.assistant-bubble.growth:hover {
+  box-shadow: 0 8px 25px #52c41a;
+}
+
+.bubble-core {
+  font-size: 24px;
+  color: white;
+  animation: float 3s ease-in-out infinite;
+}
+
+.response-bubble {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation d'entrée des détails */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.response-detail-item {
+  animation: fadeIn 0.3s ease-out forwards;
+  opacity: 0;
+}
+
+.response-detail-item:nth-child(1) { animation-delay: 0.1s; }
+.response-detail-item:nth-child(2) { animation-delay: 0.2s; }
+.response-detail-item:nth-child(3) { animation-delay: 0.3s; }
+
+/* Effet de brillance */
+@keyframes shine {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.response-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.response-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: shine 3s infinite;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .response-bubble {
+    width: 280px !important;
+    right: 20px !important;
+  }
+}

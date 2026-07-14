@@ -1,0 +1,144 @@
+/* src/modules/ocr/OCR.css */
+
+.ocr-tabs .ant-tabs-tab {
+  padding: 12px 16px !important;
+  font-weight: 500 !important;
+}
+
+.ocr-tabs .ant-tabs-tab:hover {
+  color: #1a56db !important;
+}
+
+.ocr-table .ant-table {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+.ocr-table .ant-table-thead > tr > th {
+  padding: 12px 16px !important;
+}
+
+.ocr-table .ant-table-tbody > tr > td {
+  padding: 12px 16px !important;
+}
+
+.ant-upload-drag-icon {
+  margin-bottom: 16px !important;
+}
+
+.ant-upload-drag-icon .anticon {
+  color: #1a56db !important;
+}
+
+.ant-upload.ant-upload-drag {
+  transition: all 0.3s ease !important;
+}
+
+.ant-upload.ant-upload-drag:hover {
+  border-color: #1a56db !important;
+  background: #f8fafc !important;
+}
+
+.ant-upload.ant-upload-drag .ant-upload-text {
+  font-weight: 500 !important;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ocr-card-animate {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* Scrollbar personnalisée */
+.ocr-container::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.ocr-container::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.ocr-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.ocr-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Badge de statut */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-badge-processed {
+  background: #ecfdf5;
+  color: #10b981;
+}
+
+.status-badge-pending {
+  background: #fef3c7;
+  color: #f59e0b;
+}
+
+.status-badge-failed {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+/* Upload zone */
+.upload-zone {
+  border: 2px dashed #e2e8f0;
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  transition: all 0.3s ease;
+  background: #f8fafc;
+}
+
+.upload-zone:hover {
+  border-color: #1a56db;
+  background: #f1f5f9;
+}
+
+.upload-zone.active {
+  border-color: #1a56db;
+  background: #e8edf5;
+}
+
+.upload-zone .upload-icon {
+  font-size: 48px;
+  color: #1a56db;
+  margin-bottom: 16px;
+}
+
+.upload-zone .upload-text {
+  color: #1e293b;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.upload-zone .upload-hint {
+  color: #64748b;
+  font-size: 14px;
+  margin-top: 8px;
+}

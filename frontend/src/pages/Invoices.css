@@ -1,0 +1,364 @@
+/* ===== VARIABLES THÈME SOMBRE ===== */
+:root {
+  --bg-dark-primary: #0a0e1a;
+  --bg-dark-secondary: #12182b;
+  --bg-card: rgba(20, 28, 58, 0.85);
+  --bg-card-hover: rgba(30, 40, 75, 0.9);
+  --text-primary: #e8edf5;
+  --text-secondary: #a0b0d0;
+  --text-muted: #6a7a9a;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.8);
+  --glass-bg: rgba(16, 24, 48, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-success: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  --gradient-warning: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== PAGE ===== */
+.invoices-page {
+  padding: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: var(--bg-dark-primary);
+  background-image: 
+    radial-gradient(ellipse at 10% 20%, rgba(102, 126, 234, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 90% 80%, rgba(245, 87, 108, 0.08) 0%, transparent 60%);
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ===== TITRE ===== */
+.invoices-page .ant-typography {
+  color: var(--text-primary) !important;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 28px !important;
+}
+
+.invoices-page .ant-typography::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  width: 70px;
+  height: 4px;
+  background: var(--gradient-primary);
+  border-radius: 4px;
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+/* ===== STATISTIQUES ===== */
+.stats-row {
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  border-radius: 16px;
+  background: var(--bg-card) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--shadow-card) !important;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: fadeIn 0.6s ease-out;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover) !important;
+  background: var(--bg-card-hover) !important;
+  border-color: rgba(102, 126, 234, 0.3) !important;
+}
+
+.stat-card .ant-statistic-title {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.stat-card .ant-statistic-content {
+  color: var(--text-primary);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.stat-card .ant-statistic-content .anticon {
+  color: #667eea;
+  filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.3));
+}
+
+/* ===== CARTE PRINCIPALE ===== */
+.invoices-card {
+  border-radius: 20px;
+  background: var(--bg-card) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--shadow-card) !important;
+  transition: all 0.4s ease;
+}
+
+.invoices-card:hover {
+  box-shadow: var(--shadow-hover) !important;
+}
+
+.invoices-card .ant-card-body {
+  padding: 24px;
+}
+
+/* ===== EN-TÊTE FILTRES ===== */
+.invoices-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+.filters-left {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.filters-left .ant-input-affix-wrapper {
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.filters-left .ant-input-affix-wrapper input {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.filters-left .ant-input-affix-wrapper input::placeholder {
+  color: var(--text-muted);
+}
+
+.filters-left .ant-select {
+  min-width: 150px;
+}
+
+.filters-left .ant-select-selector {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary);
+}
+
+.filters-left .ant-select-arrow {
+  color: var(--text-secondary);
+}
+
+.filters-left .ant-picker {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-color);
+  border-radius: 8px;
+}
+
+.filters-left .ant-picker input {
+  color: var(--text-primary);
+}
+
+.filters-left .ant-picker input::placeholder {
+  color: var(--text-muted);
+}
+
+.filters-left .ant-picker-suffix {
+  color: var(--text-secondary);
+}
+
+.filters-right .ant-btn-primary {
+  background: var(--gradient-primary) !important;
+  border: none !important;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+}
+
+.filters-right .ant-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(102, 126, 234, 0.4);
+}
+
+/* ===== TABLEAU ===== */
+.ant-table {
+  background: transparent !important;
+  color: var(--text-primary);
+}
+
+.ant-table-thead > tr > th {
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: var(--text-secondary) !important;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color) !important;
+  padding: 12px 16px !important;
+}
+
+.ant-table-tbody > tr > td {
+  padding: 12px 16px !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  color: var(--text-primary);
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: rgba(102, 126, 234, 0.08) !important;
+}
+
+/* ===== BADGES ===== */
+.ant-badge-status-text {
+  color: var(--text-secondary) !important;
+  margin-left: 6px;
+}
+
+.ant-badge-status-success + span {
+  color: #52c41a !important;
+}
+
+.ant-badge-status-warning + span {
+  color: #faad14 !important;
+}
+
+/* ===== BOUTONS D'ACTIONS ===== */
+.ant-btn-link {
+  color: #a0b4f0 !important;
+}
+
+.ant-btn-link:hover {
+  color: #c0d0ff !important;
+  background: rgba(102, 126, 234, 0.1) !important;
+}
+
+/* ===== PAGINATION ===== */
+.ant-pagination-item {
+  background: transparent !important;
+  border-color: var(--border-color) !important;
+}
+
+.ant-pagination-item a {
+  color: var(--text-secondary) !important;
+}
+
+.ant-pagination-item-active {
+  border-color: #667eea !important;
+  background: rgba(102, 126, 234, 0.15) !important;
+}
+
+.ant-pagination-item-active a {
+  color: #667eea !important;
+}
+
+.ant-pagination-prev,
+.ant-pagination-next {
+  background: transparent !important;
+  border-color: var(--border-color) !important;
+}
+
+.ant-pagination-prev button,
+.ant-pagination-next button {
+  color: var(--text-secondary) !important;
+}
+
+/* ===== ALERT ===== */
+.ant-alert {
+  border-radius: 16px;
+  background: rgba(245, 34, 45, 0.1) !important;
+  border: 1px solid rgba(245, 34, 45, 0.2) !important;
+  backdrop-filter: blur(8px);
+}
+
+.ant-alert-message {
+  color: var(--text-primary) !important;
+}
+
+.ant-alert-description {
+  color: var(--text-secondary) !important;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .invoices-page {
+    padding: 20px;
+  }
+
+  .invoices-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filters-left {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filters-left .ant-input-affix-wrapper,
+  .filters-left .ant-select,
+  .filters-left .ant-picker {
+    width: 100% !important;
+  }
+
+  .filters-right {
+    text-align: right;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-row .ant-col {
+    width: 50%;
+    margin-bottom: 12px;
+  }
+
+  .stat-card .ant-statistic-content {
+    font-size: 22px;
+  }
+
+  .ant-table {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 576px) {
+  .invoices-page {
+    padding: 12px;
+  }
+
+  .stats-row .ant-col {
+    width: 100%;
+  }
+
+  .ant-table {
+    font-size: 12px;
+  }
+}
+
+/* ===== BARRE DE DÉFILEMENT ===== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark-secondary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #764ba2;
+}

@@ -1,0 +1,476 @@
+# app/api/endpoints/blockchain.py
+"""Blockchain API endpoints with optional authentication.
+All endpoints default to company_id=1 when not provided.
+"""
+
+from fastapi import APIRouter, Depends, HTTPException, Query, status, Body
+from sqlalchemy.orm import Session
+from sqlalchemy import desc
+from typing import List, Optional
+from datetime import datetime
+import uuid
+import hashlib
+import random
+import logging
+
+from app.database import get_db
+from app.core.dependencies import get_optional_user
+from app.models.auth import User
+from app.models.blockchain import (
+    BlockchainTransaction,
+    BlockchainBlock,
+    SmartContract,
+    BlockchainNode,
+    BlockchainLog,
+    ConsensusStatus,
+)
+
+logger = logging.getLogger(__name__)
+router = APIRouter()
+
+# Utility functions
+def generate_hash(data: str) -> str:
+    """Generate SHA256 hash of a string."""
+    return hashlib.sha256(data.encode()).hexdigest()
+
+def get_user_info(current_user: Optional[User]):
+    if not current_user:
+        return None, None
+    if isinstance(current_user, dict):
+        return current_user.get("id"), current_user.get("email", "user@example.com")
+    return getattr(current_user, "id", None), getattr(current_user, "email", getattr(current_user, "username", "user@example.com"))
+
+def add_blockchain_log(db: Session, log_type: str, message: str, company_id: int, transaction_id: int = None, block_height: int = None):
+    log_hash = generate_hash(f"{message}{datetime.now()}")
+    log = BlockchainLog(
+        log_type=log_type,
+        message=message,
+        hash=log_hash[:16],
+        company_id=company_id,
+        transaction_id=transaction_id,
+        block_height=block_height,
+    )
+    db.add(log)
+    db.commit()
+    return log
+
+def calculate_merkle_root(transactions: List) -> str:
+    if not transactions:
+        return generate_hash("empty")
+    hashes = [t.hash if hasattr(t, "hash") else generate_hash(str(t)) for t in transactions]
+    while len(hashes) > 1:
+        if len(hashes) % 2 == 1:
+            hashes.append(hashes[-1])
+        hashes = [generate_hash(hashes[i] + hashes[i + 1]) for i in range(0, len(hashes), 2)]
+    return hashes[0]
+
+def create_genesis_block(db: Session, company_id: int):
+    existing = db.query(BlockchainBlock).filter(BlockchainBlock.company_id == company_id).first()
+    if existing:
+        return
+    genesis_block = BlockchainBlock(
+        height=0,
+        company_id=company_id,
+        hash=generate_hash(f"genesis_block_{company_id}"),
+        previous_hash="0" * 64,
+        merkle_root=generate_hash(f"genesis_{company_id}"),
+        transactions=[],
+        transaction_count=0,
+        validator="system",
+        timestamp=datetime.now(),
+        nonce=0,
+        difficulty=1,
+    )
+    db.add(genesis_block)
+    db.commit()
+    add_blockchain_log(db, "BLOCK", "Bloc genesis créé", company_id, None, 0)
+
+# ========== TRANSACTION ENDPOINTS ==========
+@router.get("/transactions")
+async def get_transactions(
+    skip: int = Query(0, ge=0),
+    limit: int = Query(100, ge=1, le=500),
+    status: Optional[str] = Query(None),
+    company_id: int = Query(None),
+    db: Session = Depends(get_db),
+    current_user: Optional[User] = Depends(get_optional_user),
+):
+    """Retrieve transactions, optional authentication."""
+    company_id = company_id or getattr(current_user, "company_id", 1)
+    query = db.query(BlockchainTransaction).filter(BlockchainTransaction.company_id == company_id)
+    if status and status != "all":
+        query = query.filter(BlockchainTransaction.status == status)
+    total = query.count()
+    transactions = (
+        query.order_by(desc(BlockchainTransaction.timestamp))
+        .offset(skip)
+        .limit(limit)
+        .all()
+    )
+    return {
+        "items": [t.to_dict() for t in transactions],
+        "total": total,
+        "skip": skip,
+        "limit": limit,
+    }
+
+@router.get("/transactions/{transaction_id}")
+async def get_transaction(
+    transaction_id: int,
+    company_id: int = Query(None),
+    db: Session = Depends(get_db),
+    current_user: Optional[User] = Depends(get_optional_user),
+):
+    """Retrieve a specific transaction."""
+    company_id = company_id or getattr(current_user, "company_id", 1)
+    transaction = (
+        db.query(BlockchainTransaction)
+        .filter(BlockchainTransaction.id == transaction_id, BlockchainTransaction.company_id == company_id)
+        .first()
+    )
+    if not transaction:
+        raise HTTPException(status_code=404, detail="Transaction non trouvée")
+    return transaction.to_dict()
+
+@router.post("/transactions", status_code=status.HTTP_201_CREATED)
+async def create_transaction(
+    transaction_data: dict,
+    company_id: int = Query(None),
+    db: Session = Depends(get_db),
+    current_user: Optional[User] = Depends(get_optional_user),
+):
+    """Create a new transaction."""
+    company_id = company_id or getattr(current_user, "company_id", 1)
+    user_id, user_email = get_user_info(current_user) if current_user else (None, None)
+    tx_hash = generate_hash(
+        f"{transaction_data.get('from')}{transaction_data.get('to')}{transaction_data.get('amount')}{datetime.now()}{random.random()}"
+    )
+    new_transaction = BlockchainTransaction(
+        company_id=company_id,
+        hash=tx_hash,
+        from_address=transaction_data.get('from'),
+        to_address=transaction_data.get('to'),
+        amount=float(transaction_data.get('amount', 0)),
+        currency=transaction_data.get('currency', 'EUR'),
+        data=transaction_data.get('data', ''),
+        signature=transaction_data.get('signature', ''),
+        status="pending",
+        created_by_id=user_id,
+    )
+    db.add(new_transaction)
+    db.commit()
+    db.refresh(new_transaction)
+    add_blockchain_log(
+        db,
+        "TRANSACTION",
+        f"Nouvelle transaction: {tx_hash[:16]}... - {transaction_data.get('amount')} €",
+        company_id,
+        new_transaction.id,
+    )
+    return new_transaction.to_dict()
+
+@router.post("/transactions/{transaction_id}/verify")
+async def verify_transaction(
+    transaction_id: int,
+    db: Session = Depends(get_db),
+):
+    transaction = (
+        db.query(BlockchainTransaction)
+        .filter(BlockchainTransaction.id == transaction_id)
+        .first()
+    )
+    if not transaction:
+        raise HTTPException(status_code=404, detail="Transaction non trouvée")
+    expected_hash = generate_hash(
+        f"{transaction.from_address}{transaction.to_address}{transaction.amount}{transaction.timestamp}"
+    )
+    is_valid = transaction.hash == expected_hash
+    if is_valid:
+        transaction.status = "confirmed"
+        db.commit()
+    add_blockchain_log(
+        db,
+        "VERIFICATION",
+        f"Transaction {transaction.hash[:16]}... vérifiée: {'Valide' if is_valid else 'Invalide'}",
+        transaction.id,
+    )
+    return {
+        "verified": is_valid,
+        "transaction_id": transaction.id,
+        "hash": transaction.hash,
+        "status": transaction.status,
+        "message": "Transaction valide" if is_valid else "Transaction invalide",
+    }
+
+# ========== BLOCK ENDPOINTS ==========
+@router.get("/blocks")
+async def get_blocks(
+    skip: int = Query(0, ge=0),
+    limit: int = Query(20, ge=1, le=100),
+    company_id: int = Query(None),
+    db: Session = Depends(get_db),
+    current_user: Optional[User] = Depends(get_optional_user),
+):
+    company_id = company_id or getattr(current_user, "company_id", 1)
+    create_genesis_block(db, company_id)
+    blocks = (
+        db.query(BlockchainBlock)
+        .filter(BlockchainBlock.company_id == company_id)
+        .order_by(desc(BlockchainBlock.height))
+        .offset(skip)
+        .limit(limit)
+        .all()
+    )
+    return [b.to_dict() for b in blocks]
+
+@router.get("/blocks/{block_height}")
+async def get_block(
+    block_height: int,
+    db: Session = Depends(get_db),
+    current_user: Optional[User] = Depends(get_optional_user),
+):
+    block = (
+        db.query(BlockchainBlock)
+        .filter(BlockchainBlock.height == block_height)
+        .first()
+    )
+    if not block:
+        raise HTTPException(status_code=404, detail="Bloc non trouvé")
+    return block.to_dict()
+
+@router.post("/blocks/mine", status_code=status.HTTP_201_CREATED)
+async def mine_block(
+    company_id: int = Query(None),
+    db: Session = Depends(get_db),
+    current_user: Optional[User] = Depends(get_optional_user),
+):
+    company_id = company_id or getattr(current_user, "company_id", 1)
+    pending_txs = (
+        db.query(BlockchainTransaction)
+        .filter(BlockchainTransaction.status == "pending", BlockchainTransaction.company_id == company_id)
+        .limit(10)
+        .all()
+    )
+    if not pending_txs:
+        raise HTTPException(status_code=400, detail="Aucune transaction en attente")
+    last_block = (
+        db.query(BlockchainBlock)
+        .filter(BlockchainBlock.company_id == company_id)
+        .order_by(desc(BlockchainBlock.height))
+        .first()
+    )
+    if not last_block:
+        create_genesis_block(db, company_id)
+        last_block = (
+            db.query(BlockchainBlock)
+            .filter(BlockchainBlock.company_id == company_id)
+            .order_by(desc(BlockchainBlock.height))
+            .first()
+        )
+    merkle_root = calculate_merkle_root(pending_txs)
+    user_id, user_email = get_user_info(current_user) if current_user else (None, None)
+    new_height = (last_block.height or 0) + 1
+    new_block = BlockchainBlock(
+        company_id=company_id,
+        height=new_height,
+        hash=generate_hash(f"{last_block.hash}{merkle_root}{datetime.now()}{random.random()}"),
+        previous_hash=last_block.hash,
+        merkle_root=merkle_root,
+        transactions=[t.to_dict() for t in pending_txs],
+        transaction_count=len(pending_txs),
+        validator=user_email or "unknown",
+        timestamp=datetime.now(),
+        nonce=random.randint(0, 1_000_000),
+        difficulty=last_block.difficulty + (1 if len(pending_txs) > 5 else 0),
+    )
+    db.add(new_block)
+    for tx in pending_txs:
+        tx.status = "confirmed"
+        tx.block_height = new_height
+    db.commit()
+    add_blockchain_log(
+        db,
+        "BLOCK",
+        f"Nouveau bloc miné: #{new_height} - {new_block.hash[:16]}... - {len(pending_txs)} transactions",
+        company_id,
+        None,
+        new_height,
+    )
+    return new_block.to_dict()
+
+# ========== SMART CONTRACT ENDPOINTS ==========
+@router.get("/smart-contracts")
+async def get_smart_contracts(
+    skip: int = Query(0, ge=0),
+    limit: int = Query(100, ge=1, le=500),
+    status: Optional[str] = Query(None),
+    company_id: int = Query(None),
+    db: Session = Depends(get_db),
+    current_user: Optional[User] = Depends(get_optional_user),
+):
+    company_id = company_id or getattr(current_user, "company_id", 1)
+    query = db.query(SmartContract).filter(SmartContract.company_id == company_id)
+    if status and status != "all":
+        query = query.filter(SmartContract.status == status)
+    total = query.count()
+    contracts = (
+        query.order_by(desc(SmartContract.deployed_at))
+        .offset(skip)
+        .limit(limit)
+        .all()
+    )
+    return {"items": [c.to_dict() for c in contracts], "total": total}
+
+@router.get("/smart-contracts/{contract_id}")
+async def get_smart_contract(
+    contract_id: int,
+    db: Session = Depends(get_db),
+    current_user: Optional[User] = Depends(get_optional_user),
+):
+    contract = (
+        db.query(SmartContract)
+        .filter(SmartContract.id == contract_id)
+        .first()
+    )
+    if not contract:
+        raise HTTPException(status_code=404, detail="Contrat non trouvé")
+    return contract.to_dict()
+
+@router.post("/smart-contracts", status_code=status.HTTP_201_CREATED)
+async def create_smart_contract(
+    contract_data: dict,
+    company_id: int = Query(None),
+    db: Session = Depends(get_db),
+    current_user: Optional[User] = Depends(get_optional_user),
+):
+    company_id = company_id or getattr(current_user, "company_id", 1)
+    user_id, user_email = get_user_info(current_user) if current_user else (None, None)
+    contract_name = contract_data.get("name", "contract")
+    timestamp = datetime.now()
+    random_value = random.random()
+    contract_hash = generate_hash(f"{contract_name}{timestamp}{random_value}")
+    contract_address = f"0x{contract_hash[:40]}"
+    new_contract = SmartContract(
+        company_id=company_id,
+        name=contract_name,
+        address=contract_address,
+        code=contract_data.get("code"),
+        abi=contract_data.get("abi", "{}"),
+        conditions=contract_data.get("conditions"),
+        owner=contract_data.get("owner") or user_email,
+        status="active",
+        created_by_id=user_id,
+    )
+    db.add(new_contract)
+    db.commit()
+    db.refresh(new_contract)
+    add_blockchain_log(
+        db,
+        "SMART_CONTRACT",
+        f"Déploiement du contrat: {contract_name} - {contract_address[:16]}...",
+    )
+    return new_contract.to_dict()
+
+@router.post("/smart-contracts/{contract_id}/execute")
+async def execute_smart_contract(
+    contract_id: int,
+    execution_data: dict,
+    db: Session = Depends(get_db),
+):
+    contract = (
+        db.query(SmartContract)
+        .filter(SmartContract.id == contract_id)
+        .first()
+    )
+    if not contract:
+        raise HTTPException(status_code=404, detail="Contrat non trouvé")
+    contract.last_execution = datetime.now()
+    contract.transaction_count += 1
+    db.commit()
+    add_blockchain_log(
+        db,
+        "SMART_CONTRACT_EXECUTION",
+        f"Exécution du contrat {contract.name}",
+    )
+    return {
+        "success": True,
+        "contract": contract.name,
+        "execution_time": contract.last_execution.isoformat(),
+        "result": "Exécution réussie",
+        "transaction_count": contract.transaction_count,
+    }
+
+# ========== NODE ENDPOINTS ==========
+@router.get("/nodes")
+async def get_nodes(
+    skip: int = Query(0, ge=0),
+    limit: int = Query(100, ge=1, le=500),
+    status: Optional[str] = Query(None),
+    role: Optional[str] = Query(None),
+    db: Session = Depends(get_db),
+    current_user: Optional[User] = Depends(get_optional_user),
+):
+    query = db.query(BlockchainNode)
+    if status and status != "all":
+        query = query.filter(BlockchainNode.status == status)
+    if role and role != "all":
+        query = query.filter(BlockchainNode.role == role)
+    total = query.count()
+    nodes = (
+        query.order_by(desc(BlockchainNode.joined_at))
+        .offset(skip)
+        .limit(limit)
+        .all()
+    )
+    return {"items": [n.to_dict() for n in nodes], "total": total}
+
+@router.get("/nodes/{node_id}")
+async def get_node(
+    node_id: int,
+    db: Session = Depends(get_db),
+    current_user: Optional[User] = Depends(get_optional_user),
+):
+    node = (
+        db.query(BlockchainNode)
+        .filter(BlockchainNode.id == node_id)
+        .first()
+    )
+    if not node:
+        raise HTTPException(status_code=404, detail="Nœud non trouvé")
+    return node.to_dict()
+
+@router.post("/nodes", status_code=status.HTTP_201_CREATED)
+async def create_node(
+    node_data: dict,
+    company_id: int = Query(None),
+    db: Session = Depends(get_db),
+    current_user: Optional[User] = Depends(get_optional_user),
+):
+    company_id = company_id or getattr(current_user, "company_id", 1)
+    user_id, user_email = get_user_info(current_user) if current_user else (None, None)
+    existing = (
+        db.query(BlockchainNode)
+        .filter(BlockchainNode.address == node_data.get("address"))
+        .first()
+    )
+    if existing:
+        raise HTTPException(status_code=400, detail="Nœud déjà existant")
+    new_node = BlockchainNode(
+        address=node_data.get("address"),
+        role=node_data.get("role", "validator"),
+        stake=float(node_data.get("stake", 0)),
+        status="active",
+        version=node_data.get("version", "1.0"),
+        created_by_id=user_id,
+    )
+    db.add(new_node)
+    db.commit()
+    db.refresh(new_node)
+    add_blockchain_log(
+        db,
+        "NODE",
+        f"Nouveau nœud rejoint: {node_data.get('address')[:20]}... ({node_data.get('role')})",
+    )
+    return new_node.to_dict()
+
+# Additional endpoint groups (stats, logs, etc.) can remain unchanged as they already use optional user handling.
