@@ -2,6 +2,12 @@
   "name": "neuradecide-frontend",
   "version": "1.0.0",
   "private": true,
+
+  "engines": {
+    "node": "20.x",
+    "npm": "10.x"
+  },
+
   "dependencies": {
     "@ant-design/charts": "^2.6.7",
     "@ant-design/icons": "^5.6.1",
@@ -17,53 +23,73 @@
     "@tanstack/react-query": "^4.43.0",
     "@types/papaparse": "^5.5.2",
     "@types/three": "^0.184.0",
+
     "antd": "^5.29.3",
     "axios": "^1.3.0",
     "canvas-confetti": "^1.9.4",
+
     "echarts": "^5.5.0",
     "echarts-for-react": "^3.0.6",
     "echarts-gl": "^2.0.9",
- 
+
     "framer-motion": "^12.38.0",
     "html2pdf.js": "^0.10.2",
-    "i18next": "^26.0.8",
+
+    "i18next": "23.16.8",
     "i18next-browser-languagedetector": "^8.2.1",
     "i18next-http-backend": "^3.0.6",
+
     "jspdf": "^4.2.1",
     "jspdf-autotable": "^5.0.7",
+
     "leaflet": "^1.9.4",
     "papaparse": "^5.5.3",
+
     "react": "^18.2.0",
-    "react-countup": "^6.5.3",
     "react-dom": "^18.2.0",
+
+    "react-countup": "^6.5.3",
     "react-draggable": "^4.5.0",
     "react-grid-layout": "^1.4.4",
+
     "react-i18next": "14.1.3",
+
     "react-leaflet": "^4.2.1",
     "react-markdown": "^10.1.0",
     "react-router-dom": "^6.8.0",
+
     "react-scripts": "5.0.1",
+
     "react-speech-recognition": "^3.10.0",
+
     "recharts": "^2.15.4",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
- 
+
     "socket.io-client": "^4.8.3",
+
     "three": "^0.184.0",
+
     "web3": "^4.16.0",
     "xlsx": "^0.18.5"
   },
+
+
   "scripts": {
     "start": "set PORT=3003 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+
+
   "eslintConfig": {
     "extends": [
       "react-app"
     ]
   },
+
+
   "browserslist": {
     "production": [
       ">0.2%",
@@ -76,19 +102,19 @@
       "last 1 safari version"
     ]
   },
+
+
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^18.19.0",
+
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.11.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
+
     "typescript": "4.9.5",
+
     "web-vitals": "^2.1.4"
+  }
 }
-
-}
-
-
-
-
