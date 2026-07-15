@@ -1112,147 +1112,191 @@ const ClaimsProcessing = () => {
         >
           {selectedClaim && (
             <div>
-              <Tabs defaultActiveKey="info">
-                <TabPane tab={<span style={{ color: '#000000' }}>Informations</span>} key="info">
-                  <Descriptions column={2} bordered size="small">
-                    <Descriptions.Item label={<span style={{ color: '#000000' }}>N° Sinistre</span>} span={2}>
-                      <Text style={{ color: '#000000', fontFamily: 'monospace', fontSize: '14px' }}>{selectedClaim.claim_number}</Text>
-                    </Descriptions.Item>
-                    <Descriptions.Item label={<span style={{ color: '#000000' }}>Client</span>}>
-                      <Space>
-                        <Avatar icon={<UserOutlined />} size="small" style={{ backgroundColor: '#1677ff' }} />
-                        <Text style={{ color: '#000000' }}>{selectedClaim.client_name}</Text>
-                      </Space>
-                    </Descriptions.Item>
-                    <Descriptions.Item label={<span style={{ color: '#000000' }}>Contact</span>}>
-                      <Space direction="vertical" size={0}>
-                        <Text style={{ color: '#000000' }}><MailOutlined /> {selectedClaim.client_email || '-'}</Text>
-                        <Text style={{ color: '#000000' }}><PhoneOutlined /> {selectedClaim.client_phone || '-'}</Text>
-                      </Space>
-                    </Descriptions.Item>
-                    <Descriptions.Item label={<span style={{ color: '#000000' }}>Type</span>}>
-                      <Tag icon={getTypeIcon(selectedClaim.type)} color="blue" style={{ borderRadius: '10px' }}>
-                        <span style={{ color: '#000000' }}>{selectedClaim.type}</span>
-                      </Tag>
-                    </Descriptions.Item>
-                    <Descriptions.Item label={<span style={{ color: '#000000' }}>Montant</span>}>
-                      <Text style={{ color: '#000000', fontSize: '16px', fontWeight: 'bold' }}>
-                        {selectedClaim.amount?.toLocaleString()} €
-                      </Text>
-                    </Descriptions.Item>
-                    <Descriptions.Item label={<span style={{ color: '#000000' }}>Date sinistre</span>}>
-                      <Text style={{ color: '#000000' }}>{selectedClaim.incident_date ? dayjs(selectedClaim.incident_date).format('DD/MM/YYYY') : '-'}</Text>
-                    </Descriptions.Item>
-                    <Descriptions.Item label={<span style={{ color: '#000000' }}>Date déclaration</span>}>
-                      <Text style={{ color: '#000000' }}>{selectedClaim.created_at ? dayjs(selectedClaim.created_at).format('DD/MM/YYYY') : '-'}</Text>
-                    </Descriptions.Item>
-                    <Descriptions.Item label={<span style={{ color: '#000000' }}>Description</span>} span={2}>
-                      <Text style={{ color: '#000000' }}>{selectedClaim.description || 'Non renseignée'}</Text>
-                    </Descriptions.Item>
-                    <Descriptions.Item label={<span style={{ color: '#000000' }}>Circonstances</span>} span={2}>
-                      <Text style={{ color: '#000000' }}>{selectedClaim.circumstances || 'Non renseignées'}</Text>
-                    </Descriptions.Item>
-                  </Descriptions>
-                </TabPane>
+              <Tabs
+  defaultActiveKey="info"
+  items={[
+    {
+      key: "info",
+      label: <span style={{ color: '#000000' }}>Informations</span>,
+      children: (
+        <Descriptions column={2} bordered size="small">
+          <Descriptions.Item label={<span style={{ color: '#000000' }}>N° Sinistre</span>} span={2}>
+            <Text style={{ color: '#000000', fontFamily: 'monospace', fontSize: '14px' }}>
+              {selectedClaim.claim_number}
+            </Text>
+          </Descriptions.Item>
 
-                <TabPane tab={<span style={{ color: '#000000' }}>Devis</span>} key="quotes">
-                  <div style={{ marginBottom: 16 }}>
-                    <Button 
-                      type="dashed" 
-                      icon={<PlusOutlined />} 
-                      onClick={() => setQuoteDrawerVisible(true)}
-                      disabled={selectedClaim.status === 'approved'}
-                      style={{ borderRadius: '8px' }}
-                    >
-                      Ajouter un devis
-                    </Button>
-                  </div>
-                  {safeQuotes.filter(q => q.claim_id === selectedClaim.id).length > 0 ? (
-                    <List
-                      dataSource={safeQuotes.filter(q => q.claim_id === selectedClaim.id)}
-                      renderItem={quote => (
-                        <List.Item>
-                          <Card size="small" style={{ width: '100%', borderRadius: '12px', background: '#1f1f1f' }}>
-                            <Row justify="space-between" align="middle">
-                              <Col>
-                                <Space>
-                                  <ShopOutlined style={{ fontSize: '24px', color: '#1677ff' }} />
-                                  <div>
-                                    <Text style={{ color: '#ffffff' }} strong>{quote.provider}</Text>
-                                    <br />
-                                    <Text style={{ color: '#94a3b8', fontSize: '12px' }}>{quote.date ? dayjs(quote.date).format('DD/MM/YYYY') : '-'}</Text>
-                                  </div>
-                                </Space>
-                              </Col>
-                              <Col>
-                                <Text style={{ color: '#52c41a', fontSize: '18px', fontWeight: 'bold' }}>{quote.amount?.toLocaleString()} €</Text>
-                              </Col>
-                            </Row>
-                            <Paragraph style={{ color: '#94a3b8', marginTop: 12 }}>{quote.description}</Paragraph>
-                          </Card>
-                        </List.Item>
-                      )}
-                    />
-                  ) : (
-                    <Empty description="Aucun devis disponible" />
-                  )}
-                </TabPane>
+          <Descriptions.Item label={<span style={{ color: '#000000' }}>Client</span>}>
+            <Space>
+              <Avatar icon={<UserOutlined />} size="small" style={{ backgroundColor: '#1677ff' }} />
+              <Text style={{ color: '#000000' }}>{selectedClaim.client_name}</Text>
+            </Space>
+          </Descriptions.Item>
 
-                <TabPane tab={<span style={{ color: '#000000' }}>Expertise</span>} key="expertise">
-                  <div style={{ marginBottom: 16 }}>
-                    <Button 
-                      type="dashed" 
-                      icon={<PlusOutlined />} 
-                      onClick={() => setExpertModalVisible(true)}
-                      disabled={selectedClaim.status === 'approved'}
-                      style={{ borderRadius: '8px' }}
-                    >
-                      Ajouter un expert
-                    </Button>
-                  </div>
-                  {safeExperts.filter(e => e.claim_id === selectedClaim.id).length > 0 ? (
-                    <List
-                      dataSource={safeExperts.filter(e => e.claim_id === selectedClaim.id)}
-                      renderItem={expert => (
-                        <List.Item>
-                          <Card size="small" style={{ width: '100%', borderRadius: '12px', background: '#1f1f1f' }}>
-                            <Row justify="space-between" align="middle">
-                              <Col>
-                                <Space>
-                                  <Avatar icon={<UserOutlined />} style={{ backgroundColor: '#1677ff' }} />
-                                  <div>
-                                    <Text style={{ color: '#ffffff' }} strong>{expert.name}</Text>
-                                    <br />
-                                    <Text style={{ color: '#94a3b8', fontSize: '12px' }}>{expert.title}</Text>
-                                  </div>
-                                </Space>
-                              </Col>
-                              <Col>
-                                <Text style={{ color: '#94a3b8', fontSize: '12px' }}>{expert.date ? dayjs(expert.date).format('DD/MM/YYYY') : '-'}</Text>
-                              </Col>
-                            </Row>
-                            <Divider style={{ margin: '12px 0', borderColor: '#303030' }} />
-                            <Text style={{ color: '#ffffff' }} strong>Rapport:</Text>
-                            <Paragraph style={{ color: '#94a3b8' }}>{expert.report || '-'}</Paragraph>
-                            <Text style={{ color: '#ffffff' }} strong>Conclusions:</Text>
-                            <Paragraph style={{ color: '#94a3b8' }}>{expert.conclusions || '-'}</Paragraph>
-                          </Card>
-                        </List.Item>
-                      )}
-                    />
-                  ) : (
-                    <Empty description="Aucune expertise disponible" />
-                  )}
-                </TabPane>
+          <Descriptions.Item label={<span style={{ color: '#000000' }}>Contact</span>}>
+            <Space direction="vertical" size={0}>
+              <Text style={{ color: '#000000' }}>
+                <MailOutlined /> {selectedClaim.client_email || '-'}
+              </Text>
+              <Text style={{ color: '#000000' }}>
+                <PhoneOutlined /> {selectedClaim.client_phone || '-'}
+              </Text>
+            </Space>
+          </Descriptions.Item>
 
-                <TabPane tab={<span style={{ color: '#000000' }}>Documents</span>} key="documents">
-                  <Upload.Dragger beforeUpload={(file) => handleUploadDocument(file, selectedClaim.id)} accept=".pdf,.jpg,.png" multiple>
-                    <p className="ant-upload-drag-icon"><UploadOutlined style={{ color: '#000000' }} /></p>
-                    <p className="ant-upload-text" style={{ color: '#000000' }}>Cliquez ou glissez des fichiers ici</p>
-                    <p className="ant-upload-hint" style={{ color: '#000000' }}>Support des fichiers PDF, JPG, PNG</p>
-                  </Upload.Dragger>
-                </TabPane>
-              </Tabs>
+          <Descriptions.Item label={<span style={{ color: '#000000' }}>Type</span>}>
+            <Tag icon={getTypeIcon(selectedClaim.type)} color="blue">
+              <span style={{ color: '#000000' }}>{selectedClaim.type}</span>
+            </Tag>
+          </Descriptions.Item>
+
+          <Descriptions.Item label={<span style={{ color: '#000000' }}>Montant</span>}>
+            <Text style={{ color: '#000000', fontSize: '16px', fontWeight: 'bold' }}>
+              {selectedClaim.amount?.toLocaleString()} €
+            </Text>
+          </Descriptions.Item>
+
+          <Descriptions.Item label={<span style={{ color: '#000000' }}>Date sinistre</span>}>
+            <Text style={{ color: '#000000' }}>
+              {selectedClaim.incident_date
+                ? dayjs(selectedClaim.incident_date).format('DD/MM/YYYY')
+                : '-'}
+            </Text>
+          </Descriptions.Item>
+
+          <Descriptions.Item label={<span style={{ color: '#000000' }}>Date déclaration</span>}>
+            <Text style={{ color: '#000000' }}>
+              {selectedClaim.created_at
+                ? dayjs(selectedClaim.created_at).format('DD/MM/YYYY')
+                : '-'}
+            </Text>
+          </Descriptions.Item>
+
+          <Descriptions.Item label={<span style={{ color: '#000000' }}>Description</span>} span={2}>
+            <Text style={{ color: '#000000' }}>
+              {selectedClaim.description || 'Non renseignée'}
+            </Text>
+          </Descriptions.Item>
+
+          <Descriptions.Item label={<span style={{ color: '#000000' }}>Circonstances</span>} span={2}>
+            <Text style={{ color: '#000000' }}>
+              {selectedClaim.circumstances || 'Non renseignées'}
+            </Text>
+          </Descriptions.Item>
+        </Descriptions>
+      ),
+    },
+
+    {
+      key: "quotes",
+      label: <span style={{ color: '#000000' }}>Devis</span>,
+      children: (
+        <>
+          <div style={{ marginBottom: 16 }}>
+            <Button
+              type="dashed"
+              icon={<PlusOutlined />}
+              onClick={() => setQuoteDrawerVisible(true)}
+              disabled={selectedClaim.status === 'approved'}
+              style={{ borderRadius: '8px' }}
+            >
+              Ajouter un devis
+            </Button>
+          </div>
+
+          {safeQuotes.filter(q => q.claim_id === selectedClaim.id).length > 0 ? (
+            <List
+              dataSource={safeQuotes.filter(q => q.claim_id === selectedClaim.id)}
+              renderItem={quote => (
+                <List.Item>
+                  <Card
+                    size="small"
+                    style={{
+                      width: '100%',
+                      borderRadius: '12px',
+                      background: '#1f1f1f'
+                    }}
+                  >
+                    <Text style={{ color: '#ffffff' }} strong>
+                      {quote.provider}
+                    </Text>
+
+                    <br />
+
+                    <Text style={{ color: '#52c41a' }}>
+                      {quote.amount?.toLocaleString()} €
+                    </Text>
+                  </Card>
+                </List.Item>
+              )}
+            />
+          ) : (
+            <Empty description="Aucun devis disponible" />
+          )}
+        </>
+      ),
+    },
+
+    {
+      key: "expertise",
+      label: <span style={{ color: '#000000' }}>Expertise</span>,
+      children: (
+        <>
+          <Button
+            type="dashed"
+            icon={<PlusOutlined />}
+            onClick={() => setExpertModalVisible(true)}
+            disabled={selectedClaim.status === 'approved'}
+          >
+            Ajouter un expert
+          </Button>
+
+          <List
+            dataSource={safeExperts.filter(
+              e => e.claim_id === selectedClaim.id
+            )}
+            renderItem={expert => (
+              <List.Item>
+                <Card style={{ width: '100%' }}>
+                  <Text strong>{expert.name}</Text>
+                  <Paragraph>
+                    {expert.report || '-'}
+                  </Paragraph>
+                </Card>
+              </List.Item>
+            )}
+          />
+        </>
+      ),
+    },
+
+    {
+      key: "documents",
+      label: <span style={{ color: '#000000' }}>Documents</span>,
+      children: (
+        <Upload.Dragger
+          beforeUpload={(file) =>
+            handleUploadDocument(file, selectedClaim.id)
+          }
+          accept=".pdf,.jpg,.png"
+          multiple
+        >
+          <p className="ant-upload-drag-icon">
+            <UploadOutlined style={{ color:'#000000' }}/>
+          </p>
+
+          <p style={{ color:'#000000' }}>
+            Cliquez ou glissez des fichiers ici
+          </p>
+
+          <p style={{ color:'#000000' }}>
+            Support PDF, JPG, PNG
+          </p>
+        </Upload.Dragger>
+      ),
+    },
+  ]}
+/>
 
               {selectedClaim.fraud_score > 70 && (
                 <Alert

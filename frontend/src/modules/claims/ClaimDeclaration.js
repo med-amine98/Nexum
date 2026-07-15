@@ -2066,34 +2066,90 @@ const ClaimDeclaration = () => {
       open={discordModalVisible} onCancel={() => setDiscordModalVisible(false)} width={900} footer={null}
       styles={{ body: { background: '#14141e' }, header: { background: '#14141e', borderBottom: '1px solid #2a2a3a' } }}
     >
-      <Tabs defaultActiveKey="list" className="dark-tabs">
-        <TabPane tab={<span style={{ color: '#f1f5f9' }}>Liste</span>} key="list">
-          <Table 
-            columns={discordClaimColumns} 
-            dataSource={discordClaims} 
-            rowKey="id" 
-            loading={loadingDiscord} 
-            pagination={{ pageSize: 5 }}
-            className="dark-table"
-          />
-        </TabPane>
-        {selectedDiscordClaim && (
-          <TabPane tab={<span style={{ color: '#f1f5f9' }}>Détails</span>} key="details">
-            <Descriptions bordered column={2}>
-              <Descriptions.Item label="N° Sinistre" span={2}><code style={{ color: '#f1f5f9' }}>{selectedDiscordClaim.claim_number}</code></Descriptions.Item>
-              <Descriptions.Item label="Client"><UserOutlined style={{ color: '#8c8c8c' }} /> <span style={{ color: '#f1f5f9' }}>{selectedDiscordClaim.client}</span></Descriptions.Item>
-              <Descriptions.Item label="Type"><Tag color="blue">{selectedDiscordClaim.type}</Tag></Descriptions.Item>
-              <Descriptions.Item label="Date"><span style={{ color: '#f1f5f9' }}>{new Date(selectedDiscordClaim.created_at).toLocaleString()}</span></Descriptions.Item>
-              <Descriptions.Item label="Description" span={2}><span style={{ color: '#f1f5f9' }}>{selectedDiscordClaim.description}</span></Descriptions.Item>
-            </Descriptions>
-            <div style={{ marginTop: 16, textAlign: 'center' }}>
-              <Button type="primary" icon={<SendOutlined />} onClick={() => importDiscordClaim(selectedDiscordClaim)} loading={importing}>
-                Importer
-              </Button>
-            </div>
-          </TabPane>
-        )}
-      </Tabs>
+      <Tabs
+  defaultActiveKey="list"
+  className="dark-tabs"
+  items={[
+    {
+      key: "list",
+      label: <span style={{ color: '#f1f5f9' }}>Liste</span>,
+      children: (
+        <Table
+          columns={discordClaimColumns}
+          dataSource={discordClaims}
+          rowKey="id"
+          loading={loadingDiscord}
+          pagination={{ pageSize: 5 }}
+          className="dark-table"
+        />
+      ),
+    },
+    ...(selectedDiscordClaim
+      ? [
+          {
+            key: "details",
+            label: <span style={{ color: '#f1f5f9' }}>Détails</span>,
+            children: (
+              <>
+                <Descriptions bordered column={2}>
+                  <Descriptions.Item label="N° Sinistre" span={2}>
+                    <code style={{ color: '#f1f5f9' }}>
+                      {selectedDiscordClaim.claim_number}
+                    </code>
+                  </Descriptions.Item>
+
+                  <Descriptions.Item label="Client">
+                    <UserOutlined style={{ color: '#8c8c8c' }} />{" "}
+                    <span style={{ color: '#f1f5f9' }}>
+                      {selectedDiscordClaim.client}
+                    </span>
+                  </Descriptions.Item>
+
+                  <Descriptions.Item label="Type">
+                    <Tag color="blue">
+                      {selectedDiscordClaim.type}
+                    </Tag>
+                  </Descriptions.Item>
+
+                  <Descriptions.Item label="Date">
+                    <span style={{ color: '#f1f5f9' }}>
+                      {new Date(
+                        selectedDiscordClaim.created_at
+                      ).toLocaleString()}
+                    </span>
+                  </Descriptions.Item>
+
+                  <Descriptions.Item label="Description" span={2}>
+                    <span style={{ color: '#f1f5f9' }}>
+                      {selectedDiscordClaim.description}
+                    </span>
+                  </Descriptions.Item>
+                </Descriptions>
+
+                <div
+                  style={{
+                    marginTop: 16,
+                    textAlign: 'center',
+                  }}
+                >
+                  <Button
+                    type="primary"
+                    icon={<SendOutlined />}
+                    onClick={() =>
+                      importDiscordClaim(selectedDiscordClaim)
+                    }
+                    loading={importing}
+                  >
+                    Importer
+                  </Button>
+                </div>
+              </>
+            ),
+          },
+        ]
+      : []),
+  ]}
+/>
     </Modal>
   );
 
