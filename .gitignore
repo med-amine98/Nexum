@@ -46,3 +46,21 @@ logs/
 # OS
 .DS_Store
 Thumbs.db
+
+
+# AI models
+*.pth
+*.pt
+*.pkl
+*.joblib
+
+# datasets
+backend/data/
+backend/data_wildfire/
+
+# uploads
+backend/uploads/
+backend/storage/
+
+# packages
+backend/packages/
