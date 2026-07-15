@@ -1,7 +1,8 @@
 [build]
-  command = "npm install --legacy-peer-deps && npm run build"
-  publish = "build"
+base = "frontend"
+command = "npm run build"
+publish = "frontend/build"
 
 [build.environment]
-  NODE_VERSION = "20"
-  NPM_FLAGS = "--legacy-peer-deps"
+NODE_VERSION = "20"
+NPM_FLAGS = "--legacy-peer-deps"
